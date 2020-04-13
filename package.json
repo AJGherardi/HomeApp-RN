@@ -8,8 +8,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.4",
+    "apollo-boost": "^0.4.7",
     "expo": "~37.0.3",
+    "expo-secure-store": "^8.1.0",
     "expo-updates": "~0.1.0",
+    "graphql": "^15.0.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "~0.61.4",
