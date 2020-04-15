@@ -5,13 +5,11 @@
     "name": "HomeApp",
     "slug": "expo-template-bare",
     "version": "1.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "icon": "./assets/icon.png",
+    "platforms": ["ios", "android"],
+    "assetBundlePatterns": ["**/*"],
+    "android": {
+      "package": "com.alexandergherardi.home"
+    }
   }
 }
