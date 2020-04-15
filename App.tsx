@@ -1,9 +1,12 @@
-import React from "react";
+import "react-native-gesture-handler";
+import { NavigationContainer, NavigationContext, RouteProp } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { StackNavigationProp } from '@react-navigation/stack';
+import React, { useContext } from "react";
 import { StyleSheet, Text, View, StatusBar } from "react-native";
 import { Provider as PaperProvider, Button } from "react-native-paper";
-
 import { ApolloProvider, useQuery, useMutation } from "@apollo/react-hooks";
-import { gql, DefaultOptions } from "apollo-boost";
+import { gql } from "apollo-boost";
 import { ApolloClient } from "apollo-client";
 import { InMemoryCache, NormalizedCacheObject } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
@@ -153,17 +156,71 @@ export function AddGroup() {
   );
 }
 
+export function HomePage({ route, navigation }: Props) {
+  return (
+    <View style={styles.container}>
+      <StatusBar barStyle="light-content" backgroundColor="#121212" />
+      <View style={styles.titleView}>
+        <Text style={styles.homeText}>Home</Text>
+        <Text style={styles.byText}>by</Text>
+        <Text style={styles.nameText}>alexander gherardi</Text>
+      </View>
+      <View style={styles.nextView}>
+        <Button
+          contentStyle={styles.nextButton}
+          color="white"
+          mode="contained"
+          onPress={() => {navigation.navigate("Details")}}
+        >
+          continue
+        </Button>
+      </View>
+    </View>
+  );
+}
+
+export function AddFirstDevicePage() {
+  return (
+    <View style={styles.container}>
+      <StatusBar barStyle="light-content" backgroundColor="#121212" />
+      <View style={styles.titleView}>
+        <Text style={styles.homeText}>Add A Device</Text>
+      </View>
+    </View>
+  );
+}
+
+const RootStack = createStackNavigator<RootStackParamList>();
+
+type RootStackParamList = {
+  Home: undefined;
+  Details: undefined;
+};
+
+type HomeScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'Home'
+>;
+
+type HomeScreenRouteProp = RouteProp<RootStackParamList, 'Home'>;
+
+type Props = {
+  route: HomeScreenRouteProp;
+  navigation: HomeScreenNavigationProp;
+};
+
 export default function App() {
   return (
-    <ApolloProvider client={client}>
-      <PaperProvider>
-        <StatusBar barStyle="light-content" backgroundColor="#121212" />
-        <View style={styles.container}>
-          <Button>bob</Button>
-          <AddGroup></AddGroup>
-        </View>
-      </PaperProvider>
-    </ApolloProvider>
+    <NavigationContainer>
+      <ApolloProvider client={client}>
+        <PaperProvider>
+          <RootStack.Navigator>
+            <RootStack.Screen name="Home" component={HomePage} />
+            <RootStack.Screen name="Details" component={AddFirstDevicePage} />
+          </RootStack.Navigator>
+        </PaperProvider>
+      </ApolloProvider>
+    </NavigationContainer>
   );
 }
 
