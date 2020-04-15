@@ -1,14 +1,4 @@
-import { NavigationContainer, RouteProp } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { StackNavigationProp } from "@react-navigation/stack";
-import React from "react";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
-import { Provider as PaperProvider, Button } from "react-native-paper";
-import { ApolloProvider, useQuery, useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
-import { ApolloClient } from "apollo-client";
-import { InMemoryCache, NormalizedCacheObject } from "apollo-cache-inmemory";
-import { HttpLink } from "apollo-link-http";
 
 interface ProvData {
   networkKey: string;
