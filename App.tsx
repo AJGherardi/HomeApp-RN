@@ -9,7 +9,7 @@ import { ApolloClient } from "apollo-client";
 import { InMemoryCache, NormalizedCacheObject } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
 import { HomePage } from "./src/pages/Home";
-import { styles } from "./src/styles/Styles";
+import { AddFirstDevicePage } from "./src/pages/AddFirstDevice";
 
 const cache = new InMemoryCache();
 
@@ -21,17 +21,6 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache,
   link,
 });
-
-export function AddFirstDevicePage() {
-  return (
-    <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#121212" />
-      <View style={styles.titleView}>
-        <Text style={styles.homeText}>Add A Device</Text>
-      </View>
-    </View>
-  );
-}
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
