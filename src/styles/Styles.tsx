@@ -3,17 +3,20 @@ import { Provider as PaperProvider, Button } from "react-native-paper";
 
 
 export const styles = StyleSheet.create({
-    container: {
+    page: {
       flex: 1,
       flexDirection: "column",
       backgroundColor: "#121212",
+    },
+    spaceing: {
+      flex: .4,
     },
     nextView: {
       flex: 1,
       alignItems: "center",
       justifyContent: "center",
     },
-    titleView: {
+    detailsView: {
       flex: 5,
       alignItems: "center",
       justifyContent: "center",
@@ -21,6 +24,11 @@ export const styles = StyleSheet.create({
     homeText: {
       color: "white",
       fontSize: 72,
+      fontFamily: "Roboto-Black",
+    },
+    titleText: {
+      color: "white",
+      fontSize: 52,
       fontFamily: "Roboto-Black",
     },
     byText: {

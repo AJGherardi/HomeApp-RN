@@ -10,38 +10,36 @@ import { InMemoryCache, NormalizedCacheObject } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
 import { styles } from "../styles/Styles";
 
+type HomeNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
 
-type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
+type HomeRouteProp = RouteProp<RootStackParamList, "Home">;
 
-type HomeScreenRouteProp = RouteProp<RootStackParamList, "Home">;
-
-type Props = {
-  route: HomeScreenRouteProp;
-  navigation: HomeScreenNavigationProp;
+type HomeProps = {
+  route: HomeRouteProp;
+  navigation: HomeNavigationProp;
 };
 
-export function HomePage({ route, navigation }: Props) {
-    return (
-      <View style={styles.container}>
-        <StatusBar barStyle="light-content" backgroundColor="#121212" />
-        <View style={styles.titleView}>
-          <Text style={styles.homeText}>Home</Text>
-          <Text style={styles.byText}>by</Text>
-          <Text style={styles.nameText}>alexander gherardi</Text>
-        </View>
-        <View style={styles.nextView}>
-          <Button
-            contentStyle={styles.nextButton}
-            color="white"
-            mode="contained"
-            onPress={() => {
-              navigation.navigate("Details");
-            }}
-          >
-            continue
-          </Button>
-        </View>
+export function HomePage({ route, navigation }: HomeProps) {
+  return (
+    <View style={styles.page}>
+      <StatusBar barStyle="light-content" backgroundColor="#121212" />
+      <View style={styles.detailsView}>
+        <Text style={styles.homeText}>Home</Text>
+        <Text style={styles.byText}>by</Text>
+        <Text style={styles.nameText}>alexander gherardi</Text>
       </View>
-    );
-  }
-  
+      <View style={styles.nextView}>
+        <Button
+          contentStyle={styles.nextButton}
+          color="white"
+          mode="contained"
+          onPress={() => {
+            navigation.navigate("Details");
+          }}
+        >
+          Next
+        </Button>
+      </View>
+    </View>
+  );
+}
