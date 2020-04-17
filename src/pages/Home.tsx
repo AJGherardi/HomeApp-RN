@@ -34,7 +34,7 @@ export function HomePage({ route, navigation }: HomeProps) {
           color="white"
           mode="contained"
           onPress={() => {
-            navigation.navigate("Details");
+            navigation.navigate("AddFirstDevice");
           }}
         >
           Next

@@ -36,7 +36,7 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <RootStack.Screen
-              name="Details"
+              name="AddFirstDevice"
               component={AddFirstDevicePage}
               options={{ headerShown: false }}
             />
