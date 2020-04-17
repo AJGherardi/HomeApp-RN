@@ -8,15 +8,22 @@ export const styles = StyleSheet.create({
       flexDirection: "column",
       backgroundColor: "#121212",
     },
-    spaceing: {
-      flex: .4,
+    titleView: {
+      alignItems: "center",
+      justifyContent: "center",
+      flex: 1.2
     },
     nextView: {
       flex: 1,
       alignItems: "center",
       justifyContent: "center",
     },
-    detailsView: {
+    photoView: {
+      flex: 3.8,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    homeView: {
       flex: 5,
       alignItems: "center",
       justifyContent: "center",

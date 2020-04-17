@@ -1,13 +1,8 @@
-import { NavigationContainer, RouteProp } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
-import { Provider as PaperProvider, Button } from "react-native-paper";
-import { ApolloProvider } from "@apollo/react-hooks";
-import { ApolloClient } from "apollo-client";
-import { InMemoryCache, NormalizedCacheObject } from "apollo-cache-inmemory";
-import { HttpLink } from "apollo-link-http";
+import { Text, View, StatusBar } from "react-native";
+import { Button } from "react-native-paper";
 import { styles } from "../styles/Styles";
 
 type HomeNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
@@ -23,7 +18,7 @@ export function HomePage({ route, navigation }: HomeProps) {
   return (
     <View style={styles.page}>
       <StatusBar barStyle="light-content" backgroundColor="#121212" />
-      <View style={styles.detailsView}>
+      <View style={styles.homeView}>
         <Text style={styles.homeText}>Home</Text>
         <Text style={styles.byText}>by</Text>
         <Text style={styles.nameText}>alexander gherardi</Text>

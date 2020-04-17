@@ -1,9 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View, StatusBar, Image } from "react-native";
+import { Text, View, StatusBar, Image } from "react-native";
 import { styles } from "../styles/Styles";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { Provider as PaperProvider, Button } from "react-native-paper";
+import { Button } from "react-native-paper";
 
 type AddFirstDeviceNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -21,9 +21,10 @@ export function AddFirstDevicePage({ route, navigation }: AddFirstDeviceProps) {
   return (
     <View style={styles.page}>
       <StatusBar barStyle="light-content" backgroundColor="#121212" />
-      <View style={styles.detailsView}>
+      <View style={styles.titleView}>
         <Text style={styles.titleText}>Add A Device</Text>
-        <View style={styles.spaceing}></View>
+      </View>
+      <View style={styles.photoView}>
         <Image source={require("../../assets/outlet.png")} />
       </View>
       <View style={styles.nextView}>
