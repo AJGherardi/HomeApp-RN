@@ -7,10 +7,10 @@ import { Provider as PaperProvider, Button } from "react-native-paper";
 
 type AddFirstDeviceNavigationProp = StackNavigationProp<
   RootStackParamList,
-  "Details"
+  "AddFirstDevice"
 >;
 
-type AddFirstDeviceRouteProp = RouteProp<RootStackParamList, "Details">;
+type AddFirstDeviceRouteProp = RouteProp<RootStackParamList, "AddFirstDevice">;
 
 type AddFirstDeviceProps = {
   route: AddFirstDeviceRouteProp;
