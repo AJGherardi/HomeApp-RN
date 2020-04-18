@@ -1,5 +1,4 @@
-import { StyleSheet, Text, View, StatusBar } from "react-native";
-import { Provider as PaperProvider, Button } from "react-native-paper";
+import { StyleSheet } from "react-native";
 
 
 export const styles = StyleSheet.create({
@@ -19,6 +18,11 @@ export const styles = StyleSheet.create({
       justifyContent: "center",
     },
     photoView: {
+      flex: 3.8,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    deviceListView: {
       flex: 3.8,
       alignItems: "center",
       justifyContent: "center",

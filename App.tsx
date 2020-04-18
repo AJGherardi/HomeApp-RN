@@ -1,8 +1,11 @@
 import "react-native-gesture-handler";
 import { NavigationContainer, RouteProp } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  createStackNavigator,
+  TransitionSpecs,
+  CardStyleInterpolators,
+} from "@react-navigation/stack";
 import React from "react";
-import { Text, View, StatusBar } from "react-native";
 import { Provider as PaperProvider } from "react-native-paper";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { ApolloClient } from "apollo-client";
@@ -10,6 +13,8 @@ import { InMemoryCache, NormalizedCacheObject } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
 import { HomePage } from "./src/pages/Home";
 import { AddFirstDevicePage } from "./src/pages/AddFirstDevice";
+import { AvailableDevicesPage } from "./src/pages/AvailableDevices";
+import { Easing, Animated } from "react-native";
 
 const cache = new InMemoryCache();
 
@@ -38,7 +43,26 @@ export default function App() {
             <RootStack.Screen
               name="AddFirstDevice"
               component={AddFirstDevicePage}
-              options={{ headerShown: false }}
+              options={{
+                headerShown: false,
+                transitionSpec: {
+                  open: TransitionSpecs.TransitionIOSSpec,
+                  close: TransitionSpecs.TransitionIOSSpec,
+                },
+                cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+              }}
+            />
+            <RootStack.Screen
+              name="AvailableDevices"
+              component={AvailableDevicesPage}
+              options={{
+                headerShown: false,
+                transitionSpec: {
+                  open: TransitionSpecs.TransitionIOSSpec,
+                  close: TransitionSpecs.TransitionIOSSpec,
+                },
+                cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+              }}
             />
           </RootStack.Navigator>
         </PaperProvider>

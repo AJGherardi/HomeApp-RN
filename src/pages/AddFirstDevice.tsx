@@ -33,7 +33,7 @@ export function AddFirstDevicePage({ route, navigation }: AddFirstDeviceProps) {
           color="white"
           mode="contained"
           onPress={() => {
-            navigation.navigate("Home");
+            navigation.navigate("AvailableDevices");
           }}
         >
           Next
