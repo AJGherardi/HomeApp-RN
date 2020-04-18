@@ -7,12 +7,12 @@ import { Button } from "react-native-paper";
 
 type AvailableDevicesNavigationProp = StackNavigationProp<
   RootStackParamList,
-  "AddFirstDevice"
+  "AvailableDevices"
 >;
 
 type AvailableDevicesRouteProp = RouteProp<
   RootStackParamList,
-  "AddFirstDevice"
+  "AvailableDevices"
 >;
 
 type AvailableDevicesProps = {
@@ -33,9 +33,16 @@ export function AvailableDevicesPage({
           <FlatList
             data={DATA}
             renderItem={({ item }) => (
-              <View>
-                <Text style={styles.titleText}>{item.title}</Text>
-              </View>
+              <Button
+                contentStyle={styles.nextButton}
+                color="white"
+                mode="contained"
+                onPress={() => {
+                  navigation.navigate("Home");
+                }}
+              >
+                {item.id}
+              </Button>
             )}
             keyExtractor={(item) => item.id}
           />

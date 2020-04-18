@@ -38,7 +38,14 @@ export default function App() {
             <RootStack.Screen
               name="Home"
               component={HomePage}
-              options={{ headerShown: false }}
+              options={{
+                headerShown: false,
+                transitionSpec: {
+                  open: TransitionSpecs.TransitionIOSSpec,
+                  close: TransitionSpecs.TransitionIOSSpec,
+                },
+                cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+              }}
             />
             <RootStack.Screen
               name="AddFirstDevice"
