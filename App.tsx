@@ -11,7 +11,7 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import { ApolloClient } from "apollo-client";
 import { InMemoryCache, NormalizedCacheObject } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
-import { HomePage } from "./src/pages/Home";
+import { WelcomePage } from "./src/pages/Welcome";
 import { AddDeviceSplashPage } from "./src/pages/AddFirstDevice";
 import { AvailableDevicesPage } from "./src/pages/AvailableDevices";
 import { AddDevicePage } from "./src/pages/AddDevice";
@@ -34,10 +34,10 @@ export default function App() {
     <NavigationContainer>
       <ApolloProvider client={client}>
         <PaperProvider>
-          <RootStack.Navigator initialRouteName="Home">
+          <RootStack.Navigator initialRouteName="Welcome">
             <RootStack.Screen
-              name="Home"
-              component={HomePage}
+              name="Welcome"
+              component={WelcomePage}
               options={{
                 headerShown: false,
                 transitionSpec: {

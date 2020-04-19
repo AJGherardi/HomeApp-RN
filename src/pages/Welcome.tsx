@@ -5,16 +5,16 @@ import { Text, View, StatusBar } from "react-native";
 import { Button } from "react-native-paper";
 import { styles } from "../styles/Styles";
 
-type HomeNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
+type WelcomeNavigationProp = StackNavigationProp<RootStackParamList, "Welcome">;
 
-type HomeRouteProp = RouteProp<RootStackParamList, "Home">;
+type WelcomeRouteProp = RouteProp<RootStackParamList, "Welcome">;
 
-type HomeProps = {
-  route: HomeRouteProp;
-  navigation: HomeNavigationProp;
+type WelcomeProps = {
+  route: WelcomeRouteProp;
+  navigation: WelcomeNavigationProp;
 };
 
-export function HomePage({ route, navigation }: HomeProps) {
+export function WelcomePage({ route, navigation }: WelcomeProps) {
   return (
     <View style={styles.page}>
       <StatusBar barStyle="light-content" backgroundColor="#121212" />
