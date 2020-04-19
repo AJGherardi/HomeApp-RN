@@ -41,9 +41,9 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
           contentStyle={styles.nextButton}
           color="#00E676"
           theme={{
-              colors: {
-                text: "white"
-              },
+            colors: {
+              text: "white",
+            },
           }}
           mode="contained"
           onPress={() => {
