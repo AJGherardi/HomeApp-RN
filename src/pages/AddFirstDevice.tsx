@@ -5,19 +5,25 @@ import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { Button } from "react-native-paper";
 
-type AddFirstDeviceNavigationProp = StackNavigationProp<
+type AddDeviceSplashNavigationProp = StackNavigationProp<
   RootStackParamList,
-  "AddFirstDevice"
+  "AddDeviceSplash"
 >;
 
-type AddFirstDeviceRouteProp = RouteProp<RootStackParamList, "AddFirstDevice">;
+type AddDeviceSplashRouteProp = RouteProp<
+  RootStackParamList,
+  "AddDeviceSplash"
+>;
 
-type AddFirstDeviceProps = {
-  route: AddFirstDeviceRouteProp;
-  navigation: AddFirstDeviceNavigationProp;
+type AddDeviceSplashProps = {
+  route: AddDeviceSplashRouteProp;
+  navigation: AddDeviceSplashNavigationProp;
 };
 
-export function AddFirstDevicePage({ route, navigation }: AddFirstDeviceProps) {
+export function AddDeviceSplashPage({
+  route,
+  navigation,
+}: AddDeviceSplashProps) {
   return (
     <View style={styles.page}>
       <StatusBar barStyle="light-content" backgroundColor="#121212" />

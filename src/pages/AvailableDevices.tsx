@@ -38,7 +38,7 @@ export function AvailableDevicesPage({
                 color="white"
                 mode="contained"
                 onPress={() => {
-                  navigation.navigate("Home");
+                  navigation.navigate("AddDevice");
                 }}
               >
                 {item.id}

@@ -12,9 +12,9 @@ import { ApolloClient } from "apollo-client";
 import { InMemoryCache, NormalizedCacheObject } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
 import { HomePage } from "./src/pages/Home";
-import { AddFirstDevicePage } from "./src/pages/AddFirstDevice";
+import { AddDeviceSplashPage } from "./src/pages/AddFirstDevice";
 import { AvailableDevicesPage } from "./src/pages/AvailableDevices";
-import { Easing, Animated } from "react-native";
+import { AddDevicePage } from "./src/pages/AddDevice";
 
 const cache = new InMemoryCache();
 
@@ -48,8 +48,8 @@ export default function App() {
               }}
             />
             <RootStack.Screen
-              name="AddFirstDevice"
-              component={AddFirstDevicePage}
+              name="AddDeviceSplash"
+              component={AddDeviceSplashPage}
               options={{
                 headerShown: false,
                 transitionSpec: {
@@ -62,6 +62,18 @@ export default function App() {
             <RootStack.Screen
               name="AvailableDevices"
               component={AvailableDevicesPage}
+              options={{
+                headerShown: false,
+                transitionSpec: {
+                  open: TransitionSpecs.TransitionIOSSpec,
+                  close: TransitionSpecs.TransitionIOSSpec,
+                },
+                cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+              }}
+            />
+            <RootStack.Screen
+              name="AddDevice"
+              component={AddDevicePage}
               options={{
                 headerShown: false,
                 transitionSpec: {

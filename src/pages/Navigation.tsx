@@ -1,6 +1,6 @@
 type RootStackParamList = {
-    Home: undefined;
-    AddFirstDevice: undefined;
-    AvailableDevices: undefined;
-  };
-  
+  Home: undefined;
+  AddDeviceSplash: undefined;
+  AddDevice: undefined;
+  AvailableDevices: undefined;
+};
