@@ -2,7 +2,6 @@ import { graphql, commitMutation } from 'react-relay';
 import environment from "./Enveriment";
 import { ConfigHubMutation } from './__generated__/ConfigHubMutation.graphql';
 
-// We start by defining our mutation from above using `graphql`
 const mutation = graphql`
   mutation ConfigHubMutation {
     configHub

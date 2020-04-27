@@ -1,12 +1,12 @@
 import React from "react";
 import { Text, View, StatusBar, Image } from "react-native";
-import { styles } from "../styles/Styles";
+import { Button } from "react-native-paper";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { graphql, QueryRenderer } from 'react-relay';
-import environment from "../api/Enveriment";
 import { AddDeviceQuery } from "./__generated__/AddDeviceQuery.graphql";
-import { Button } from "react-native-paper";
+import { styles } from "../styles/Styles";
+import environment from "../api/Enveriment";
 import ConfigHub from "../api/ConfigHub";
 
 type AddDeviceNavigationProp = StackNavigationProp<
@@ -35,7 +35,7 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
             <QueryRenderer<AddDeviceQuery>
               environment={environment}
               query={graphql`
-                query  AddDeviceQuery {
+                query AddDeviceQuery {
                   getProvData {
                     networkKey
                   }  
@@ -52,7 +52,6 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
                 return <Text style={styles.rangeText}>Data {props.getProvData.networkKey}</Text>;
               }}
             />
-
           </View>
           <View style={styles.lowerRangeView}>
             <Text style={styles.rangeText}>
@@ -67,7 +66,7 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
           color="white"
           mode="contained"
           onPress={() => {
-           console.log(ConfigHub.configHub())
+            ConfigHub.configHub()
           }}
         >
           Add
