@@ -3,7 +3,11 @@ import { Text, View, StatusBar, Image } from "react-native";
 import { styles } from "../styles/Styles";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { graphql, QueryRenderer } from 'react-relay';
+import environment from "../api/Enveriment";
+import { AddDeviceQuery } from "./__generated__/AddDeviceQuery.graphql";
 import { Button } from "react-native-paper";
+import ConfigHub from "../api/ConfigHub";
 
 type AddDeviceNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -28,6 +32,27 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
         <View style={styles.rangeView}>
           <View style={styles.upperRangeView}>
             <Image source={require("../../assets/range.png")} />
+            <QueryRenderer<AddDeviceQuery>
+              environment={environment}
+              query={graphql`
+                query  AddDeviceQuery {
+                  getProvData {
+                    networkKey
+                  }  
+                }
+              `}
+              variables={{}}
+              render={({ error, props }) => {
+                if (error) {
+                  return <Text style={styles.rangeText}>Error!</Text>;
+                }
+                if (!props) {
+                  return <Text style={styles.rangeText}>Loading...</Text>;
+                }
+                return <Text style={styles.rangeText}>Data {props.getProvData.networkKey}</Text>;
+              }}
+            />
+
           </View>
           <View style={styles.lowerRangeView}>
             <Text style={styles.rangeText}>
@@ -39,15 +64,16 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
       <View style={styles.nextView}>
         <Button
           contentStyle={styles.nextButton}
-          color="#00E676"
+          color="white"
           mode="contained"
           onPress={() => {
-            navigation.navigate("AvailableDevices");
+           console.log(ConfigHub.configHub())
           }}
         >
-          Next
+          Add
         </Button>
       </View>
     </View>
   );
 }
+

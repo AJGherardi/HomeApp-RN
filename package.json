@@ -1,6 +1,7 @@
 {
   "main": "index.js",
   "scripts": {
+    "relay": "relay-compiler --src ./src --schema ./schema.graphql --language typescript --extensions ts tsx",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "web": "expo start --web",
@@ -8,17 +9,15 @@
     "test": "jest"
   },
   "dependencies": {
-    "@apollo/react-hooks": "^3.1.4",
     "@react-native-community/masked-view": "^0.1.9",
     "@react-navigation/native": "^5.1.5",
     "@react-navigation/stack": "^5.2.10",
-    "apollo-boost": "^0.4.7",
     "expo": "~37.0.3",
     "expo-secure-store": "^8.1.0",
     "expo-updates": "~0.1.0",
     "graphql": "^15.0.0",
-    "react": "~16.9.0",
-    "react-dom": "~16.9.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-native": "~0.61.4",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-paper": "^3.7.0",
@@ -26,14 +25,21 @@
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.4.0",
     "react-native-unimodules": "~0.9.0",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "react-relay": "^9.0.0",
+    "relay-compiler-language-typescript": "^12.0.1"
   },
   "devDependencies": {
     "@babel/core": "~7.8.6",
     "@types/react": "~16.9.23",
     "@types/react-native": "~0.61.17",
+    "@types/react-relay": "^7.0.3",
+    "@types/relay-runtime": "^8.0.8",
+    "babel-plugin-relay": "^9.0.0",
     "babel-preset-expo": "~8.1.0",
     "jest-expo": "~37.0.0",
+    "relay-compiler": "^9.0.0",
+    "relay-config": "^9.0.0",
     "typescript": "~3.8.3"
   },
   "jest": {

@@ -1,0 +1,53 @@
+scalar bytes
+
+type Device {
+  addr: string!
+  elements: [Element!]!
+  name: string!
+  seq: bytes!
+  type: string!
+}
+
+type Element {
+  addr: bytes!
+  state: State!
+}
+
+type Group {
+  addr: string!
+  aid: bytes!
+  devAddrs: [bytes!]!
+  name: string!
+}
+
+scalar int64
+
+type Mutation {
+  addDevice(addr: string!, devKey: string!, name: string!): Device!
+  addGroup(name: string!): Group!
+  configHub: string!
+  setState(devAddr: string!, elemNumber: int64!, value: string!): State!
+}
+
+type ProvData {
+  flags: string!
+  ivIndex: string!
+  keyIndex: string!
+  networkKey: string!
+  nextDevAddr: string!
+}
+
+type Query {
+  getProvData: ProvData!
+  getState(devAddr: string!, elemNumber: int64!): State!
+  listDevices: [Device!]!
+  listGroups: [Group!]!
+}
+
+type State {
+  state: bytes!
+  stateType: string!
+}
+
+scalar string
+
