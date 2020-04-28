@@ -30,26 +30,6 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
         <View style={styles.rangeView}>
           <View style={styles.upperRangeView}>
             <Image source={require("../../assets/range.png")} />
-            {/* <QueryRenderer<AddDeviceQuery>
-              environment={environment}
-              query={graphql`
-                query AddDeviceQuery {
-                  getProvData {
-                    networkKey
-                  }  
-                }
-              `}
-              variables={{}}
-              render={({ error, props }) => {
-                if (error) {
-                  return <Text style={styles.rangeText}>Error!</Text>;
-                }
-                if (!props) {
-                  return <Text style={styles.rangeText}>Loading...</Text>;
-                }
-                return <Text style={styles.rangeText}>Data {props.getProvData.networkKey}</Text>;
-              }}
-            /> */}
           </View>
           <View style={styles.lowerRangeView}>
             <Text style={styles.rangeText}>
@@ -61,12 +41,14 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
       <View style={styles.nextView}>
         <Button
           contentStyle={styles.nextButton}
-          color="white"
+          labelStyle={styles.addButtonText}
+          color="#21e675"
           mode="contained"
           onPress={async () => {
-            // ConfigHub.configHub()
             var provData = (await GetProvData.getProvData()).getProvData
             console.log(provData.keyIndex)
+            ConfigHub.configHub()
+            navigation.navigate("Home")
           }}
         >
           Add

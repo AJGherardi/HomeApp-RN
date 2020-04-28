@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
     flex: 5,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#171B2E",
+    backgroundColor: "#ffffff",
     borderTopLeftRadius: 8,
     borderTopRightRadius: 8,
   },
@@ -52,7 +52,7 @@ export const styles = StyleSheet.create({
     flex: 2,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#3044B7",
+    backgroundColor: "#3D5AFE",
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
   },
@@ -90,4 +90,7 @@ export const styles = StyleSheet.create({
     width: 312,
     height: 42,
   },
+  addButtonText: {
+    color: "white"
+  }
 });

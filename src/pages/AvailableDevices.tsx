@@ -3,7 +3,8 @@ import { Text, View, StatusBar, Image, FlatList } from "react-native";
 import { styles } from "../styles/Styles";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { Button } from "react-native-paper";
+import { Button, Card } from "react-native-paper";
+import { Item } from "react-native-paper/lib/typescript/src/components/List/List";
 
 type AvailableDevicesNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -33,16 +34,14 @@ export function AvailableDevicesPage({
           <FlatList
             data={DATA}
             renderItem={({ item }) => (
-              <Button
-                contentStyle={styles.nextButton}
-                color="white"
-                mode="contained"
+              <Card
+                style={styles.lowerRangeView}
                 onPress={() => {
                   navigation.navigate("AddDevice");
                 }}
               >
-                {item.id}
-              </Button>
+                <Text style={styles.byText}>A Device</Text>
+              </Card>
             )}
             keyExtractor={(item) => item.id}
           />
