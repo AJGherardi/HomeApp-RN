@@ -3,11 +3,9 @@ import { Text, View, StatusBar, Image } from "react-native";
 import { Button } from "react-native-paper";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { graphql, QueryRenderer } from 'react-relay';
-import { AddDeviceQuery } from "./__generated__/AddDeviceQuery.graphql";
 import { styles } from "../styles/Styles";
-import environment from "../api/Enveriment";
 import ConfigHub from "../api/ConfigHub";
+import GetProvData from "../api/GetProvData";
 
 type AddDeviceNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -32,7 +30,7 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
         <View style={styles.rangeView}>
           <View style={styles.upperRangeView}>
             <Image source={require("../../assets/range.png")} />
-            <QueryRenderer<AddDeviceQuery>
+            {/* <QueryRenderer<AddDeviceQuery>
               environment={environment}
               query={graphql`
                 query AddDeviceQuery {
@@ -51,7 +49,7 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
                 }
                 return <Text style={styles.rangeText}>Data {props.getProvData.networkKey}</Text>;
               }}
-            />
+            /> */}
           </View>
           <View style={styles.lowerRangeView}>
             <Text style={styles.rangeText}>
@@ -65,8 +63,10 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
           contentStyle={styles.nextButton}
           color="white"
           mode="contained"
-          onPress={() => {
-            ConfigHub.configHub()
+          onPress={async () => {
+            // ConfigHub.configHub()
+            var provData = (await GetProvData.getProvData()).getProvData
+            console.log(provData.keyIndex)
           }}
         >
           Add

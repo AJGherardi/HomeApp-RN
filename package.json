@@ -1,7 +1,7 @@
 {
   "main": "index.js",
   "scripts": {
-    "relay": "relay-compiler --src ./src --schema ./schema.graphql --language typescript --extensions ts tsx",
+    "relay": "relay-compiler --src ./src --schema ./schema.graphql --language typescript ",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "web": "expo start --web",
@@ -26,8 +26,7 @@
     "react-native-screens": "^2.4.0",
     "react-native-unimodules": "~0.9.0",
     "react-native-web": "~0.11.7",
-    "react-relay": "^9.0.0",
-    "relay-compiler-language-typescript": "^12.0.1"
+    "react-relay": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "~7.8.6",
@@ -39,8 +38,9 @@
     "babel-preset-expo": "~8.1.0",
     "jest-expo": "~37.0.0",
     "relay-compiler": "^9.0.0",
+    "relay-compiler-language-typescript": "^12.0.1",
     "relay-config": "^9.0.0",
-    "typescript": "~3.8.3"
+    "typescript": "^3.8.3"
   },
   "jest": {
     "preset": "react-native"

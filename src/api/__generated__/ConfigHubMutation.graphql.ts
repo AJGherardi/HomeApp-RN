@@ -1,11 +1,11 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 3de4973a8ec7f48141e240476316d418 */
+/* @relayHash 6c9bd1d7315609b61803ca6384a8e564 */
 
 import { ConcreteRequest } from "relay-runtime";
 export type ConfigHubMutationVariables = {};
 export type ConfigHubMutationResponse = {
-    readonly configHub: unknown;
+    readonly configHub: string;
 };
 export type ConfigHubMutation = {
     readonly response: ConfigHubMutationResponse;
