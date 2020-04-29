@@ -22,7 +22,7 @@ export function HomePage({ route, navigation }: HomeProps) {
                 style={styles.homeTouchables}
                 borderless={true}
                 onPress={() => {
-                    navigation.navigate("AddDevice");
+                    navigation.navigate("Devices");
                 }}
 
                 rippleColor="#000000"
@@ -36,7 +36,7 @@ export function HomePage({ route, navigation }: HomeProps) {
                 style={styles.homeTouchables}
                 borderless={true}
                 onPress={() => {
-                    navigation.navigate("AddDevice");
+                    navigation.navigate("Devices");
                 }}
                 rippleColor="#000000"
             >
@@ -49,7 +49,7 @@ export function HomePage({ route, navigation }: HomeProps) {
                 style={styles.homeTouchables}
                 borderless={true}
                 onPress={() => {
-                    navigation.navigate("AddDevice");
+                    navigation.navigate("Devices");
                 }}
                 rippleColor="#000000"
             >
@@ -59,9 +59,9 @@ export function HomePage({ route, navigation }: HomeProps) {
                 </View>
             </TouchableRipple>
             <Appbar style={styles.appBar}>
-                <Appbar.Action icon="menu" onPress={() => console.log('Pressed')} />
-                <Appbar.Action icon="plus" onPress={() => console.log('Pressed')} />
-                <Appbar.Action icon="magnify" onPress={() => console.log('Pressed')} />
+                <Appbar.Action icon="menu" onPress={() => {}} />
+                <Appbar.Action icon="plus" onPress={() => {}} />
+                <Appbar.Action icon="magnify" onPress={() => {}} />
             </Appbar>
         </View>
     );

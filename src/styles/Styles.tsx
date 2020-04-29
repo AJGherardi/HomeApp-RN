@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
   },
   listView: {
     flex: 1,
-    alignSelf: "flex-start"
+    alignSelf: "flex-start",
   },
   listItem: {
     flex: 1,
@@ -108,11 +108,11 @@ export const styles = StyleSheet.create({
   },
   homeTouchables: {
     flex: 1,
-    width: '90%',
+    width: '88%',
     alignSelf: "center",
     alignItems: "center",
     justifyContent: "center",
-    margin: 15,
+    margin: 23,
     backgroundColor: "#ffffff",
     borderRadius: 8
   },
