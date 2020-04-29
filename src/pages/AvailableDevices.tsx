@@ -1,10 +1,9 @@
 import React from "react";
-import { Text, View, StatusBar, Image, FlatList } from "react-native";
+import { Text, View, StatusBar, FlatList } from "react-native";
 import { styles } from "../styles/Styles";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { Button, Card, TouchableRipple } from "react-native-paper";
-import { Item } from "react-native-paper/lib/typescript/src/components/List/List";
+import { TouchableRipple } from "react-native-paper";
 
 type AvailableDevicesNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -43,7 +42,7 @@ export function AvailableDevicesPage({
               }}
               rippleColor="#ffffff"
             >
-              <Text style={styles.byText}>A Device</Text>
+              <Text style={styles.listItemText}>HomeDevice</Text>
             </TouchableRipple>
           )}
           keyExtractor={(item) => item.id}

@@ -57,12 +57,18 @@ export const styles = StyleSheet.create({
   },
   listItem: {
     flex: 1,
-    width: '90%',
-    backgroundColor: "#3D5AFE",
+    width: '93%',
+    backgroundColor: "#252525",
     alignSelf: "center",
     alignItems: "center",
     justifyContent: "center",
     margin: 10,
+  },
+  listItemText: {
+    color: "white",
+    fontSize: 30,
+    margin: 8,
+    fontFamily: "Roboto-Black",
   },
   homeView: {
     flex: 5,
@@ -95,5 +101,39 @@ export const styles = StyleSheet.create({
   },
   addButtonText: {
     color: "white"
+  },
+  appBar: {
+    backgroundColor: "#252525"
+  },
+  homeTouchables: {
+    flex: 1,
+    width: '90%',
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 15,
+    backgroundColor: "#ffffff",
+    borderRadius: 8
+  },
+  homeItem: {
+    flexDirection: "row",
+  },
+  devicesText: {
+    color: "#D32F2F",
+    fontSize: 56,
+    fontFamily: "OleoScript-Regular",
+    marginRight: "10%"
+  },
+  groupsText: {
+    color: "#20e676",
+    fontSize: 56,
+    fontFamily: "OleoScript-Regular",
+    marginRight: "10%"
+  },
+  actionsText: {
+    color: "#3d5afe",
+    fontSize: 56,
+    fontFamily: "OleoScript-Regular",
+    marginRight: "10%"
   }
 });
