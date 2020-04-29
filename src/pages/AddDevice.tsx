@@ -41,7 +41,6 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
       <View style={styles.nextView}>
         <Button
           contentStyle={styles.nextButton}
-          
           labelStyle={styles.addButtonText}
           color="#21e675"
           mode="contained"

@@ -63,6 +63,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     margin: 10,
+    borderRadius: 8
   },
   listItemText: {
     color: "white",

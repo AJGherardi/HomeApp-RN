@@ -9,17 +9,17 @@ const mutation = graphql`
 `;
 
 function configHub() {
-    return commitMutation<ConfigHubMutation>(
-        environment,
-        {
-            mutation,
-            variables: {
-            },
-            onCompleted: (response, errors) => {
-              console.log(response.configHub)
-            }
-        }
-    );
+  return commitMutation<ConfigHubMutation>(
+    environment,
+    {
+      mutation,
+      variables: {
+      },
+      onCompleted: (response, errors) => {
+        console.log(response.configHub)
+      }
+    }
+  );
 }
 
 export default { configHub };

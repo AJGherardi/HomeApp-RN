@@ -37,6 +37,7 @@ export function AvailableDevicesPage({
           renderItem={({ item }) => (
             <TouchableRipple
               style={styles.listItem}
+              borderless={true}
               onPress={() => {
                 navigation.navigate("AddDevice");
               }}
