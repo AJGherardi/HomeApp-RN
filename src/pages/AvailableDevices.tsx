@@ -3,7 +3,7 @@ import { Text, View, StatusBar, Image, FlatList } from "react-native";
 import { styles } from "../styles/Styles";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { Button, Card } from "react-native-paper";
+import { Button, Card, TouchableRipple } from "react-native-paper";
 import { Item } from "react-native-paper/lib/typescript/src/components/List/List";
 
 type AvailableDevicesNavigationProp = StackNavigationProp<
@@ -30,22 +30,24 @@ export function AvailableDevicesPage({
       <StatusBar barStyle="light-content" backgroundColor="#121212" />
       <View style={styles.titleView}>
         <Text style={styles.titleText}>Find your Device</Text>
-        <View style={styles.photoView}>
-          <FlatList
-            data={DATA}
-            renderItem={({ item }) => (
-              <Card
-                style={styles.lowerRangeView}
-                onPress={() => {
-                  navigation.navigate("AddDevice");
-                }}
-              >
-                <Text style={styles.byText}>A Device</Text>
-              </Card>
-            )}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
+      </View>
+      <View style={styles.centerView}>
+        <FlatList
+          style={styles.listView}
+          data={DATA}
+          renderItem={({ item }) => (
+            <TouchableRipple
+              style={styles.listItem}
+              onPress={() => {
+                navigation.navigate("AddDevice");
+              }}
+              rippleColor="#ffffff"
+            >
+              <Text style={styles.byText}>A Device</Text>
+            </TouchableRipple>
+          )}
+          keyExtractor={(item) => item.id}
+        />
       </View>
       <View style={styles.nextView}></View>
     </View>

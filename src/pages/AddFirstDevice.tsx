@@ -30,7 +30,7 @@ export function AddDeviceSplashPage({
       <View style={styles.titleView}>
         <Text style={styles.titleText}>Add A Device</Text>
       </View>
-      <View style={styles.photoView}>
+      <View style={styles.centerView}>
         <Image source={require("../../assets/outlet.png")} />
       </View>
       <View style={styles.nextView}>

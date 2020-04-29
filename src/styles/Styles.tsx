@@ -16,11 +16,6 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  photoView: {
-    flex: 3.8,
-    alignItems: "center",
-    justifyContent: "center",
-  },
   centerView: {
     flex: 3.8,
     flexDirection: "row",
@@ -56,10 +51,18 @@ export const styles = StyleSheet.create({
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
   },
-  deviceListView: {
-    flex: 3.8,
+  listView: {
+    flex: 1,
+    alignSelf: "flex-start"
+  },
+  listItem: {
+    flex: 1,
+    width: '90%',
+    backgroundColor: "#3D5AFE",
+    alignSelf: "center",
     alignItems: "center",
     justifyContent: "center",
+    margin: 10,
   },
   homeView: {
     flex: 5,

@@ -21,6 +21,12 @@ export function HomePage({ route, navigation }: HomeProps) {
             <Card.Content>
                 <Title>Card title</Title>
             </Card.Content>
+            <Card.Content>
+                <Title>Card title</Title>
+            </Card.Content>
+            <Card.Content>
+                <Title>Card title</Title>
+            </Card.Content>
         </View>
     );
 }
