@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: 35,
   },
   rangeText: {
-    color: "white",
+    color: "black",
     fontSize: 36,
     fontFamily: "Roboto-Black",
     textAlign: "center",
@@ -47,7 +47,7 @@ export const styles = StyleSheet.create({
     flex: 2,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#3D5AFE",
+    backgroundColor: "#FFEE58",
     borderBottomLeftRadius: 8,
     borderBottomRightRadius: 8,
   },
@@ -100,9 +100,6 @@ export const styles = StyleSheet.create({
     width: 312,
     height: 42,
   },
-  addButtonText: {
-    color: "white"
-  },
   appBar: {
     backgroundColor: "#252525"
   },
@@ -119,20 +116,8 @@ export const styles = StyleSheet.create({
   homeItem: {
     flexDirection: "row",
   },
-  devicesText: {
+  homeItemText: {
     color: "#D32F2F",
-    fontSize: 56,
-    fontFamily: "OleoScript-Regular",
-    marginRight: "10%"
-  },
-  groupsText: {
-    color: "#20e676",
-    fontSize: 56,
-    fontFamily: "OleoScript-Regular",
-    marginRight: "10%"
-  },
-  actionsText: {
-    color: "#3d5afe",
     fontSize: 56,
     fontFamily: "OleoScript-Regular",
     marginRight: "10%"

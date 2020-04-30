@@ -30,10 +30,10 @@ export default function App() {
   return (
     <NavigationContainer>
       <PaperProvider>
-        <RootStack.Navigator initialRouteName="Welcome"  screenOptions={{
+        <RootStack.Navigator initialRouteName="Welcome" screenOptions={{
           cardStyle: {
             backgroundColor: 'rgba(0,0,0,0.5)',
-          }    
+          }
         }}>
           <RootStack.Screen
             name="Welcome"

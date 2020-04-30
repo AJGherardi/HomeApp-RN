@@ -41,8 +41,7 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
       <View style={styles.nextView}>
         <Button
           contentStyle={styles.nextButton}
-          labelStyle={styles.addButtonText}
-          color="#21e675"
+          color="#FFEE58"
           mode="contained"
           onPress={async () => {
             // var provData = (await GetProvData.getProvData()).getProvData

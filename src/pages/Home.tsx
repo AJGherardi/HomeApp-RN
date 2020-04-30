@@ -28,7 +28,7 @@ export function HomePage({ route, navigation }: HomeProps) {
                 rippleColor="#000000"
             >
                 <View style={styles.homeItem}>
-                    <Text style={styles.devicesText}>Devices</Text>
+                    <Text style={styles.homeItemText}>Devices</Text>
                     <Image source={require("../../assets/plug.png")} />
                 </View>
             </TouchableRipple>
@@ -41,7 +41,7 @@ export function HomePage({ route, navigation }: HomeProps) {
                 rippleColor="#000000"
             >
                 <View style={styles.homeItem}>
-                    <Text style={styles.groupsText}>Groups</Text>
+                    <Text style={styles.homeItemText}>Groups</Text>
                     <Image source={require("../../assets/homeItem.png")} />
                 </View>
             </TouchableRipple>
@@ -54,14 +54,14 @@ export function HomePage({ route, navigation }: HomeProps) {
                 rippleColor="#000000"
             >
                 <View style={styles.homeItem}>
-                    <Text style={styles.actionsText}>Actions</Text>
+                    <Text style={styles.homeItemText}>Actions</Text>
                     <Image source={require("../../assets/homeItem.png")} />
                 </View>
             </TouchableRipple>
             <Appbar style={styles.appBar}>
-                <Appbar.Action icon="menu" onPress={() => {}} />
-                <Appbar.Action icon="plus" onPress={() => {}} />
-                <Appbar.Action icon="magnify" onPress={() => {}} />
+                <Appbar.Action icon="menu" onPress={() => { }} />
+                <Appbar.Action icon="plus" onPress={() => { }} />
+                <Appbar.Action icon="magnify" onPress={() => { }} />
             </Appbar>
         </View>
     );
