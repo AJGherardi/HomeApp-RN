@@ -24,21 +24,21 @@ export function DevicesPage({ route, navigation }: DevicesProps) {
             <View style={styles.centerView}>
                 <FlatList
                     style={styles.listView}
-                    contentContainerStyle={styles.deviceListContent}
+                    contentContainerStyle={styles.listContent}
                     data={DATA}
                     renderItem={({ item }) => (
                         <TouchableRipple
-                            style={styles.deviceItem}
+                            style={styles.item}
                             borderless={true}
                             onPress={() => {
                                 navigation.navigate("AddDevice");
                             }}
-                            rippleColor="#ffffff"
+                            rippleColor="#000000"
                         >
                             <View>
-                                <Image style={styles.deviceItemView}
+                                <Image style={styles.itemView}
                                     source={require("../../assets/plug.png")} />
-                                <Text style={styles.deviceItemText}>HomeDevice</Text>
+                                <Text style={styles.itemText}>HomeDevice</Text>
                             </View>
                         </TouchableRipple>
                     )}

@@ -137,24 +137,24 @@ export const styles = StyleSheet.create({
     fontFamily: "OleoScript-Regular",
     marginRight: "10%"
   },
-  deviceItem: {
+  item: {
     backgroundColor: "#ffffff",
     margin: 15,
     borderRadius: 8
   },
-  deviceItemView: {
+  itemView: {
     alignItems: "center",
     justifyContent: "center", 
     margin: 30,
   },
-  deviceItemText: {
+  itemText: {
     alignSelf: "center",
     color: "black",
     fontSize: 24,
     marginBottom: 8,
     fontFamily: "Roboto-Black",
   },
-  deviceListContent: {
+  listContent: {
     alignItems: "center",
     justifyContent: "center",
   },
