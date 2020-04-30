@@ -36,7 +36,7 @@ export function HomePage({ route, navigation }: HomeProps) {
                 style={styles.homeTouchables}
                 borderless={true}
                 onPress={() => {
-                    navigation.navigate("Devices");
+                    navigation.navigate("Groups");
                 }}
                 rippleColor="#000000"
             >
