@@ -57,7 +57,7 @@ export const styles = StyleSheet.create({
   },
   listItem: {
     flex: 1,
-    width: '93%',
+    width: '90%',
     backgroundColor: "#252525",
     alignSelf: "center",
     alignItems: "center",
@@ -136,5 +136,26 @@ export const styles = StyleSheet.create({
     fontSize: 56,
     fontFamily: "OleoScript-Regular",
     marginRight: "10%"
-  }
+  },
+  deviceItem: {
+    backgroundColor: "#ffffff",
+    margin: 15,
+    borderRadius: 8
+  },
+  deviceItemView: {
+    alignItems: "center",
+    justifyContent: "center", 
+    margin: 30,
+  },
+  deviceItemText: {
+    alignSelf: "center",
+    color: "black",
+    fontSize: 24,
+    marginBottom: 8,
+    fontFamily: "Roboto-Black",
+  },
+  deviceListContent: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
