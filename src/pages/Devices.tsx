@@ -5,9 +5,9 @@ import { View, StatusBar, Image, FlatList } from "react-native";
 import { Text, TouchableRipple, Appbar } from "react-native-paper";
 import { styles } from "../styles/Styles";
 
-type DevicesNavigationProp = StackNavigationProp<RootStackParamList, "Devices">;
+type DevicesNavigationProp = StackNavigationProp<AppStackParamList, "Devices">;
 
-type DevicesRouteProp = RouteProp<RootStackParamList, "Devices">;
+type DevicesRouteProp = RouteProp<AppStackParamList, "Devices">;
 
 type DevicesProps = {
     route: DevicesRouteProp;
@@ -31,7 +31,7 @@ export function DevicesPage({ route, navigation }: DevicesProps) {
                             style={styles.item}
                             borderless={true}
                             onPress={() => {
-                                navigation.navigate("AddDevice");
+                                navigation.navigate("Home");
                             }}
                             rippleColor="#000000"
                         >
@@ -46,11 +46,6 @@ export function DevicesPage({ route, navigation }: DevicesProps) {
                     keyExtractor={(item) => item.id}
                 />
             </View>
-            <Appbar style={styles.appBar}>
-                <Appbar.Action icon="menu" onPress={() => { }} />
-                <Appbar.Action icon="plus" onPress={() => { }} />
-                <Appbar.Action icon="magnify" onPress={() => { }} />
-            </Appbar>
         </View>
     )
 }

@@ -5,9 +5,9 @@ import { View, StatusBar, Image } from "react-native";
 import { Text, TouchableRipple, Appbar } from "react-native-paper";
 import { styles } from "../styles/Styles";
 
-type HomeNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
+type HomeNavigationProp = StackNavigationProp<AppStackParamList, "Home">;
 
-type HomeRouteProp = RouteProp<RootStackParamList, "Home">;
+type HomeRouteProp = RouteProp<AppStackParamList, "Home">;
 
 type HomeProps = {
     route: HomeRouteProp;
@@ -58,11 +58,6 @@ export function HomePage({ route, navigation }: HomeProps) {
                     <Image source={require("../../assets/homeItem.png")} />
                 </View>
             </TouchableRipple>
-            <Appbar style={styles.appBar}>
-                <Appbar.Action icon="menu" onPress={() => { }} />
-                <Appbar.Action icon="plus" onPress={() => { }} />
-                <Appbar.Action icon="magnify" onPress={() => { }} />
-            </Appbar>
         </View>
     );
 }

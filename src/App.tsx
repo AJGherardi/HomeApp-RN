@@ -1,12 +1,13 @@
 import "react-native-gesture-handler";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, RouteProp } from "@react-navigation/native";
 import {
   createStackNavigator,
   TransitionSpecs,
   CardStyleInterpolators,
+  StackNavigationProp,
 } from "@react-navigation/stack";
 import React from "react";
-import { Provider as PaperProvider } from "react-native-paper";
+import { Provider as PaperProvider, TouchableRipple, Appbar } from "react-native-paper";
 import { WelcomePage } from "./pages/Welcome";
 import { AddDeviceSplashPage } from "./pages/AddFirstDevice";
 import { AvailableDevicesPage } from "./pages/AvailableDevices";
@@ -14,8 +15,12 @@ import { AddDevicePage } from "./pages/AddDevice";
 import { HomePage } from "./pages/Home";
 import { DevicesPage } from "./pages/Devices";
 import { GroupsPage } from "./pages/Group";
+import { styles } from "./styles/Styles";
+import { View, StatusBar } from "react-native";
 
 const RootStack = createStackNavigator<RootStackParamList>();
+
+const AppStack = createStackNavigator<AppStackParamList>();
 
 const screenOptions = {
   headerShown: false,
@@ -41,18 +46,8 @@ export default function App() {
             options={screenOptions}
           />
           <RootStack.Screen
-            name="Home"
-            component={HomePage}
-            options={screenOptions}
-          />
-          <RootStack.Screen
-            name="Devices"
-            component={DevicesPage}
-            options={screenOptions}
-          />
-          <RootStack.Screen
-            name="Groups"
-            component={GroupsPage}
+            name="App"
+            component={AppPages}
             options={screenOptions}
           />
           <RootStack.Screen
@@ -73,5 +68,48 @@ export default function App() {
         </RootStack.Navigator>
       </PaperProvider>
     </NavigationContainer>
+  );
+}
+
+type AppNavigationProp = StackNavigationProp<RootStackParamList, "App">;
+
+type AppRouteProp = RouteProp<RootStackParamList, "App">;
+
+type AppProps = {
+  route: AppRouteProp;
+  navigation: AppNavigationProp;
+};
+
+export function AppPages({ route, navigation }: AppProps) {
+  return (
+    <View style={styles.page}>
+      <StatusBar barStyle="light-content" backgroundColor="#121212" />
+      <AppStack.Navigator initialRouteName="Home" screenOptions={{
+        cardStyle: {
+          backgroundColor: 'rgba(0,0,0,0.5)',
+        }
+      }}>
+        <AppStack.Screen
+          name="Home"
+          component={HomePage}
+          options={screenOptions}
+        />
+        <AppStack.Screen
+          name="Devices"
+          component={DevicesPage}
+          options={screenOptions}
+        />
+        <AppStack.Screen
+          name="Groups"
+          component={GroupsPage}
+          options={screenOptions}
+        />
+      </AppStack.Navigator>
+      <Appbar style={styles.appBar}>
+        <Appbar.Action icon="menu" onPress={() => { }} />
+        <Appbar.Action icon="plus" onPress={() => { }} />
+        <Appbar.Action icon="magnify" onPress={() => { }} />
+      </Appbar>
+    </View>
   );
 }

@@ -47,7 +47,7 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
             // var provData = (await GetProvData.getProvData()).getProvData
             // console.log(provData.keyIndex)
             // ConfigHub.configHub()
-            navigation.navigate("Home")
+            navigation.navigate("App")
           }}
         >
           Add

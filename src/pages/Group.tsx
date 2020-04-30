@@ -5,9 +5,9 @@ import { View, StatusBar, Image, FlatList } from "react-native";
 import { Text, TouchableRipple, Appbar } from "react-native-paper";
 import { styles } from "../styles/Styles";
 
-type GroupsNavigationProp = StackNavigationProp<RootStackParamList, "Groups">;
+type GroupsNavigationProp = StackNavigationProp<AppStackParamList, "Groups">;
 
-type GroupsRouteProp = RouteProp<RootStackParamList, "Groups">;
+type GroupsRouteProp = RouteProp<AppStackParamList, "Groups">;
 
 type GroupsProps = {
     route: GroupsRouteProp;
@@ -31,7 +31,7 @@ export function GroupsPage({ route, navigation }: GroupsProps) {
                             style={styles.item}
                             borderless={true}
                             onPress={() => {
-                                navigation.navigate("AddDevice");
+                                navigation.navigate("Devices");
                             }}
                             rippleColor="#000000"
                         >
@@ -46,11 +46,6 @@ export function GroupsPage({ route, navigation }: GroupsProps) {
                     keyExtractor={(item) => item.id}
                 />
             </View>
-            <Appbar style={styles.appBar}>
-                <Appbar.Action icon="menu" onPress={() => { }} />
-                <Appbar.Action icon="plus" onPress={() => { }} />
-                <Appbar.Action icon="magnify" onPress={() => { }} />
-            </Appbar>
         </View>
     )
 }
