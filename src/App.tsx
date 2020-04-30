@@ -17,94 +17,58 @@ import { GroupsPage } from "./pages/Group";
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
+const screenOptions = {
+  headerShown: false,
+  transitionSpec: {
+    open: TransitionSpecs.TransitionIOSSpec,
+    close: TransitionSpecs.TransitionIOSSpec,
+  },
+  cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+}
+
 export default function App() {
   return (
     <NavigationContainer>
       <PaperProvider>
-        <RootStack.Navigator initialRouteName="Welcome">
+        <RootStack.Navigator initialRouteName="Welcome"  screenOptions={{
+          cardStyle: {
+            backgroundColor: 'rgba(0,0,0,0.5)',
+          }    
+        }}>
           <RootStack.Screen
             name="Welcome"
             component={WelcomePage}
-            options={{
-              headerShown: false,
-              transitionSpec: {
-                open: TransitionSpecs.TransitionIOSSpec,
-                close: TransitionSpecs.TransitionIOSSpec,
-              },
-              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-            }}
+            options={screenOptions}
           />
           <RootStack.Screen
             name="Home"
             component={HomePage}
-            options={{
-              headerShown: false,
-              transitionSpec: {
-                open: TransitionSpecs.TransitionIOSSpec,
-                close: TransitionSpecs.TransitionIOSSpec,
-              },
-              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-            }}
+            options={screenOptions}
           />
           <RootStack.Screen
             name="Devices"
             component={DevicesPage}
-            options={{
-              headerShown: false,
-              transitionSpec: {
-                open: TransitionSpecs.TransitionIOSSpec,
-                close: TransitionSpecs.TransitionIOSSpec,
-              },
-              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-            }}
+            options={screenOptions}
           />
           <RootStack.Screen
             name="Groups"
             component={GroupsPage}
-            options={{
-              headerShown: false,
-              transitionSpec: {
-                open: TransitionSpecs.TransitionIOSSpec,
-                close: TransitionSpecs.TransitionIOSSpec,
-              },
-              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-            }}
+            options={screenOptions}
           />
           <RootStack.Screen
             name="AddDeviceSplash"
             component={AddDeviceSplashPage}
-            options={{
-              headerShown: false,
-              transitionSpec: {
-                open: TransitionSpecs.TransitionIOSSpec,
-                close: TransitionSpecs.TransitionIOSSpec,
-              },
-              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-            }}
+            options={screenOptions}
           />
           <RootStack.Screen
             name="AvailableDevices"
             component={AvailableDevicesPage}
-            options={{
-              headerShown: false,
-              transitionSpec: {
-                open: TransitionSpecs.TransitionIOSSpec,
-                close: TransitionSpecs.TransitionIOSSpec,
-              },
-              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-            }}
+            options={screenOptions}
           />
           <RootStack.Screen
             name="AddDevice"
             component={AddDevicePage}
-            options={{
-              headerShown: false,
-              transitionSpec: {
-                open: TransitionSpecs.TransitionIOSSpec,
-                close: TransitionSpecs.TransitionIOSSpec,
-              },
-              cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-            }}
+            options={screenOptions}
           />
         </RootStack.Navigator>
       </PaperProvider>
