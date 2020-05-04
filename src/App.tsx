@@ -7,7 +7,7 @@ import {
   StackNavigationProp,
 } from "@react-navigation/stack";
 import React from "react";
-import { Provider as PaperProvider, TouchableRipple, Appbar } from "react-native-paper";
+import { Provider as PaperProvider, Appbar } from "react-native-paper";
 import { WelcomePage } from "./pages/Welcome";
 import { AddDeviceSplashPage } from "./pages/AddFirstDevice";
 import { AvailableDevicesPage } from "./pages/AvailableDevices";
@@ -17,10 +17,11 @@ import { DevicesPage } from "./pages/Devices";
 import { GroupsPage } from "./pages/Group";
 import { styles } from "./styles/Styles";
 import { View, StatusBar } from "react-native";
+import { DevicePage } from "./pages/Device";
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
-const AppStack = createStackNavigator<AppStackParamList>();
+const AppStack = createStackNavigator<RootStackParamList>();
 
 const screenOptions = {
   headerShown: false,
@@ -63,6 +64,11 @@ export default function App() {
           <RootStack.Screen
             name="AddDevice"
             component={AddDevicePage}
+            options={screenOptions}
+          />
+          <RootStack.Screen
+            name="Device"
+            component={DevicePage}
             options={screenOptions}
           />
         </RootStack.Navigator>

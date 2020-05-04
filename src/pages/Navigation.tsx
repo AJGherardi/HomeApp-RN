@@ -4,9 +4,7 @@ type RootStackParamList = {
   AddDeviceSplash: undefined;
   AddDevice: undefined;
   AvailableDevices: undefined;
-};
-
-type AppStackParamList = {
+  Device: undefined;
   Home: undefined;
   Devices: undefined;
   Groups: undefined;
