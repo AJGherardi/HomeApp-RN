@@ -3,7 +3,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 import { View, StatusBar, Text, Image } from "react-native";
 import { styles } from "../styles/Styles";
-import { TouchableRipple } from "react-native-paper";
+import { Button } from "react-native-paper";
 
 type DeviceNavigationProp = StackNavigationProp<RootStackParamList, "Device">;
 
@@ -13,6 +13,7 @@ type DeviceProps = {
     route: DeviceRouteProp;
     navigation: DeviceNavigationProp;
 };
+
 
 export function DevicePage({ route, navigation }: DeviceProps) {
     return (
@@ -27,11 +28,19 @@ export function DevicePage({ route, navigation }: DeviceProps) {
             </View>
             <View style={styles.deviceLowerView}>
                 <View style={styles.deviceProps}>
-
+                    <Image source={require("../../assets/on.png")} />
+                    <View>
+                        <Text style={styles.devicePropText}>State</Text>
+                        <Button
+                            color="black"
+                            mode="contained"
+                            onPress={() => { }}
+                        >
+                            On
+                        </Button>
+                    </View>
                 </View>
-                <View style={styles.deviceProps}>
-
-                </View>
+                <View style={{ flex: 1 }} />
             </View>
         </View>
     )

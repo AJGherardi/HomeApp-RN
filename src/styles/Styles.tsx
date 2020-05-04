@@ -168,12 +168,18 @@ export const styles = StyleSheet.create({
   },
   deviceProps: {
     flex: 1,
-    width: '88%',
+    width: '90%',
     alignSelf: "center",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-around",
     margin: 23,
     backgroundColor: "#ffffff",
-    borderRadius: 8
+    borderRadius: 8,
+    flexDirection: "row",
+  },
+  devicePropText: {
+    color: "black",
+    fontSize: 48,
+    fontFamily: "Roboto-Black",
   },
 });
