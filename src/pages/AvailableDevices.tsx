@@ -24,7 +24,6 @@ export class AvailableDevicesPage extends React.Component<AvailableDevicesProps>
   render() {
     return (
       <View style={styles.page}>
-        <StatusBar barStyle="light-content" backgroundColor="#121212" />
         <View style={styles.titleView}>
           <Text style={styles.titleText}>Find your Device</Text>
         </View>

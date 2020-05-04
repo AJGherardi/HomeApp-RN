@@ -16,10 +16,13 @@ type DeviceProps = {
 
 
 export class DevicePage extends React.Component<DeviceProps> {
+    state = {
+        onoff: "off",
+        loading: false
+    }
     render() {
         return (
             <View style={styles.page}>
-                <StatusBar barStyle="light-content" backgroundColor="#121212" />
                 <View style={styles.deviceUpperView}>
                     <Image source={require("../../assets/plug.png")} />
                     <View style={styles.deviceTextView}>
@@ -35,9 +38,17 @@ export class DevicePage extends React.Component<DeviceProps> {
                             <Button
                                 color="black"
                                 mode="contained"
-                                onPress={() => { }}
+                                loading={this.state.loading}
+                                disabled={this.state.loading}
+                                onPress={() => {
+                                    if (this.state.onoff == "off") {                                        
+                                        this.setState({ onoff: "on", loading: true })
+                                    } else {
+                                        this.setState({ onoff: "off", loading: false })
+                                    }
+                                }}
                             >
-                                On
+                                {this.state.onoff}
                             </Button>
                         </View>
                     </View>

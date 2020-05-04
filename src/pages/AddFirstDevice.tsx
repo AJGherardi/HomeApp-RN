@@ -24,7 +24,6 @@ export class AddDeviceSplashPage extends React.Component<AddDeviceSplashProps> {
   render() {
     return (
       <View style={styles.page}>
-        <StatusBar barStyle="light-content" backgroundColor="#121212" />
         <View style={styles.titleView}>
           <Text style={styles.titleText}>Add A Device</Text>
         </View>

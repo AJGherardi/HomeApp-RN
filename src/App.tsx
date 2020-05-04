@@ -36,6 +36,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <PaperProvider>
+        <StatusBar barStyle="light-content" backgroundColor="#121212" />
         <RootStack.Navigator initialRouteName="Welcome" screenOptions={{
           cardStyle: {
             backgroundColor: 'rgba(0,0,0,0.5)',

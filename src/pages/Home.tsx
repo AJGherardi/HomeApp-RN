@@ -18,7 +18,6 @@ export class HomePage extends React.Component<HomeProps> {
     render() {
         return (
             <View style={styles.page}>
-                <StatusBar barStyle="light-content" backgroundColor="#121212" />
                 <TouchableRipple
                     style={styles.homeTouchables}
                     borderless={true}

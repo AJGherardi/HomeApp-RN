@@ -18,7 +18,6 @@ export class WelcomePage extends React.Component<WelcomeProps> {
   render() {
     return (
       <View style={styles.page}>
-        <StatusBar barStyle="light-content" backgroundColor="#121212" />
         <View style={styles.homeView}>
           <Text style={styles.homeText}>Home</Text>
           <Text style={styles.byText}>by</Text>
