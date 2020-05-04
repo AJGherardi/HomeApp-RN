@@ -15,33 +15,35 @@ type DeviceProps = {
 };
 
 
-export function DevicePage({ route, navigation }: DeviceProps) {
-    return (
-        <View style={styles.page}>
-            <StatusBar barStyle="light-content" backgroundColor="#121212" />
-            <View style={styles.deviceUpperView}>
-                <Image source={require("../../assets/plug.png")} />
-                <View style={styles.deviceTextView}>
-                    <Text style={styles.deviceText}>Left Outlet</Text>
-                    <Text style={styles.deviceSubtext}>Living Room</Text>
-                </View>
-            </View>
-            <View style={styles.deviceLowerView}>
-                <View style={styles.deviceProps}>
-                    <Image source={require("../../assets/on.png")} />
-                    <View>
-                        <Text style={styles.devicePropText}>State</Text>
-                        <Button
-                            color="black"
-                            mode="contained"
-                            onPress={() => { }}
-                        >
-                            On
-                        </Button>
+export class DevicePage extends React.Component<DeviceProps> {
+    render() {
+        return (
+            <View style={styles.page}>
+                <StatusBar barStyle="light-content" backgroundColor="#121212" />
+                <View style={styles.deviceUpperView}>
+                    <Image source={require("../../assets/plug.png")} />
+                    <View style={styles.deviceTextView}>
+                        <Text style={styles.deviceText}>Left Outlet</Text>
+                        <Text style={styles.deviceSubtext}>Living Room</Text>
                     </View>
                 </View>
-                <View style={{ flex: 1 }} />
+                <View style={styles.deviceLowerView}>
+                    <View style={styles.deviceProps}>
+                        <Image source={require("../../assets/on.png")} />
+                        <View>
+                            <Text style={styles.devicePropText}>State</Text>
+                            <Button
+                                color="black"
+                                mode="contained"
+                                onPress={() => { }}
+                            >
+                                On
+                            </Button>
+                        </View>
+                    </View>
+                    <View style={{ flex: 1 }} />
+                </View>
             </View>
-        </View>
-    )
+        )
+    }
 }

@@ -14,27 +14,29 @@ type WelcomeProps = {
   navigation: WelcomeNavigationProp;
 };
 
-export function WelcomePage({ route, navigation }: WelcomeProps) {
-  return (
-    <View style={styles.page}>
-      <StatusBar barStyle="light-content" backgroundColor="#121212" />
-      <View style={styles.homeView}>
-        <Text style={styles.homeText}>Home</Text>
-        <Text style={styles.byText}>by</Text>
-        <Text style={styles.nameText}>alexander gherardi</Text>
+export class WelcomePage extends React.Component<WelcomeProps> {
+  render() {
+    return (
+      <View style={styles.page}>
+        <StatusBar barStyle="light-content" backgroundColor="#121212" />
+        <View style={styles.homeView}>
+          <Text style={styles.homeText}>Home</Text>
+          <Text style={styles.byText}>by</Text>
+          <Text style={styles.nameText}>alexander gherardi</Text>
+        </View>
+        <View style={styles.nextView}>
+          <Button
+            contentStyle={styles.nextButton}
+            color="white"
+            mode="contained"
+            onPress={() => {
+              this.props.navigation.navigate("AddDeviceSplash");
+            }}
+          >
+            Next
+          </Button>
+        </View>
       </View>
-      <View style={styles.nextView}>
-        <Button
-          contentStyle={styles.nextButton}
-          color="white"
-          mode="contained"
-          onPress={() => {
-            navigation.navigate("AddDeviceSplash");
-          }}
-        >
-          Next
-        </Button>
-      </View>
-    </View>
-  );
+    );
+  }
 }

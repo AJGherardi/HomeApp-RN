@@ -20,31 +20,30 @@ type AddDeviceSplashProps = {
   navigation: AddDeviceSplashNavigationProp;
 };
 
-export function AddDeviceSplashPage({
-  route,
-  navigation,
-}: AddDeviceSplashProps) {
-  return (
-    <View style={styles.page}>
-      <StatusBar barStyle="light-content" backgroundColor="#121212" />
-      <View style={styles.titleView}>
-        <Text style={styles.titleText}>Add A Device</Text>
+export class AddDeviceSplashPage extends React.Component<AddDeviceSplashProps> {
+  render() {
+    return (
+      <View style={styles.page}>
+        <StatusBar barStyle="light-content" backgroundColor="#121212" />
+        <View style={styles.titleView}>
+          <Text style={styles.titleText}>Add A Device</Text>
+        </View>
+        <View style={styles.centerView}>
+          <Image source={require("../../assets/outlet.png")} />
+        </View>
+        <View style={styles.nextView}>
+          <Button
+            contentStyle={styles.nextButton}
+            color="white"
+            mode="contained"
+            onPress={() => {
+              this.props.navigation.navigate("AvailableDevices");
+            }}
+          >
+            Next
+          </Button>
+        </View>
       </View>
-      <View style={styles.centerView}>
-        <Image source={require("../../assets/outlet.png")} />
-      </View>
-      <View style={styles.nextView}>
-        <Button
-          contentStyle={styles.nextButton}
-          color="white"
-          mode="contained"
-          onPress={() => {
-            navigation.navigate("AvailableDevices");
-          }}
-        >
-          Next
-        </Button>
-      </View>
-    </View>
-  );
+    );
+  }
 }

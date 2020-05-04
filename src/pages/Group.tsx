@@ -5,49 +5,51 @@ import { View, StatusBar, Image, FlatList } from "react-native";
 import { Text, TouchableRipple, Appbar } from "react-native-paper";
 import { styles } from "../styles/Styles";
 
-type GroupsNavigationProp = StackNavigationProp<AppStackParamList, "Groups">;
+type GroupsNavigationProp = StackNavigationProp<RootStackParamList, "Groups">;
 
-type GroupsRouteProp = RouteProp<AppStackParamList, "Groups">;
+type GroupsRouteProp = RouteProp<RootStackParamList, "Groups">;
 
 type GroupsProps = {
     route: GroupsRouteProp;
     navigation: GroupsNavigationProp;
 };
 
-export function GroupsPage({ route, navigation }: GroupsProps) {
-    return (
-        <View style={styles.page}>
-            <StatusBar barStyle="light-content" backgroundColor="#121212" />
-            <View style={styles.titleView}>
-                <Text style={styles.titleText}>Groups</Text>
+export class GroupsPage extends React.Component<GroupsProps> {
+    render() {
+        return (
+            <View style={styles.page}>
+                <StatusBar barStyle="light-content" backgroundColor="#121212" />
+                <View style={styles.titleView}>
+                    <Text style={styles.titleText}>Groups</Text>
+                </View>
+                <View style={styles.centerView}>
+                    <FlatList
+                        style={styles.listView}
+                        contentContainerStyle={styles.listContent}
+                        data={DATA}
+                        renderItem={({ item }) => (
+                            <TouchableRipple
+                                style={styles.item}
+                                borderless={true}
+                                onPress={() => {
+                                    this.props.navigation.navigate("Devices");
+                                }}
+                                rippleColor="#000000"
+                            >
+                                <View>
+                                    <Image style={styles.itemView}
+                                        source={require("../../assets/plug.png")} />
+                                    <Text style={styles.itemText}>HomeGroups</Text>
+                                </View>
+                            </TouchableRipple>
+                        )}
+                        numColumns={2}
+                        keyExtractor={(item) => item.id}
+                    />
+                </View>
             </View>
-            <View style={styles.centerView}>
-                <FlatList
-                    style={styles.listView}
-                    contentContainerStyle={styles.listContent}
-                    data={DATA}
-                    renderItem={({ item }) => (
-                        <TouchableRipple
-                            style={styles.item}
-                            borderless={true}
-                            onPress={() => {
-                                navigation.navigate("Devices");
-                            }}
-                            rippleColor="#000000"
-                        >
-                            <View>
-                                <Image style={styles.itemView}
-                                    source={require("../../assets/plug.png")} />
-                                <Text style={styles.itemText}>HomeGroups</Text>
-                            </View>
-                        </TouchableRipple>
-                    )}
-                    numColumns={2}
-                    keyExtractor={(item) => item.id}
-                />
-            </View>
-        </View>
-    )
+        )
+    }
 }
 
 const DATA = [

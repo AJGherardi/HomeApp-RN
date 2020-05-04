@@ -14,50 +14,52 @@ type HomeProps = {
     navigation: HomeNavigationProp;
 };
 
-export function HomePage({ route, navigation }: HomeProps) {
-    return (
-        <View style={styles.page}>
-            <StatusBar barStyle="light-content" backgroundColor="#121212" />
-            <TouchableRipple
-                style={styles.homeTouchables}
-                borderless={true}
-                onPress={() => {
-                    navigation.navigate("Devices");
-                }}
+export class HomePage extends React.Component<HomeProps> {
+    render() {
+        return (
+            <View style={styles.page}>
+                <StatusBar barStyle="light-content" backgroundColor="#121212" />
+                <TouchableRipple
+                    style={styles.homeTouchables}
+                    borderless={true}
+                    onPress={() => {
+                        this.props.navigation.navigate("Devices");
+                    }}
 
-                rippleColor="#000000"
-            >
-                <View style={styles.homeItem}>
-                    <Text style={styles.homeItemText}>Devices</Text>
-                    <Image source={require("../../assets/plug.png")} />
-                </View>
-            </TouchableRipple>
-            <TouchableRipple
-                style={styles.homeTouchables}
-                borderless={true}
-                onPress={() => {
-                    navigation.navigate("Groups");
-                }}
-                rippleColor="#000000"
-            >
-                <View style={styles.homeItem}>
-                    <Text style={styles.homeItemText}>Groups</Text>
-                    <Image source={require("../../assets/homeItem.png")} />
-                </View>
-            </TouchableRipple>
-            <TouchableRipple
-                style={styles.homeTouchables}
-                borderless={true}
-                onPress={() => {
-                    navigation.navigate("Devices");
-                }}
-                rippleColor="#000000"
-            >
-                <View style={styles.homeItem}>
-                    <Text style={styles.homeItemText}>Actions</Text>
-                    <Image source={require("../../assets/homeItem.png")} />
-                </View>
-            </TouchableRipple>
-        </View>
-    );
+                    rippleColor="#000000"
+                >
+                    <View style={styles.homeItem}>
+                        <Text style={styles.homeItemText}>Devices</Text>
+                        <Image source={require("../../assets/plug.png")} />
+                    </View>
+                </TouchableRipple>
+                <TouchableRipple
+                    style={styles.homeTouchables}
+                    borderless={true}
+                    onPress={() => {
+                        this.props.navigation.navigate("Groups");
+                    }}
+                    rippleColor="#000000"
+                >
+                    <View style={styles.homeItem}>
+                        <Text style={styles.homeItemText}>Groups</Text>
+                        <Image source={require("../../assets/homeItem.png")} />
+                    </View>
+                </TouchableRipple>
+                <TouchableRipple
+                    style={styles.homeTouchables}
+                    borderless={true}
+                    onPress={() => {
+                        this.props.navigation.navigate("Devices");
+                    }}
+                    rippleColor="#000000"
+                >
+                    <View style={styles.homeItem}>
+                        <Text style={styles.homeItemText}>Actions</Text>
+                        <Image source={require("../../assets/homeItem.png")} />
+                    </View>
+                </TouchableRipple>
+            </View>
+        );
+    }
 }
