@@ -5,9 +5,9 @@ import { View, StatusBar, Image } from "react-native";
 import { Text, TouchableRipple, Appbar } from "react-native-paper";
 import { styles } from "../styles/Styles";
 
-type HomeNavigationProp = StackNavigationProp<AppStackParamList, "Home">;
+type HomeNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
 
-type HomeRouteProp = RouteProp<AppStackParamList, "Home">;
+type HomeRouteProp = RouteProp<RootStackParamList, "Home">;
 
 type HomeProps = {
     route: HomeRouteProp;

@@ -39,37 +39,32 @@ export default function App() {
         <RootStack.Navigator initialRouteName="Welcome" screenOptions={{
           cardStyle: {
             backgroundColor: 'rgba(0,0,0,0.5)',
-          }
+          },
+          ...screenOptions
         }}>
           <RootStack.Screen
             name="Welcome"
             component={WelcomePage}
-            options={screenOptions}
           />
           <RootStack.Screen
             name="App"
             component={AppPages}
-            options={screenOptions}
           />
           <RootStack.Screen
             name="AddDeviceSplash"
             component={AddDeviceSplashPage}
-            options={screenOptions}
           />
           <RootStack.Screen
             name="AvailableDevices"
             component={AvailableDevicesPage}
-            options={screenOptions}
           />
           <RootStack.Screen
             name="AddDevice"
             component={AddDevicePage}
-            options={screenOptions}
           />
           <RootStack.Screen
             name="Device"
             component={DevicePage}
-            options={screenOptions}
           />
         </RootStack.Navigator>
       </PaperProvider>
@@ -93,22 +88,20 @@ export function AppPages({ route, navigation }: AppProps) {
       <AppStack.Navigator initialRouteName="Home" screenOptions={{
         cardStyle: {
           backgroundColor: 'rgba(0,0,0,0.5)',
-        }
+        },
+        ...screenOptions
       }}>
         <AppStack.Screen
           name="Home"
           component={HomePage}
-          options={screenOptions}
         />
         <AppStack.Screen
           name="Devices"
           component={DevicesPage}
-          options={screenOptions}
         />
         <AppStack.Screen
           name="Groups"
           component={GroupsPage}
-          options={screenOptions}
         />
       </AppStack.Navigator>
       <Appbar style={styles.appBar}>

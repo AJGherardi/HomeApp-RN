@@ -129,7 +129,7 @@ export const styles = StyleSheet.create({
   },
   itemView: {
     alignItems: "center",
-    justifyContent: "center", 
+    justifyContent: "center",
     margin: 30,
   },
   itemText: {
@@ -142,5 +142,38 @@ export const styles = StyleSheet.create({
   listContent: {
     alignItems: "center",
     justifyContent: "center",
+  },
+  deviceText: {
+    color: "white",
+    fontSize: 48,
+    fontFamily: "Roboto-Black",
+  },
+  deviceSubtext: {
+    color: "white",
+    fontSize: 24,
+    marginBottom: 8,
+    fontFamily: "Roboto-Black",
+  },
+  deviceTextView: {
+    alignItems: "flex-end"
+  },
+  deviceUpperView: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around"
+  },
+  deviceLowerView: {
+    flex: 2
+  },
+  deviceProps: {
+    flex: 1,
+    width: '88%',
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: 23,
+    backgroundColor: "#ffffff",
+    borderRadius: 8
   },
 });

@@ -31,7 +31,7 @@ export function DevicesPage({ route, navigation }: DevicesProps) {
                             style={styles.item}
                             borderless={true}
                             onPress={() => {
-                                navigation.navigate("Welcome");
+                                navigation.navigate("Device");
                             }}
                             rippleColor="#000000"
                         >
