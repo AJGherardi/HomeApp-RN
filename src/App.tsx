@@ -110,8 +110,7 @@ export function AppPages({ route, navigation }: AppProps) {
       <Sheet></Sheet>
       <Appbar style={styles.appBar}>
         <Appbar.Action icon="menu" onPress={() => { bs.current?.snapTo(0) }} />
-        <Appbar.Action icon="plus" onPress={() => { }} />
-        <Appbar.Action icon="magnify" onPress={() => { }} />
+        <Appbar.Action icon="plus" onPress={() => { navigation.navigate("AddDeviceSplash") }} />
       </Appbar>
     </View>
   );
@@ -137,7 +136,7 @@ class Sheet extends React.Component {
         ref={bs}
         snapPoints={[500, 0, 0]}
         renderContent={this.content}
-        initialSnap={0}
+        initialSnap={2}
       />
     )
   }

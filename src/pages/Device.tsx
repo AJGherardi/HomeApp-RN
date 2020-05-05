@@ -52,7 +52,6 @@ export class DevicePage extends React.Component<DeviceProps> {
                             </Button>
                         </View>
                     </View>
-
                     <View style={{ flex: 1 }} />
                 </View>
             </View>
