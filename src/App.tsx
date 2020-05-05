@@ -16,8 +16,10 @@ import { HomePage } from "./pages/Home";
 import { DevicesPage } from "./pages/Devices";
 import { GroupsPage } from "./pages/Group";
 import { styles } from "./styles/Styles";
-import { View, StatusBar } from "react-native";
+import { View, StatusBar, Text } from "react-native";
 import { DevicePage } from "./pages/Device";
+import BottomSheet from 'reanimated-bottom-sheet'
+import BottomSheetBehavior from "reanimated-bottom-sheet";
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
@@ -105,11 +107,38 @@ export function AppPages({ route, navigation }: AppProps) {
           component={GroupsPage}
         />
       </AppStack.Navigator>
+      <Sheet></Sheet>
       <Appbar style={styles.appBar}>
-        <Appbar.Action icon="menu" onPress={() => { }} />
+        <Appbar.Action icon="menu" onPress={() => { bs.current?.snapTo(0) }} />
         <Appbar.Action icon="plus" onPress={() => { }} />
         <Appbar.Action icon="magnify" onPress={() => { }} />
       </Appbar>
     </View>
   );
+}
+
+var bs = React.createRef<BottomSheetBehavior>()
+
+class Sheet extends React.Component {
+  content = () => (
+    <View style={{
+      height: 500, backgroundColor: "#252525",
+      borderRadius: 30, justifyContent: "center", alignItems: "center",
+    }}>
+      <Text style={styles.titleText}>Hello</Text>
+    </View>
+  )
+  open = () => {
+
+  }
+  render() {
+    return (
+      <BottomSheet
+        ref={bs}
+        snapPoints={[500, 0, 0]}
+        renderContent={this.content}
+        initialSnap={0}
+      />
+    )
+  }
 }

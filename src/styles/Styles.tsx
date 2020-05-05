@@ -145,7 +145,7 @@ export const styles = StyleSheet.create({
   },
   deviceText: {
     color: "white",
-    fontSize: 48,
+    fontSize: 44,
     fontFamily: "Roboto-Black",
   },
   deviceSubtext: {

@@ -1,7 +1,7 @@
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
-import { View, StatusBar, Text, Image } from "react-native";
+import { View, Text, Image } from "react-native";
 import { styles } from "../styles/Styles";
 import { Button } from "react-native-paper";
 
@@ -41,7 +41,7 @@ export class DevicePage extends React.Component<DeviceProps> {
                                 loading={this.state.loading}
                                 disabled={this.state.loading}
                                 onPress={() => {
-                                    if (this.state.onoff == "off") {                                        
+                                    if (this.state.onoff == "off") {
                                         this.setState({ onoff: "on", loading: true })
                                     } else {
                                         this.setState({ onoff: "off", loading: false })
@@ -52,9 +52,11 @@ export class DevicePage extends React.Component<DeviceProps> {
                             </Button>
                         </View>
                     </View>
+
                     <View style={{ flex: 1 }} />
                 </View>
             </View>
+
         )
     }
 }
