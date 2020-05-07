@@ -30,7 +30,6 @@ const screenOptions = {
   transitionSpec: {
     open: TransitionSpecs.TransitionIOSSpec,
     close: TransitionSpecs.TransitionIOSSpec,
-
   },
   cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
   transitionConfig: () => ({
@@ -144,7 +143,6 @@ export class AppPages extends React.Component<AppProps> {
       </View>
     );
   }
-
 }
 
 var bs = React.createRef<BottomSheetBehavior>()

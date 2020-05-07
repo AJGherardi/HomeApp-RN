@@ -26,6 +26,7 @@
     "react-native-screens": "^2.7.0",
     "react-native-unimodules": "~0.9.0",
     "react-native-web": "~0.11.7",
+    "react-native-zeroconf": "^0.12.2",
     "react-relay": "^9.0.0",
     "reanimated-bottom-sheet": "^1.0.0-alpha.20"
   },
@@ -33,6 +34,7 @@
     "@babel/core": "~7.8.6",
     "@types/react": "~16.9.23",
     "@types/react-native": "~0.61.17",
+    "@types/react-native-zeroconf": "^0.11.0",
     "@types/react-relay": "^7.0.3",
     "@types/relay-runtime": "^8.0.8",
     "babel-plugin-relay": "^9.0.0",
