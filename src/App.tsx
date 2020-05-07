@@ -9,7 +9,7 @@ import {
 import React from "react";
 import { Provider as PaperProvider, Appbar, Button } from "react-native-paper";
 import { WelcomePage } from "./pages/Welcome";
-import { AddDeviceSplashPage } from "./pages/AddFirstDevice";
+import { AddDeviceSplashPage } from "./pages/AddDeviceSplash";
 import { AvailableDevicesPage } from "./pages/AvailableDevices";
 import { AddDevicePage } from "./pages/AddDevice";
 import { HomePage } from "./pages/Home";
@@ -20,6 +20,9 @@ import { View, StatusBar } from "react-native";
 import { DevicePage } from "./pages/Device";
 import BottomSheet from 'reanimated-bottom-sheet'
 import BottomSheetBehavior from "reanimated-bottom-sheet";
+import { AddHubPage } from "./pages/AddHub";
+import { AvailableHubsPage } from "./pages/AvailableHubs";
+import { AddHubSplashPage } from "./pages/AddHubSplash";
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
@@ -69,6 +72,18 @@ export default function App() {
           <RootStack.Screen
             name="AddDevice"
             component={AddDevicePage}
+          />
+          <RootStack.Screen
+            name="AddHubSplash"
+            component={AddHubSplashPage}
+          />
+          <RootStack.Screen
+            name="AvailableHubs"
+            component={AvailableHubsPage}
+          />
+          <RootStack.Screen
+            name="AddHub"
+            component={AddHubPage}
           />
           <RootStack.Screen
             name="Device"

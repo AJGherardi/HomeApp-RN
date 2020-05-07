@@ -29,7 +29,7 @@ export class WelcomePage extends React.Component<WelcomeProps> {
             color="white"
             mode="contained"
             onPress={() => {
-              this.props.navigation.navigate("AddDeviceSplash");
+              this.props.navigation.navigate("AddHubSplash");
             }}
           >
             Next

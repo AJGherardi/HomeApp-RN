@@ -4,9 +4,6 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import { styles } from "../styles/Styles";
 import { Button } from "react-native-paper";
-import Zeroconf from 'react-native-zeroconf'
-
-const zeroconf = new Zeroconf()
 
 type DeviceNavigationProp = StackNavigationProp<RootStackParamList, "Device">;
 
@@ -22,19 +19,6 @@ export class DevicePage extends React.Component<DeviceProps> {
     state = {
         onoff: "off",
         loading: false
-    }
-    componentDidMount() {
-        zeroconf.on('start', () => {
-            console.log('[Start]')
-        })
-
-        zeroconf.on('stop', () => {
-            console.log('[Stop]')
-        })
-
-        zeroconf.on('resolved', service => {
-            console.log('[Resolve]', service.addresses)
-        })
     }
     render() {
         return (
@@ -62,8 +46,6 @@ export class DevicePage extends React.Component<DeviceProps> {
                                     } else {
                                         this.setState({ onoff: "off", loading: false })
                                     }
-                                    zeroconf.scan('alexandergherardi', 'tcp', 'local.')
-
                                 }}
                             >
                                 {this.state.onoff}
