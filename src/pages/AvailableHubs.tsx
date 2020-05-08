@@ -1,11 +1,10 @@
 import React from "react";
-import { Text, View, StatusBar, FlatList } from "react-native";
+import { Text, View, FlatList } from "react-native";
 import { styles } from "../styles/Styles";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { TouchableRipple, ActivityIndicator } from "react-native-paper";
 import Zeroconf, { Service } from 'react-native-zeroconf'
-import { Item } from "react-native-paper/lib/typescript/src/components/List/List";
 
 const zeroconf = new Zeroconf()
 
@@ -52,7 +51,7 @@ export class AvailableHubsPage extends React.Component<AvailableHubsProps> {
                   borderless={true}
                   onPress={() => {
                     zeroconf.stop()
-                    this.props.navigation.navigate("AddHub");
+                    this.props.navigation.navigate("AddHub", { host: item.host });
                   }}
                   rippleColor="#ffffff"
                 >

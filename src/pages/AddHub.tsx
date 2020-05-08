@@ -45,7 +45,7 @@ export class AddHubPage extends React.Component<AddHubProps> {
             mode="contained"
             onPress={async () => {
               // var provData = (await GetProvData.getProvData()).getProvData
-              // console.log(provData.keyIndex)
+              console.log(this.props.route.params.host)
               // ConfigHub.configHub()
               this.props.navigation.navigate("App")
             }}
