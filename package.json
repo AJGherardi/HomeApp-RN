@@ -1,52 +1,69 @@
 {
-  "main": "index.js",
+  "name": "HomeApp",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "relay": "relay-compiler --src ./src --schema ./schema.graphql --language typescript ",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "web": "expo start --web",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "relay": "relay-compiler --src ./src --schema ./schema.graphql --language typescript "
   },
   "dependencies": {
-    "@react-native-community/masked-view": "^0.1.9",
-    "@react-navigation/native": "^5.1.5",
-    "@react-navigation/stack": "^5.2.10",
-    "expo": "~37.0.3",
-    "expo-secure-store": "^8.1.0",
-    "expo-updates": "~0.1.0",
-    "graphql": "^15.0.0",
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/native": "^5.3.0",
+    "@react-navigation/stack": "^5.3.2",
+    "babel-plugin-relay": "^9.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-native": "~0.61.4",
+    "react-native": "0.62.2",
     "react-native-gesture-handler": "^1.6.1",
-    "react-native-paper": "^3.7.0",
+    "react-native-paper": "^3.10.1",
     "react-native-reanimated": "^1.8.0",
-    "react-native-safe-area-context": "^0.7.3",
+    "react-native-safe-area-context": "^1.0.0",
     "react-native-screens": "^2.7.0",
-    "react-native-unimodules": "~0.9.0",
-    "react-native-web": "~0.11.7",
+    "react-native-vector-icons": "^6.6.0",
     "react-native-zeroconf": "^0.12.2",
-    "react-relay": "^9.0.0",
-    "reanimated-bottom-sheet": "^1.0.0-alpha.20"
+    "react-relay": "^9.1.0",
+    "reanimated-bottom-sheet": "^1.0.0-alpha.20",
+    "relay-compiler-language-typescript": "^12.0.2"
   },
   "devDependencies": {
-    "@babel/core": "~7.8.6",
-    "@types/react": "~16.9.23",
-    "@types/react-native": "~0.61.17",
+    "@babel/core": "^7.6.2",
+    "@babel/runtime": "^7.6.2",
+    "@react-native-community/eslint-config": "^1.0.0",
+    "@types/jest": "^24.0.24",
+    "@types/react-native": "^0.62.0",
     "@types/react-native-zeroconf": "^0.11.0",
-    "@types/react-relay": "^7.0.3",
-    "@types/relay-runtime": "^8.0.8",
-    "babel-plugin-relay": "^9.0.0",
-    "babel-preset-expo": "~8.1.0",
-    "jest-expo": "~37.0.0",
-    "relay-compiler": "^9.0.0",
-    "relay-compiler-language-typescript": "^12.0.1",
-    "relay-config": "^9.0.0",
+    "@types/react-test-renderer": "16.9.2",
+    "@types/relay-runtime": "^8.0.9",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.5.1",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.58.0",
+    "prettier": "^2.0.4",
+    "react-test-renderer": "16.11.0",
+    "relay-compiler": "^9.1.0",
+    "relay-config": "^9.1.0",
     "typescript": "^3.8.3"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   },
-  "private": true
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
+  }
 }

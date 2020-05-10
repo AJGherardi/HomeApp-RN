@@ -1,6 +1,5 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 6c9bd1d7315609b61803ca6384a8e564 */
 
 import { ConcreteRequest } from "relay-runtime";
 export type ConfigHubMutationVariables = {};
@@ -23,35 +22,35 @@ mutation ConfigHubMutation {
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
-    "kind": "ScalarField",
     "alias": null,
-    "name": "configHub",
     "args": null,
+    "kind": "ScalarField",
+    "name": "configHub",
     "storageKey": null
   }
 ];
 return {
-  "kind": "Request",
   "fragment": {
-    "kind": "Fragment",
-    "name": "ConfigHubMutation",
-    "type": "Mutation",
-    "metadata": null,
     "argumentDefinitions": [],
-    "selections": (v0/*: any*/)
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "ConfigHubMutation",
+    "selections": (v0/*: any*/),
+    "type": "Mutation"
   },
+  "kind": "Request",
   "operation": {
+    "argumentDefinitions": [],
     "kind": "Operation",
     "name": "ConfigHubMutation",
-    "argumentDefinitions": [],
     "selections": (v0/*: any*/)
   },
   "params": {
-    "operationKind": "mutation",
-    "name": "ConfigHubMutation",
     "id": null,
-    "text": "mutation ConfigHubMutation {\n  configHub\n}\n",
-    "metadata": {}
+    "metadata": {},
+    "name": "ConfigHubMutation",
+    "operationKind": "mutation",
+    "text": "mutation ConfigHubMutation {\n  configHub\n}\n"
   }
 };
 })();

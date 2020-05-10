@@ -1,6 +1,5 @@
 /* tslint:disable */
 /* eslint-disable */
-/* @relayHash 7e147318ea5d3942854fc6f1588dbe64 */
 
 import { ConcreteRequest } from "relay-runtime";
 export type GetProvDataQueryVariables = {};
@@ -35,74 +34,74 @@ query GetProvDataQuery {
 const node: ConcreteRequest = (function(){
 var v0 = [
   {
-    "kind": "LinkedField",
     "alias": null,
-    "name": "getProvData",
-    "storageKey": null,
     "args": null,
     "concreteType": "ProvData",
+    "kind": "LinkedField",
+    "name": "getProvData",
     "plural": false,
     "selections": [
       {
-        "kind": "ScalarField",
         "alias": null,
+        "args": null,
+        "kind": "ScalarField",
         "name": "flags",
-        "args": null,
         "storageKey": null
       },
       {
-        "kind": "ScalarField",
         "alias": null,
+        "args": null,
+        "kind": "ScalarField",
         "name": "ivIndex",
-        "args": null,
         "storageKey": null
       },
       {
-        "kind": "ScalarField",
         "alias": null,
+        "args": null,
+        "kind": "ScalarField",
         "name": "keyIndex",
-        "args": null,
         "storageKey": null
       },
       {
-        "kind": "ScalarField",
         "alias": null,
+        "args": null,
+        "kind": "ScalarField",
         "name": "networkKey",
-        "args": null,
         "storageKey": null
       },
       {
-        "kind": "ScalarField",
         "alias": null,
-        "name": "nextDevAddr",
         "args": null,
+        "kind": "ScalarField",
+        "name": "nextDevAddr",
         "storageKey": null
       }
-    ]
+    ],
+    "storageKey": null
   }
 ];
 return {
-  "kind": "Request",
   "fragment": {
-    "kind": "Fragment",
-    "name": "GetProvDataQuery",
-    "type": "Query",
-    "metadata": null,
     "argumentDefinitions": [],
-    "selections": (v0/*: any*/)
+    "kind": "Fragment",
+    "metadata": null,
+    "name": "GetProvDataQuery",
+    "selections": (v0/*: any*/),
+    "type": "Query"
   },
+  "kind": "Request",
   "operation": {
+    "argumentDefinitions": [],
     "kind": "Operation",
     "name": "GetProvDataQuery",
-    "argumentDefinitions": [],
     "selections": (v0/*: any*/)
   },
   "params": {
-    "operationKind": "query",
-    "name": "GetProvDataQuery",
     "id": null,
-    "text": "query GetProvDataQuery {\n  getProvData {\n    flags\n    ivIndex\n    keyIndex\n    networkKey\n    nextDevAddr\n  }\n}\n",
-    "metadata": {}
+    "metadata": {},
+    "name": "GetProvDataQuery",
+    "operationKind": "query",
+    "text": "query GetProvDataQuery {\n  getProvData {\n    flags\n    ivIndex\n    keyIndex\n    networkKey\n    nextDevAddr\n  }\n}\n"
   }
 };
 })();

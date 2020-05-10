@@ -1,8 +1,8 @@
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
-import { View, StatusBar, Image, FlatList } from "react-native";
-import { Text, TouchableRipple, Appbar } from "react-native-paper";
+import { View, Image, FlatList } from "react-native";
+import { Text, TouchableRipple } from "react-native-paper";
 import { styles } from "../styles/Styles";
 
 type DevicesNavigationProp = StackNavigationProp<RootStackParamList, "Devices">;
