@@ -33,7 +33,7 @@ export class GroupsPage extends React.Component<GroupsProps> {
                                 onPress={() => {
                                     this.props.navigation.navigate("Devices");
                                 }}
-                                rippleColor="#000000"
+                                rippleColor="#ffffff"
                             >
                                 <View>
                                     <Image style={styles.itemView}

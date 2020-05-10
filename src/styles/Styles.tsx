@@ -101,7 +101,7 @@ export const styles = StyleSheet.create({
     height: 42,
   },
   appBar: {
-    backgroundColor: "#252525"
+    backgroundColor: "#252525",
   },
   homeTouchables: {
     flex: 1,

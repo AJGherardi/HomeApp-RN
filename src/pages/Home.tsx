@@ -25,7 +25,7 @@ export class HomePage extends React.Component<HomeProps> {
                         this.props.navigation.navigate("Devices");
                     }}
 
-                    rippleColor="#000000"
+                    rippleColor="#ffffff"
                 >
                     <View style={styles.homeItem}>
                         <Text style={styles.homeItemText}>Devices</Text>
@@ -38,7 +38,7 @@ export class HomePage extends React.Component<HomeProps> {
                     onPress={() => {
                         this.props.navigation.navigate("Groups");
                     }}
-                    rippleColor="#000000"
+                    rippleColor="#ffffff"
                 >
                     <View style={styles.homeItem}>
                         <Text style={styles.homeItemText}>Groups</Text>
@@ -51,7 +51,7 @@ export class HomePage extends React.Component<HomeProps> {
                     onPress={() => {
                         this.props.navigation.navigate("Devices");
                     }}
-                    rippleColor="#000000"
+                    rippleColor="#ffffff"
                 >
                     <View style={styles.homeItem}>
                         <Text style={styles.homeItemText}>Actions</Text>

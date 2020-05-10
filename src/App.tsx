@@ -23,6 +23,7 @@ import BottomSheetBehavior from "reanimated-bottom-sheet";
 import { AddHubPage } from "./pages/AddHub";
 import { AvailableHubsPage } from "./pages/AvailableHubs";
 import { AddHubSplashPage } from "./pages/AddHubSplash";
+import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
@@ -45,6 +46,7 @@ const screenOptions = {
 export default function App() {
   return (
     <NavigationContainer>
+      <SafeAreaProvider>
       <PaperProvider>
         <StatusBar barStyle="light-content" backgroundColor="#121212" />
         <RootStack.Navigator initialRouteName="Welcome" screenOptions={{
@@ -91,6 +93,7 @@ export default function App() {
           />
         </RootStack.Navigator>
       </PaperProvider>
+      </SafeAreaProvider>
     </NavigationContainer>
   );
 }
@@ -124,7 +127,7 @@ export class AppPages extends React.Component<AppProps> {
   )
   render() {
     return (
-      <View style={styles.page}>
+      <SafeAreaView style={styles.page}>
         <StatusBar barStyle="light-content" backgroundColor="#121212" />
         <AppStack.Navigator initialRouteName="Home" screenOptions={{
           cardStyle: {
@@ -155,7 +158,7 @@ export class AppPages extends React.Component<AppProps> {
           <Appbar.Action icon="menu" onPress={() => { bs.current?.snapTo(0) }} />
           <Appbar.Action icon="plus" onPress={() => { this.props.navigation.navigate("AddDeviceSplash") }} />
         </Appbar>
-      </View>
+      </SafeAreaView>
     );
   }
 }

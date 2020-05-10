@@ -33,7 +33,7 @@ export class DevicesPage extends React.Component<DevicesProps> {
                                 onPress={() => {
                                     this.props.navigation.navigate("Device");
                                 }}
-                                rippleColor="#000000"
+                                rippleColor="#ffffff"
                             >
                                 <View>
                                     <Image style={styles.itemView}
