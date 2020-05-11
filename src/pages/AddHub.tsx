@@ -44,9 +44,8 @@ export class AddHubPage extends React.Component<AddHubProps> {
             color="#FFEE58"
             mode="contained"
             onPress={async () => {
-              // var provData = (await GetProvData.getProvData()).getProvData
               console.log(this.props.route.params.host)
-              // ConfigHub.configHub()
+              ConfigHub.configHub()
               this.props.navigation.navigate("App")
             }}
           >

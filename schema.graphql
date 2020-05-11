@@ -20,7 +20,6 @@ type Group {
   name: String!
 }
 
-
 type Mutation {
   addDevice(addr: String!, devKey: String!, name: String!): Device!
   addGroup(name: String!): Group!

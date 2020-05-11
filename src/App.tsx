@@ -24,75 +24,69 @@ import { AddHubPage } from "./pages/AddHub";
 import { AvailableHubsPage } from "./pages/AvailableHubs";
 import { AddHubSplashPage } from "./pages/AddHubSplash";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
-const RootStack = createStackNavigator<RootStackParamList>();
+const RootStack = createNativeStackNavigator<RootStackParamList>();
 
-const AppStack = createStackNavigator<RootStackParamList>();
+const AppStack = createNativeStackNavigator<RootStackParamList>();
 
 const screenOptions = {
   headerShown: false,
-  transitionSpec: {
-    open: TransitionSpecs.TransitionIOSSpec,
-    close: TransitionSpecs.TransitionIOSSpec,
-  },
-  cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-  transitionConfig: () => ({
-    transitionSpec: {
-      duration: 0,
-    },
-  }),
+  stackAnimation: "fade"
 }
 
 export default function App() {
   return (
     <NavigationContainer>
       <SafeAreaProvider>
-      <PaperProvider>
-        <StatusBar barStyle="light-content" backgroundColor="#121212" />
-        <RootStack.Navigator initialRouteName="Welcome" screenOptions={{
-          cardStyle: {
-            backgroundColor: 'rgba(0,0,0,0.5)',
-          },
-          ...screenOptions
-        }}>
-          <RootStack.Screen
-            name="App"
-            component={AppPages}
-          />
-          <RootStack.Screen
-            name="Welcome"
-            component={WelcomePage}
-          />
-          <RootStack.Screen
-            name="AddDeviceSplash"
-            component={AddDeviceSplashPage}
-          />
-          <RootStack.Screen
-            name="AvailableDevices"
-            component={AvailableDevicesPage}
-          />
-          <RootStack.Screen
-            name="AddDevice"
-            component={AddDevicePage}
-          />
-          <RootStack.Screen
-            name="AddHubSplash"
-            component={AddHubSplashPage}
-          />
-          <RootStack.Screen
-            name="AvailableHubs"
-            component={AvailableHubsPage}
-          />
-          <RootStack.Screen
-            name="AddHub"
-            component={AddHubPage}
-          />
-          <RootStack.Screen
-            name="Device"
-            component={DevicePage}
-          />
-        </RootStack.Navigator>
-      </PaperProvider>
+        <PaperProvider>
+          <StatusBar barStyle="light-content" backgroundColor="#121212" />
+          <View style={styles.page}>
+            <RootStack.Navigator initialRouteName="Welcome" screenOptions={{
+              cardStyle: {
+                backgroundColor: 'rgba(0,0,0,0.5)',
+              },
+              ...screenOptions
+            }}>
+              <RootStack.Screen
+                name="App"
+                component={AppPages}
+              />
+              <RootStack.Screen
+                name="Welcome"
+                component={WelcomePage}
+              />
+              <RootStack.Screen
+                name="AddDeviceSplash"
+                component={AddDeviceSplashPage}
+              />
+              <RootStack.Screen
+                name="AvailableDevices"
+                component={AvailableDevicesPage}
+              />
+              <RootStack.Screen
+                name="AddDevice"
+                component={AddDevicePage}
+              />
+              <RootStack.Screen
+                name="AddHubSplash"
+                component={AddHubSplashPage}
+              />
+              <RootStack.Screen
+                name="AvailableHubs"
+                component={AvailableHubsPage}
+              />
+              <RootStack.Screen
+                name="AddHub"
+                component={AddHubPage}
+              />
+              <RootStack.Screen
+                name="Device"
+                component={DevicePage}
+              />
+            </RootStack.Navigator>
+          </View>
+        </PaperProvider>
       </SafeAreaProvider>
     </NavigationContainer>
   );

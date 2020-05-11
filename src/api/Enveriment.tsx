@@ -6,10 +6,10 @@ import {
 } from 'relay-runtime';
 
 function fetchQuery(
-  operation: { text: any; },
-  variables: any,
+  operation: any,
+  variables: any
 ) {
-  return fetch('http://192.168.1.204:8080/client', {
+  return fetch('http://192.168.1.198:8080/graphql', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
