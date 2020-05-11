@@ -1,9 +1,6 @@
 import "react-native-gesture-handler";
 import { NavigationContainer, RouteProp } from "@react-navigation/native";
 import {
-  createStackNavigator,
-  TransitionSpecs,
-  CardStyleInterpolators,
   StackNavigationProp,
 } from "@react-navigation/stack";
 import React from "react";
@@ -25,6 +22,7 @@ import { AvailableHubsPage } from "./pages/AvailableHubs";
 import { AddHubSplashPage } from "./pages/AddHubSplash";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import SplashScreen from 'react-native-splash-screen';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -35,61 +33,66 @@ const screenOptions = {
   stackAnimation: "fade"
 }
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <SafeAreaProvider>
-        <PaperProvider>
-          <StatusBar barStyle="light-content" backgroundColor="#121212" />
-          <View style={styles.page}>
-            <RootStack.Navigator initialRouteName="Welcome" screenOptions={{
-              cardStyle: {
-                backgroundColor: 'rgba(0,0,0,0.5)',
-              },
-              ...screenOptions
-            }}>
-              <RootStack.Screen
-                name="App"
-                component={AppPages}
-              />
-              <RootStack.Screen
-                name="Welcome"
-                component={WelcomePage}
-              />
-              <RootStack.Screen
-                name="AddDeviceSplash"
-                component={AddDeviceSplashPage}
-              />
-              <RootStack.Screen
-                name="AvailableDevices"
-                component={AvailableDevicesPage}
-              />
-              <RootStack.Screen
-                name="AddDevice"
-                component={AddDevicePage}
-              />
-              <RootStack.Screen
-                name="AddHubSplash"
-                component={AddHubSplashPage}
-              />
-              <RootStack.Screen
-                name="AvailableHubs"
-                component={AvailableHubsPage}
-              />
-              <RootStack.Screen
-                name="AddHub"
-                component={AddHubPage}
-              />
-              <RootStack.Screen
-                name="Device"
-                component={DevicePage}
-              />
-            </RootStack.Navigator>
-          </View>
-        </PaperProvider>
-      </SafeAreaProvider>
-    </NavigationContainer>
-  );
+export default class App extends React.Component {
+  componentDidMount() {
+    SplashScreen.hide()
+  }
+  render() {
+    return (
+      <NavigationContainer>
+        <SafeAreaProvider>
+          <PaperProvider>
+            <StatusBar barStyle="light-content" backgroundColor="#121212" />
+            <View style={styles.page}>
+              <RootStack.Navigator initialRouteName="Welcome" screenOptions={{
+                cardStyle: {
+                  backgroundColor: 'rgba(0,0,0,0.5)',
+                },
+                ...screenOptions
+              }}>
+                <RootStack.Screen
+                  name="App"
+                  component={AppPages}
+                />
+                <RootStack.Screen
+                  name="Welcome"
+                  component={WelcomePage}
+                />
+                <RootStack.Screen
+                  name="AddDeviceSplash"
+                  component={AddDeviceSplashPage}
+                />
+                <RootStack.Screen
+                  name="AvailableDevices"
+                  component={AvailableDevicesPage}
+                />
+                <RootStack.Screen
+                  name="AddDevice"
+                  component={AddDevicePage}
+                />
+                <RootStack.Screen
+                  name="AddHubSplash"
+                  component={AddHubSplashPage}
+                />
+                <RootStack.Screen
+                  name="AvailableHubs"
+                  component={AvailableHubsPage}
+                />
+                <RootStack.Screen
+                  name="AddHub"
+                  component={AddHubPage}
+                />
+                <RootStack.Screen
+                  name="Device"
+                  component={DevicePage}
+                />
+              </RootStack.Navigator>
+            </View>
+          </PaperProvider>
+        </SafeAreaProvider>
+      </NavigationContainer>
+    );
+  }
 }
 
 type AppNavigationProp = StackNavigationProp<RootStackParamList, "App">;
