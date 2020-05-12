@@ -1,8 +1,6 @@
 import "react-native-gesture-handler";
 import { NavigationContainer, RouteProp } from "@react-navigation/native";
-import {
-  StackNavigationProp,
-} from "@react-navigation/stack";
+import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 import { Provider as PaperProvider, Appbar, Button } from "react-native-paper";
 import { WelcomePage } from "./pages/Welcome";

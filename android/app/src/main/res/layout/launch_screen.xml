@@ -8,6 +8,5 @@
     <ImageView
         android:layout_width="297dp"
         android:layout_height="210dp"
-        android:src="@mipmap/icon"
-        />
+        android:src="@mipmap/icon" />
 </LinearLayout>
