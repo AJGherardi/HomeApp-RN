@@ -1,6 +1,6 @@
 import { fetchQuery, graphql } from 'relay-runtime';
-import environment from "./Enveriment";
 import { GetProvDataQuery, GetProvDataQueryResponse } from './__generated__/GetProvDataQuery.graphql';
+import { useHost } from './Enveriment';
 
 const query = graphql`
   query GetProvDataQuery {
@@ -17,7 +17,7 @@ const query = graphql`
 const variables = {};
 
 async function getProvData(): Promise<GetProvDataQueryResponse> {
-  return await fetchQuery<GetProvDataQuery>(environment, query, variables)
+  return await fetchQuery<GetProvDataQuery>(useHost(""), query, variables)
 }
 
 export default { getProvData };

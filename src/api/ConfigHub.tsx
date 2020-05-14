@@ -1,5 +1,5 @@
 import { graphql, commitMutation } from 'react-relay';
-import environment from "./Enveriment";
+import { useHost } from "./Enveriment";
 import { ConfigHubMutation } from './__generated__/ConfigHubMutation.graphql';
 
 const mutation = graphql`
@@ -8,9 +8,9 @@ const mutation = graphql`
   }
 `;
 
-function configHub() {
+function configHub(host: string) {
   return commitMutation<ConfigHubMutation>(
-    environment,
+    useHost(host),
     {
       mutation,
       variables: {

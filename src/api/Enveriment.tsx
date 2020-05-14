@@ -5,27 +5,29 @@ import {
   Store,
 } from 'relay-runtime';
 
-function fetchQuery(
-  operation: any,
-  variables: any
-) {
-  return fetch('http://192.168.1.198:8080/graphql', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: operation.text,
-      variables,
-    }),
-  }).then(response => {
-    return response.json();
-  });
+function makeNetwork(host: string) {
+  return function fetchQuery(
+    operation: any,
+    variables: any
+  ) {
+    return fetch('http://' + host + ':8080/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: operation.text,
+        variables,
+      }),
+    }).then(response => {
+      return response.json();
+    });
+  }
 }
 
-const environment = new Environment({
-  network: Network.create(fetchQuery),
-  store: new Store(new RecordSource()),
-});
-
-export default environment;
+export function useHost(host: string) {
+  return new Environment({
+    network: Network.create(makeNetwork(host)),
+    store: new Store(new RecordSource()),
+  });
+}

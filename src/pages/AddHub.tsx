@@ -43,9 +43,8 @@ export class AddHubPage extends React.Component<AddHubProps> {
             contentStyle={styles.nextButton}
             color="#FFEE58"
             mode="contained"
-            onPress={async () => {
-              console.log(this.props.route.params.host)
-              ConfigHub.configHub()
+            onPress={() => {
+              ConfigHub.configHub(this.props.route.params.host)
               this.props.navigation.navigate("App")
             }}
           >
