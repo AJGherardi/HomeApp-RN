@@ -6,6 +6,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { styles } from "../styles/Styles";
 import ConfigHub from "../api/ConfigHub";
 import GetProvData from "../api/GetProvData";
+import * as Keychain from 'react-native-keychain';
 
 type AddHubNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -43,8 +44,16 @@ export class AddHubPage extends React.Component<AddHubProps> {
             contentStyle={styles.nextButton}
             color="#FFEE58"
             mode="contained"
-            onPress={() => {
-              ConfigHub.configHub(this.props.route.params.host)
+            onPress={async () => {
+              // Configure the hub
+              var password = await ConfigHub.configHub(this.props.route.params.host)
+              // Save the key as root
+              await Keychain.setGenericPassword('root', password);
+              const credentials = await Keychain.getGenericPassword();
+              if (credentials) {
+                console.log(credentials.username)
+                console.log(credentials.password)
+              }
               this.props.navigation.navigate("App")
             }}
           >
