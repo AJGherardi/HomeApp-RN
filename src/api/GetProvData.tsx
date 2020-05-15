@@ -20,5 +20,5 @@ async function getProvData(): Promise<GetProvDataQueryResponse> {
   return await fetchQuery<GetProvDataQuery>(useHost(""), query, variables)
 }
 
-export default { getProvData };
+export { getProvData };
 

@@ -1,11 +1,11 @@
 import React from "react";
-import { Text, View, StatusBar, Image } from "react-native";
+import { Text, View, Image } from "react-native";
 import { Button } from "react-native-paper";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { styles } from "../styles/Styles";
-import ConfigHub from "../api/ConfigHub";
-import GetProvData from "../api/GetProvData";
+import { configHub } from "../api/ConfigHub";
+import { getProvData } from "../api/GetProvData";
 import * as Keychain from 'react-native-keychain';
 
 type AddHubNavigationProp = StackNavigationProp<
@@ -46,7 +46,7 @@ export class AddHubPage extends React.Component<AddHubProps> {
             mode="contained"
             onPress={async () => {
               // Configure the hub
-              var password = await ConfigHub.configHub(this.props.route.params.host)
+              var password = await configHub(this.props.route.params.host)
               // Save the key as root
               await Keychain.setGenericPassword('root', password);
               const credentials = await Keychain.getGenericPassword();

@@ -29,11 +29,11 @@ async function configHub(host: string): Promise<string> {
   // Call commit
   commit();
   // Wait for the response
-  var msg: string = await take(responseChannel);
+  var msg = await take(responseChannel);
   return msg
 }
 
 
 
 
-export default { configHub };
+export { configHub };
