@@ -6,7 +6,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { styles } from "../styles/Styles";
 import { configHub } from "../api/ConfigHub";
 import { getProvData } from "../api/GetProvData";
-import * as Keychain from 'react-native-keychain';
+import SInfo from "react-native-sensitive-info"
 
 type AddHubNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -46,14 +46,12 @@ export class AddHubPage extends React.Component<AddHubProps> {
             mode="contained"
             onPress={async () => {
               // Configure the hub
-              var password = await configHub(this.props.route.params.host)
+              var key = await configHub(this.props.route.params.host)
+              // Store webkey
+              await SInfo.setItem("webKey", key, {})
+              // Get webKey
+              console.log(await SInfo.getItem("webKey", {}))
               // Save the key as root
-              await Keychain.setGenericPassword('root', password);
-              const credentials = await Keychain.getGenericPassword();
-              if (credentials) {
-                console.log(credentials.username)
-                console.log(credentials.password)
-              }
               this.props.navigation.navigate("App")
             }}
           >

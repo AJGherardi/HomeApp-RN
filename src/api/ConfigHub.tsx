@@ -22,6 +22,9 @@ async function configHub(host: string): Promise<string> {
         },
         onCompleted: (response, errors) => {
           put(responseChannel, response.configHub);
+        },
+        onError: (error) => {
+          console.log(error)
         }
       }
     )
@@ -32,8 +35,5 @@ async function configHub(host: string): Promise<string> {
   var msg = await take(responseChannel);
   return msg
 }
-
-
-
 
 export { configHub };
