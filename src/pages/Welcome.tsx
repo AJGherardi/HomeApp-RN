@@ -4,6 +4,7 @@ import React from "react";
 import { Text, View, StatusBar } from "react-native";
 import { Button } from "react-native-paper";
 import { styles } from "../styles/Styles";
+import { RootStackParamList } from "./Navigation";
 
 type WelcomeNavigationProp = StackNavigationProp<RootStackParamList, "Welcome">;
 

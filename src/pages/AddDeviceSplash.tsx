@@ -4,6 +4,7 @@ import { styles } from "../styles/Styles";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { Button } from "react-native-paper";
+import { RootStackParamList } from "./Navigation";
 
 type AddDeviceSplashNavigationProp = StackNavigationProp<
   RootStackParamList,

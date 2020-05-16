@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { View, Text, Image } from "react-native";
 import { styles } from "../styles/Styles";
 import { Button } from "react-native-paper";
+import { RootStackParamList } from "./Navigation";
 
 type DeviceNavigationProp = StackNavigationProp<RootStackParamList, "Device">;
 

@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, StatusBar, Image } from "react-native";
 import { Button } from "react-native-paper";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { styles } from "../styles/Styles";
+import { RootStackParamList } from "./Navigation";
+import { provisionDevice } from "../ble/Ble";
 
 type AddDeviceNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -18,6 +20,7 @@ type AddDeviceProps = {
 };
 
 export function AddDevicePage({ route, navigation }: AddDeviceProps) {
+  const [loading, setLoading] = useState(false);
   return (
     <View style={styles.page}>
       <View style={styles.titleView}>
@@ -40,9 +43,11 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
           contentStyle={styles.nextButton}
           color="#FFEE58"
           mode="contained"
+          loading={loading}
           onPress={async () => {
             // var provData = (await GetProvData.getProvData()).getProvData
-            // console.log(provData.keyIndex)
+            setLoading(true)
+            await provisionDevice(route.params.device)
             // ConfigHub.configHub()
             navigation.navigate("App")
           }}

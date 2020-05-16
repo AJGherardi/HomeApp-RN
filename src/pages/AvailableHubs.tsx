@@ -5,6 +5,7 @@ import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { TouchableRipple, ActivityIndicator } from "react-native-paper";
 import Zeroconf, { Service } from 'react-native-zeroconf'
+import { RootStackParamList } from "./Navigation";
 
 const zeroconf = new Zeroconf()
 

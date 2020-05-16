@@ -4,6 +4,7 @@ import React from "react";
 import { View, Image, FlatList } from "react-native";
 import { Text, TouchableRipple } from "react-native-paper";
 import { styles } from "../styles/Styles";
+import { RootStackParamList } from "./Navigation";
 
 type DevicesNavigationProp = StackNavigationProp<RootStackParamList, "Devices">;
 

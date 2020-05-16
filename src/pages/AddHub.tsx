@@ -7,6 +7,7 @@ import { styles } from "../styles/Styles";
 import { configHub } from "../api/ConfigHub";
 import { getProvData } from "../api/GetProvData";
 import SInfo from "react-native-sensitive-info"
+import { RootStackParamList } from "./Navigation";
 
 type AddHubNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -45,10 +46,10 @@ export function AddHubPage({ route, navigation }: AddHubProps) {
           mode="contained"
           onPress={async () => {
             // Configure the hub
-            var key = await configHub(route.params.host)
+            // var key = await configHub(route.params.host)
             // Store webkey
             // await SInfo.setItem("webKey", key, {})
-            var test = await getProvData(route.params.host)
+            // var test = await getProvData(route.params.host)
             navigation.navigate("App")
           }}
         >

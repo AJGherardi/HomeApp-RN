@@ -4,6 +4,7 @@ import React from "react";
 import { View, StatusBar, Image, FlatList } from "react-native";
 import { Text, TouchableRipple, Appbar } from "react-native-paper";
 import { styles } from "../styles/Styles";
+import { RootStackParamList } from "./Navigation";
 
 type GroupsNavigationProp = StackNavigationProp<RootStackParamList, "Groups">;
 
