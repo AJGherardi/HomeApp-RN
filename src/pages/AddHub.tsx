@@ -47,7 +47,7 @@ export function AddHubPage({ route, navigation }: AddHubProps) {
             // Configure the hub
             var key = await configHub(route.params.host)
             // Store webkey
-            await SInfo.setItem("webKey", key, {})
+            // await SInfo.setItem("webKey", key, {})
             var test = await getProvData(route.params.host)
             navigation.navigate("App")
           }}

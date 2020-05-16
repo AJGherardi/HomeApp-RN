@@ -34,6 +34,11 @@ export function AvailableHubsPage({ route, navigation }: AvailableHubsProps) {
       setLoading(false)
     })
     zeroconf.scan('alexandergherardi', 'tcp', 'local.')
+    return () => {
+      zeroconf.stop()
+      setLoading(true)
+      setHubs([])
+    }
   }, []);
 
   return (
@@ -51,7 +56,6 @@ export function AvailableHubsPage({ route, navigation }: AvailableHubsProps) {
                 style={styles.listItem}
                 borderless={true}
                 onPress={() => {
-                  zeroconf.stop()
                   navigation.navigate("AddHub", { host: item.host });
                 }}
                 rippleColor="#ffffff"
