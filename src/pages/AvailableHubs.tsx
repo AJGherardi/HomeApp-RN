@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, FlatList } from "react-native";
 import { styles } from "../styles/Styles";
 import { RouteProp } from "@react-navigation/native";
@@ -23,46 +23,47 @@ type AvailableHubsProps = {
   navigation: AvailableHubsNavigationProp;
 };
 
-export class AvailableHubsPage extends React.Component<AvailableHubsProps> {
-  state = {
-    hubs: [],
-    loading: true
-  }
-  componentDidMount() {
+export function AvailableHubsPage({ route, navigation }: AvailableHubsProps) {
+  const [loading, setLoading] = useState(true);
+  const [hubs, setHubs] = useState<Service[]>([]);
+
+  useEffect(() => {
     zeroconf.on('resolved', service => {
-      this.setState({ hubs: [service], loading: false });
+      console.log(service)
+      setHubs([service])
+      setLoading(false)
     })
     zeroconf.scan('alexandergherardi', 'tcp', 'local.')
-  }
-  render() {
-    return (
-      <View style={styles.page}>
-        <View style={styles.titleView}>
-          <Text style={styles.titleText}>Find your Hub</Text>
-        </View>
-        <View style={styles.centerView}>
-          {this.state.loading ? <ActivityIndicator color="#ffffff" size="large" /> : (
-            <FlatList
-              style={styles.listView}
-              data={this.state.hubs}
-              renderItem={({ item }) => (
-                <TouchableRipple
-                  style={styles.listItem}
-                  borderless={true}
-                  onPress={() => {
-                    zeroconf.stop()
-                    this.props.navigation.navigate("AddHub", { host: item.host });
-                  }}
-                  rippleColor="#ffffff"
-                >
-                  <Text style={styles.listItemText}>{item.name}</Text>
-                </TouchableRipple>
-              )}
-              keyExtractor={(item: Service) => item.host}
-            />)}
-        </View>
-        <View style={styles.nextView}></View>
+  }, []);
+
+  return (
+    <View style={styles.page}>
+      <View style={styles.titleView}>
+        <Text style={styles.titleText}>Find your Hub</Text>
       </View>
-    );
-  }
+      <View style={styles.centerView}>
+        {loading ? <ActivityIndicator color="#ffffff" size="large" /> : (
+          <FlatList
+            style={styles.listView}
+            data={hubs}
+            renderItem={({ item }) => (
+              <TouchableRipple
+                style={styles.listItem}
+                borderless={true}
+                onPress={() => {
+                  zeroconf.stop()
+                  navigation.navigate("AddHub", { host: item.host });
+                }}
+                rippleColor="#ffffff"
+              >
+                <Text style={styles.listItemText}>{item.name}</Text>
+              </TouchableRipple>
+            )}
+            keyExtractor={(item: Service) => item.host}
+          />)}
+      </View>
+      <View style={styles.nextView}></View>
+    </View>
+  );
 }
+

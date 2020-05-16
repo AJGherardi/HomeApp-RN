@@ -20,37 +20,36 @@ type AvailableDevicesProps = {
   navigation: AvailableDevicesNavigationProp;
 };
 
-export class AvailableDevicesPage extends React.Component<AvailableDevicesProps> {
-  render() {
-    return (
-      <View style={styles.page}>
-        <View style={styles.titleView}>
-          <Text style={styles.titleText}>Find your Device</Text>
-        </View>
-        <View style={styles.centerView}>
-          <FlatList
-            style={styles.listView}
-            data={DATA}
-            renderItem={({ item }) => (
-              <TouchableRipple
-                style={styles.listItem}
-                borderless={true}
-                onPress={() => {
-                  this.props.navigation.navigate("AddDevice");
-                }}
-                rippleColor="#ffffff"
-              >
-                <Text style={styles.listItemText}>HomeDevice</Text>
-              </TouchableRipple>
-            )}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
-        <View style={styles.nextView}></View>
+export function AvailableDevicesPage({ route, navigation }: AvailableDevicesProps) {
+  return (
+    <View style={styles.page}>
+      <View style={styles.titleView}>
+        <Text style={styles.titleText}>Find your Device</Text>
       </View>
-    );
-  }
+      <View style={styles.centerView}>
+        <FlatList
+          style={styles.listView}
+          data={DATA}
+          renderItem={({ item }) => (
+            <TouchableRipple
+              style={styles.listItem}
+              borderless={true}
+              onPress={() => {
+                navigation.navigate("AddDevice");
+              }}
+              rippleColor="#ffffff"
+            >
+              <Text style={styles.listItemText}>HomeDevice</Text>
+            </TouchableRipple>
+          )}
+          keyExtractor={(item) => item.id}
+        />
+      </View>
+      <View style={styles.nextView}></View>
+    </View>
+  );
 }
+
 
 const DATA = [
   {

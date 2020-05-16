@@ -20,29 +20,28 @@ type AddHubSplashProps = {
   navigation: AddHubSplashNavigationProp;
 };
 
-export class AddHubSplashPage extends React.Component<AddHubSplashProps> {
-  render() {
-    return (
-      <View style={styles.page}>
-        <View style={styles.titleView}>
-          <Text style={styles.titleText}>Add A Hub</Text>
-        </View>
-        <View style={styles.centerView}>
-          <Image source={require("../../assets/outlet.png")} />
-        </View>
-        <View style={styles.nextView}>
-          <Button
-            contentStyle={styles.nextButton}
-            color="white"
-            mode="contained"
-            onPress={() => {
-              this.props.navigation.navigate("AvailableHubs");
-            }}
-          >
-            Next
-          </Button>
-        </View>
+export function AddHubSplashPage({ route, navigation }: AddHubSplashProps) {
+  return (
+    <View style={styles.page}>
+      <View style={styles.titleView}>
+        <Text style={styles.titleText}>Add A Hub</Text>
       </View>
-    );
-  }
+      <View style={styles.centerView}>
+        <Image source={require("../../assets/outlet.png")} />
+      </View>
+      <View style={styles.nextView}>
+        <Button
+          contentStyle={styles.nextButton}
+          color="white"
+          mode="contained"
+          onPress={() => {
+            navigation.navigate("AvailableHubs");
+          }}
+        >
+          Next
+          </Button>
+      </View>
+    </View>
+  );
 }
+

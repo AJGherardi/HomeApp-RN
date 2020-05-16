@@ -14,41 +14,39 @@ type DevicesProps = {
     navigation: DevicesNavigationProp;
 };
 
-export class DevicesPage extends React.Component<DevicesProps> {
-    render() {
-        return (
-            <View style={styles.page}>
-                <View style={styles.titleView}>
-                    <Text style={styles.titleText}>Devices</Text>
-                </View>
-                <View style={styles.centerView}>
-                    <FlatList
-                        style={styles.listView}
-                        contentContainerStyle={styles.listContent}
-                        data={DATA}
-                        renderItem={({ item }) => (
-                            <TouchableRipple
-                                style={styles.item}
-                                borderless={true}
-                                onPress={() => {
-                                    this.props.navigation.navigate("Device");
-                                }}
-                                rippleColor="#ffffff"
-                            >
-                                <View>
-                                    <Image style={styles.itemView}
-                                        source={require("../../assets/plug.png")} />
-                                    <Text style={styles.itemText}>HomeDevice</Text>
-                                </View>
-                            </TouchableRipple>
-                        )}
-                        numColumns={2}
-                        keyExtractor={(item) => item.id}
-                    />
-                </View>
+export function DevicesPage({ route, navigation }: DevicesProps) {
+    return (
+        <View style={styles.page}>
+            <View style={styles.titleView}>
+                <Text style={styles.titleText}>Devices</Text>
             </View>
-        )
-    }
+            <View style={styles.centerView}>
+                <FlatList
+                    style={styles.listView}
+                    contentContainerStyle={styles.listContent}
+                    data={DATA}
+                    renderItem={({ item }) => (
+                        <TouchableRipple
+                            style={styles.item}
+                            borderless={true}
+                            onPress={() => {
+                                navigation.navigate("Device");
+                            }}
+                            rippleColor="#ffffff"
+                        >
+                            <View>
+                                <Image style={styles.itemView}
+                                    source={require("../../assets/plug.png")} />
+                                <Text style={styles.itemText}>HomeDevice</Text>
+                            </View>
+                        </TouchableRipple>
+                    )}
+                    numColumns={2}
+                    keyExtractor={(item) => item.id}
+                />
+            </View>
+        </View>
+    )
 }
 
 const DATA = [

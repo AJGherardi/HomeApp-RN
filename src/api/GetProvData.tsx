@@ -16,8 +16,8 @@ const query = graphql`
 
 const variables = {};
 
-async function getProvData(): Promise<GetProvDataQueryResponse> {
-  return await fetchQuery<GetProvDataQuery>(useHost(""), query, variables)
+async function getProvData(host: string): Promise<GetProvDataQueryResponse> {
+  return await fetchQuery<GetProvDataQuery>(useHost(host), query, variables)
 }
 
 export { getProvData };

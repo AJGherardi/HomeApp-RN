@@ -1,7 +1,7 @@
 import "react-native-gesture-handler";
 import { NavigationContainer, RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import React from "react";
+import React, { useEffect } from "react";
 import { Provider as PaperProvider, Appbar, Button } from "react-native-paper";
 import { WelcomePage } from "./pages/Welcome";
 import { AddDeviceSplashPage } from "./pages/AddDeviceSplash";
@@ -31,67 +31,66 @@ const screenOptions = {
   stackAnimation: "fade"
 }
 
-export default class App extends React.Component {
-  componentDidMount() {
+export default function App() {
+  useEffect(() => {
     SplashScreen.hide()
-  }
-  render() {
-    return (
-      <NavigationContainer>
-        <SafeAreaProvider>
-          <PaperProvider>
-            <StatusBar barStyle="light-content" backgroundColor="#121212" />
-            <View style={styles.page}>
-              <RootStack.Navigator initialRouteName="Welcome" screenOptions={{
-                cardStyle: {
-                  backgroundColor: 'rgba(0,0,0,0.5)',
-                },
-                ...screenOptions
-              }}>
-                <RootStack.Screen
-                  name="App"
-                  component={AppPages}
-                />
-                <RootStack.Screen
-                  name="Welcome"
-                  component={WelcomePage}
-                />
-                <RootStack.Screen
-                  name="AddDeviceSplash"
-                  component={AddDeviceSplashPage}
-                />
-                <RootStack.Screen
-                  name="AvailableDevices"
-                  component={AvailableDevicesPage}
-                />
-                <RootStack.Screen
-                  name="AddDevice"
-                  component={AddDevicePage}
-                />
-                <RootStack.Screen
-                  name="AddHubSplash"
-                  component={AddHubSplashPage}
-                />
-                <RootStack.Screen
-                  name="AvailableHubs"
-                  component={AvailableHubsPage}
-                />
-                <RootStack.Screen
-                  name="AddHub"
-                  component={AddHubPage}
-                />
-                <RootStack.Screen
-                  name="Device"
-                  component={DevicePage}
-                />
-              </RootStack.Navigator>
-            </View>
-          </PaperProvider>
-        </SafeAreaProvider>
-      </NavigationContainer>
-    );
-  }
+  }, []);
+  return (
+    <NavigationContainer>
+      <SafeAreaProvider>
+        <PaperProvider>
+          <StatusBar barStyle="light-content" backgroundColor="#121212" />
+          <View style={styles.page}>
+            <RootStack.Navigator initialRouteName="Welcome" screenOptions={{
+              cardStyle: {
+                backgroundColor: 'rgba(0,0,0,0.5)',
+              },
+              ...screenOptions
+            }}>
+              <RootStack.Screen
+                name="App"
+                component={AppPages}
+              />
+              <RootStack.Screen
+                name="Welcome"
+                component={WelcomePage}
+              />
+              <RootStack.Screen
+                name="AddDeviceSplash"
+                component={AddDeviceSplashPage}
+              />
+              <RootStack.Screen
+                name="AvailableDevices"
+                component={AvailableDevicesPage}
+              />
+              <RootStack.Screen
+                name="AddDevice"
+                component={AddDevicePage}
+              />
+              <RootStack.Screen
+                name="AddHubSplash"
+                component={AddHubSplashPage}
+              />
+              <RootStack.Screen
+                name="AvailableHubs"
+                component={AvailableHubsPage}
+              />
+              <RootStack.Screen
+                name="AddHub"
+                component={AddHubPage}
+              />
+              <RootStack.Screen
+                name="Device"
+                component={DevicePage}
+              />
+            </RootStack.Navigator>
+          </View>
+        </PaperProvider>
+      </SafeAreaProvider>
+    </NavigationContainer>
+  );
 }
+
 
 type AppNavigationProp = StackNavigationProp<RootStackParamList, "App">;
 
@@ -102,60 +101,58 @@ type AppProps = {
   navigation: AppNavigationProp;
 };
 
-export class AppPages extends React.Component<AppProps> {
-  sheetContent = () => (
-    <View style={{
-      height: 200, backgroundColor: "#252525",
-      borderRadius: 30, justifyContent: "center", alignItems: "center",
-    }}>
-      <Button
-        contentStyle={styles.nextButton}
-        color="white"
-        mode="contained"
-        onPress={() => {
-          this.props.navigation.navigate("Welcome");
-        }}
-      >
-        Next
-      </Button>
-    </View>
-  )
-  render() {
-    return (
-      <SafeAreaView style={styles.page}>
-        <StatusBar barStyle="light-content" backgroundColor="#121212" />
-        <AppStack.Navigator initialRouteName="Home" screenOptions={{
-          cardStyle: {
-            backgroundColor: 'rgba(0,0,0,0.5)',
-          },
-          ...screenOptions
-        }}>
-          <AppStack.Screen
-            name="Home"
-            component={HomePage}
-          />
-          <AppStack.Screen
-            name="Devices"
-            component={DevicesPage}
-          />
-          <AppStack.Screen
-            name="Groups"
-            component={GroupsPage}
-          />
-        </AppStack.Navigator>
-        <BottomSheet
-          ref={bs}
-          snapPoints={[200, 0, 0]}
-          renderContent={this.sheetContent}
-          initialSnap={2}
+export function AppPages({ route, navigation }: AppProps) {
+  return (
+    <SafeAreaView style={styles.page}>
+      <StatusBar barStyle="light-content" backgroundColor="#121212" />
+      <AppStack.Navigator initialRouteName="Home" screenOptions={{
+        cardStyle: {
+          backgroundColor: 'rgba(0,0,0,0.5)',
+        },
+        ...screenOptions
+      }}>
+        <AppStack.Screen
+          name="Home"
+          component={HomePage}
         />
-        <Appbar style={styles.appBar}>
-          <Appbar.Action icon="menu" onPress={() => { bs.current?.snapTo(0) }} />
-          <Appbar.Action icon="plus" onPress={() => { this.props.navigation.navigate("AddDeviceSplash") }} />
-        </Appbar>
-      </SafeAreaView>
-    );
-  }
+        <AppStack.Screen
+          name="Devices"
+          component={DevicesPage}
+        />
+        <AppStack.Screen
+          name="Groups"
+          component={GroupsPage}
+        />
+      </AppStack.Navigator>
+      <BottomSheet
+        ref={bs}
+        snapPoints={[200, 0, 0]}
+        renderContent={() => (
+          <View style={{
+            height: 200, backgroundColor: "#252525",
+            borderRadius: 30, justifyContent: "center", alignItems: "center",
+          }}>
+            <Button
+              contentStyle={styles.nextButton}
+              color="white"
+              mode="contained"
+              onPress={() => {
+                navigation.navigate("Welcome");
+              }}
+            >
+              Next
+          </Button>
+          </View>
+        )}
+        initialSnap={2}
+      />
+      <Appbar style={styles.appBar}>
+        <Appbar.Action icon="menu" onPress={() => { bs.current?.snapTo(0) }} />
+        <Appbar.Action icon="plus" onPress={() => { navigation.navigate("AddDeviceSplash") }} />
+      </Appbar>
+    </SafeAreaView>
+  );
 }
+
 
 var bs = React.createRef<BottomSheetBehavior>()
