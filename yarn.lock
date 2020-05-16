@@ -1351,6 +1351,9 @@ ajv@^6.10.0, ajv@^6.10.2, ajv@^6.5.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+"alexander-gherardi-mesh-crypto@file:../RnMeshCryptro":
+  version "1.0.0"
+
 anser@^1.4.9:
   version "1.4.9"
   resolved "https://registry.yarnpkg.com/anser/-/anser-1.4.9.tgz#1f85423a5dcf8da4631a341665ff675b96845760"
@@ -5360,6 +5363,11 @@ react-is@^16.12.0, react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1, react-
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-native-ble-plx@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-ble-plx/-/react-native-ble-plx-2.0.0.tgz#e4ef38844922efeaa04836d33d548cfa7838604a"
+  integrity sha512-e6ProO4b24bJwzcJADgbioLcCBZ4fE4pqKT0el1v6KR7tFZOLSDO8hYLLz9l8RX8/OBoIX+8T4c02aURkAuMcA==
 
 react-native-gesture-handler@^1.6.1:
   version "1.6.1"

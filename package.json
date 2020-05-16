@@ -20,6 +20,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-native": "0.62.2",
+    "react-native-ble-plx": "^2.0.0",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-paper": "^3.10.1",
     "react-native-reanimated": "^1.8.0",
@@ -34,7 +35,8 @@
     "react-navigation-stack": "^2.4.0",
     "react-relay": "^9.1.0",
     "reanimated-bottom-sheet": "^1.0.0-alpha.20",
-    "relay-compiler-language-typescript": "^12.0.2"
+    "relay-compiler-language-typescript": "^12.0.2",
+    "alexander-gherardi-mesh-crypto": "file:../RnMeshCryptro"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
