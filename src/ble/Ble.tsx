@@ -48,7 +48,14 @@ export function stopDeviceScan() {
     subscription.remove();
 }
 
-export async function provisionDevice(device: Device) {
+export async function provisionDevice(
+    device: Device,
+    networkKey: string,
+    keyIndex: string,
+    flags: string,
+    ivIndex: string,
+    unicastAddress: string
+): Promise<string> {
     await device.connect();
     await device.discoverAllServicesAndCharacteristics();
     await device.requestMTU(128);
@@ -130,12 +137,6 @@ export async function provisionDevice(device: Device) {
     var sessionKey = await calculateK1(PRSK, secret, provSalt);
     var sessionNonce = await getSessionNonce(secret, provSalt);
     var deviceKey = await calculateK1(PRDK, secret, provSalt);
-    // ProvData
-    var networkKey = await genSecureRandom(16);
-    var keyIndex = 'AAA=';
-    var flags = 'AA==';
-    var ivIndex = 'AAAAAA==';
-    var unicastAddress = 'AAA=';
     var provData = await genProvData(
         networkKey,
         keyIndex,
@@ -152,6 +153,7 @@ export async function provisionDevice(device: Device) {
         provDataPdu,
     );
     device.cancelConnection()
+    return deviceKey
 }
 
 

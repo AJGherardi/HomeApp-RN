@@ -6,6 +6,9 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { styles } from "../styles/Styles";
 import { RootStackParamList } from "./Navigation";
 import { provisionDevice } from "../ble/Ble";
+import { getProvData } from "../api/GetProvData";
+import { addGroup } from "../api/AddGroup";
+import { addDevice } from "../api/AddDevice";
 
 type AddDeviceNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -45,10 +48,18 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
           mode="contained"
           loading={loading}
           onPress={async () => {
-            // var provData = (await GetProvData.getProvData()).getProvData
             setLoading(true)
-            await provisionDevice(route.params.device)
-            // ConfigHub.configHub()
+            var provData = (await getProvData("192.168.1.204")).getProvData
+            var devKey = await provisionDevice(
+              route.params.device,
+              provData.networkKey,
+              provData.keyIndex,
+              provData.flags,
+              provData.ivIndex,
+              provData.nextDevAddr,
+            )
+            var group = (await addGroup("192.168.1.204", "main")).addGroup
+            var device = await addDevice("192.168.1.204", "test", devKey, group.addr)
             navigation.navigate("App")
           }}
         >
