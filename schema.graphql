@@ -35,6 +35,7 @@ type Query {
   getProvData: ProvData!
   getState(devAddr: String!, elemNumber: Int!): State!
   listDevices: [Device!]!
+  listDevicesByGroup(addr: String!): [Device!]!
   listGroups: [Group!]!
 }
 

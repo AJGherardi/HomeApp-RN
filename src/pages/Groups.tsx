@@ -5,28 +5,27 @@ import { View, StatusBar, Image, FlatList } from "react-native";
 import { Text, TouchableRipple, Appbar, ActivityIndicator } from "react-native-paper";
 import { styles } from "../styles/Styles";
 import { RootStackParamList } from "./Navigation";
+import { ListGroupsQueryResponse } from "../api/__generated__/ListGroupsQuery.graphql";
 import { listGroups } from "../api/ListGroups";
-import { ListDevicesByGroupQueryResponse } from "../api/__generated__/ListDevicesByGroupQuery.graphql";
-import { listDevicesByGroup } from "../api/ListDevicesByGroup";
 
-type GroupNavigationProp = StackNavigationProp<RootStackParamList, "Group">;
+type GroupsNavigationProp = StackNavigationProp<RootStackParamList, "Groups">;
 
-type GroupRouteProp = RouteProp<RootStackParamList, "Group">;
+type GroupsRouteProp = RouteProp<RootStackParamList, "Groups">;
 
-type GroupProps = {
-    route: GroupRouteProp;
-    navigation: GroupNavigationProp;
+type GroupsProps = {
+    route: GroupsRouteProp;
+    navigation: GroupsNavigationProp;
 };
 
-export function GroupPage({ route, navigation }: GroupProps) {
+export function GroupsPage({ route, navigation }: GroupsProps) {
     const [loading, setLoading] = useState(true);
-    const [devices, setDevices] = useState<ListDevicesByGroupQueryResponse>();
+    const [groups, setGroups] = useState<ListGroupsQueryResponse>();
 
     useEffect(() => {
         async function getDevice() {
-            var devices = await listDevicesByGroup("192.168.1.204", route.params.addr)
+            var groups = await listGroups("192.168.1.204")
             setLoading(false)
-            setDevices(devices)
+            setGroups(groups)
         }
         getDevice()
         return () => {
@@ -37,20 +36,20 @@ export function GroupPage({ route, navigation }: GroupProps) {
     return (
         <View style={styles.page}>
             <View style={styles.titleView}>
-                <Text style={styles.titleText}>{route.params.name}</Text>
+                <Text style={styles.titleText}>Groups</Text>
             </View>
             <View style={styles.centerView}>
                 {loading ? <ActivityIndicator color="#ffffff" size="large" /> : (
                     <FlatList
                         style={styles.listView}
                         contentContainerStyle={styles.listContent}
-                        data={devices?.listDevicesByGroup}
+                        data={groups?.listGroups}
                         renderItem={({ item }) => (
                             <TouchableRipple
                                 style={styles.item}
                                 borderless={true}
                                 onPress={() => {
-                                    navigation.navigate("Device", { devAddr: item.addr });
+                                    navigation.navigate("Group", { addr: item.addr, name: item.name });
                                 }}
                                 rippleColor="#ffffff"
                             >

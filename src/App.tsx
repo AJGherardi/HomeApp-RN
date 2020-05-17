@@ -9,7 +9,7 @@ import { AvailableDevicesPage } from "./pages/AvailableDevices";
 import { AddDevicePage } from "./pages/AddDevice";
 import { HomePage } from "./pages/Home";
 import { DevicesPage } from "./pages/Devices";
-import { GroupsPage } from "./pages/Group";
+import { GroupsPage } from "./pages/Groups";
 import { styles } from "./styles/Styles";
 import { View, StatusBar } from "react-native";
 import { DevicePage } from "./pages/Device";
@@ -22,6 +22,7 @@ import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import SplashScreen from 'react-native-splash-screen';
 import { RootStackParamList } from "./pages/Navigation";
+import { GroupPage } from "./pages/Group";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -123,6 +124,10 @@ export function AppPages({ route, navigation }: AppProps) {
         <AppStack.Screen
           name="Groups"
           component={GroupsPage}
+        />
+        <AppStack.Screen
+          name="Group"
+          component={GroupPage}
         />
       </AppStack.Navigator>
       <BottomSheet
