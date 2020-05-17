@@ -43,7 +43,7 @@ type Query {
 }
 
 type State {
-  state: bytes!
+  state: String!
   stateType: String!
 }
 
