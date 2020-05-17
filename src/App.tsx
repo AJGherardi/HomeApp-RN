@@ -1,8 +1,8 @@
 import "react-native-gesture-handler";
 import { NavigationContainer, RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import React, { useEffect } from "react";
-import { Provider as PaperProvider, Appbar, Button } from "react-native-paper";
+import React, { useEffect, useState } from "react";
+import { Provider as PaperProvider, Appbar, Button, IconButton } from "react-native-paper";
 import { WelcomePage } from "./pages/Welcome";
 import { AddDeviceSplashPage } from "./pages/AddDeviceSplash";
 import { AvailableDevicesPage } from "./pages/AvailableDevices";
@@ -23,6 +23,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import SplashScreen from 'react-native-splash-screen';
 import { RootStackParamList } from "./pages/Navigation";
 import { GroupPage } from "./pages/Group";
+import { Text } from "react-native-paper";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -104,6 +105,7 @@ type AppProps = {
 };
 
 export function AppPages({ route, navigation }: AppProps) {
+  const [visable, setVisable] = useState(true);
   return (
     <SafeAreaView style={styles.page}>
       <StatusBar barStyle="light-content" backgroundColor="#121212" />
@@ -132,29 +134,51 @@ export function AppPages({ route, navigation }: AppProps) {
       </AppStack.Navigator>
       <BottomSheet
         ref={bs}
-        snapPoints={[200, 0, 0]}
+        snapPoints={[300, 0, 0]}
+        renderHeader={() => (<View></View>)}
         renderContent={() => (
           <View style={{
-            height: 200, backgroundColor: "#252525",
+            height: 300, backgroundColor: "#252525",
             borderRadius: 30, justifyContent: "center", alignItems: "center",
           }}>
-            <Button
-              contentStyle={styles.nextButton}
-              color="white"
-              mode="contained"
-              onPress={() => {
-                navigation.navigate("Welcome");
-              }}
-            >
-              Next
+            <View style={{ flex: 1, justifyContent: "space-around", alignItems: "center", flexDirection: "row" }}>
+              <IconButton color="white" icon="chevron-down" size={52} onPress={() => {
+                bs.current?.snapTo(2)
+                setVisable(true)
+              }} />
+              <Text style={styles.titleText}>Options</Text>
+            </View>
+            <View style={{ flex: 1 }}>
+              <Button
+                contentStyle={styles.nextButton}
+                color="white"
+                mode="contained"
+                onPress={() => {
+                  navigation.navigate("Welcome");
+                }}
+              >
+                Reset
           </Button>
+            </View>
+
           </View>
         )}
         initialSnap={2}
       />
       <Appbar style={styles.appBar}>
-        <Appbar.Action icon="menu" onPress={() => { bs.current?.snapTo(0) }} />
-        <Appbar.Action icon="plus" onPress={() => { navigation.navigate("AddDeviceSplash") }} />
+        {visable &&
+          <View >
+            <Appbar.Action color="white" icon="menu" onPress={() => {
+              bs.current?.snapTo(0)
+              setVisable(false)
+            }} />
+          </View>
+        }
+        {visable &&
+          <View>
+            <Appbar.Action color="white" icon="plus" onPress={() => { navigation.navigate("AddDeviceSplash") }} />
+          </View>
+        }
       </Appbar>
     </SafeAreaView>
   );
