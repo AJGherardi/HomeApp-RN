@@ -9,7 +9,7 @@ export type SetStateMutationVariables = {
 };
 export type SetStateMutationResponse = {
     readonly setState: {
-        readonly state: unknown;
+        readonly state: string;
         readonly stateType: string;
     };
 };

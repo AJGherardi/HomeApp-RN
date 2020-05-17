@@ -1,10 +1,12 @@
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Image, FlatList } from "react-native";
-import { Text, TouchableRipple } from "react-native-paper";
+import { Text, TouchableRipple, ActivityIndicator } from "react-native-paper";
 import { styles } from "../styles/Styles";
 import { RootStackParamList } from "./Navigation";
+import { listDevices } from "../api/ListDevices";
+import { ListDevicesQueryResponse } from "src/api/__generated__/ListDevicesQuery.graphql";
 
 type DevicesNavigationProp = StackNavigationProp<RootStackParamList, "Devices">;
 
@@ -16,51 +18,53 @@ type DevicesProps = {
 };
 
 export function DevicesPage({ route, navigation }: DevicesProps) {
+    const [loading, setLoading] = useState(true);
+    const [devices, setDevices] = useState<ListDevicesQueryResponse>();
+
+    useEffect(() => {
+        async function getDevice() {
+            var devices = await listDevices("192.168.1.204")
+            setLoading(false)
+            setDevices(devices)
+        }
+        getDevice()
+        return () => {
+            setLoading(true)
+        }
+    }, []);
+
     return (
         <View style={styles.page}>
             <View style={styles.titleView}>
                 <Text style={styles.titleText}>Devices</Text>
             </View>
             <View style={styles.centerView}>
-                <FlatList
-                    style={styles.listView}
-                    contentContainerStyle={styles.listContent}
-                    data={DATA}
-                    renderItem={({ item }) => (
-                        <TouchableRipple
-                            style={styles.item}
-                            borderless={true}
-                            onPress={() => {
-                                navigation.navigate("Device");
-                            }}
-                            rippleColor="#ffffff"
-                        >
-                            <View>
-                                <Image style={styles.itemView}
-                                    source={require("../../assets/plug.png")} />
-                                <Text style={styles.itemText}>HomeDevice</Text>
-                            </View>
-                        </TouchableRipple>
-                    )}
-                    numColumns={2}
-                    keyExtractor={(item) => item.id}
-                />
+                {loading ? <ActivityIndicator color="#ffffff" size="large" /> : (
+                    <FlatList
+                        style={styles.listView}
+                        contentContainerStyle={styles.listContent}
+                        data={devices?.listDevices}
+                        renderItem={({ item }) => (
+                            <TouchableRipple
+                                style={styles.item}
+                                borderless={true}
+                                onPress={() => {
+                                    navigation.navigate("Device", {devAddr: item.addr});
+                                }}
+                                rippleColor="#ffffff"
+                            >
+                                <View>
+                                    <Image style={styles.itemView}
+                                        source={require("../../assets/plug.png")} />
+                                    <Text style={styles.itemText}>{item.name}</Text>
+                                </View>
+                            </TouchableRipple>
+                        )}
+                        numColumns={2}
+                        keyExtractor={(item) => item.addr}
+                    />
+                )}
             </View>
         </View>
     )
 }
-
-const DATA = [
-    {
-        id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-        title: "First Item",
-    },
-    {
-        id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-        title: "Second Item",
-    },
-    {
-        id: "58694a0f-3da1-471f-bd96-145571e29d72",
-        title: "Third Item",
-    },
-];

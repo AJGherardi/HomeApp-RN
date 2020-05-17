@@ -21,6 +21,7 @@ import { AddHubSplashPage } from "./pages/AddHubSplash";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import SplashScreen from 'react-native-splash-screen';
+import { RootStackParamList } from "./pages/Navigation";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -41,7 +42,7 @@ export default function App() {
         <PaperProvider>
           <StatusBar barStyle="light-content" backgroundColor="#121212" />
           <View style={styles.page}>
-            <RootStack.Navigator initialRouteName="Welcome" screenOptions={{
+            <RootStack.Navigator initialRouteName="App" screenOptions={{
               cardStyle: {
                 backgroundColor: 'rgba(0,0,0,0.5)',
               },

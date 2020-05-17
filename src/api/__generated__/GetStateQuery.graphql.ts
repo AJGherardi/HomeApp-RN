@@ -8,7 +8,7 @@ export type GetStateQueryVariables = {
 };
 export type GetStateQueryResponse = {
     readonly getState: {
-        readonly state: unknown;
+        readonly state: string;
         readonly stateType: string;
     };
 };

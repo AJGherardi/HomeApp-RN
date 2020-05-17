@@ -9,7 +9,7 @@ export type RootStackParamList = {
   AddHub: {host: string};
   AvailableDevices: undefined;
   AvailableHubs: undefined;
-  Device: undefined;
+  Device: {devAddr: string};
   Home: undefined;
   Devices: undefined;
   Groups: undefined;
