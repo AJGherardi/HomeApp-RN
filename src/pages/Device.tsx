@@ -18,16 +18,27 @@ type DeviceProps = {
 };
 
 export function DevicePage({ route, navigation }: DeviceProps) {
-    const [onoff, setOnoff] = useState<string>();
-    const [loading, setLoading] = useState(false);
+    const [onoff0, setOnoff0] = useState<string>("off");
+    const [onoff1, setOnoff1] = useState<string>("off");
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         async function getDevice() {
-            var state = await getState("192.168.1.204", route.params.devAddr, 0)
-            setLoading(false)
-            if (state.getState.state == "AA==") {
-                setOnoff("off")
+            var state0 = await getState("192.168.1.204", route.params.devAddr, 0)
+            setLoading(true)
+            if (state0.getState.state == "AA==") {
+                setOnoff0("off")
             }
-            setOnoff("on")
+            else {
+                setOnoff0("on")
+            }
+            var state1 = await getState("192.168.1.204", route.params.devAddr, 0)
+            if (state1.getState.state == "AA==") {
+                setOnoff1("off")
+            }
+            else {
+                setOnoff1("on")
+            }
+            setLoading(false)
         }
         getDevice()
         return () => {
@@ -47,31 +58,57 @@ export function DevicePage({ route, navigation }: DeviceProps) {
                 <View style={styles.deviceProps}>
                     <Image source={require("../../assets/on.png")} />
                     <View>
-                        <Text style={styles.devicePropText}>State</Text>
+                        <Text style={styles.devicePropText}>Plug 1</Text>
                         <Button
                             color="black"
                             mode="contained"
                             loading={loading}
                             disabled={loading}
                             onPress={async () => {
-                                if (onoff == "off") {
+                                if (onoff0 == "off") {
                                     setLoading(true)
                                     await setState("192.168.1.204", route.params.devAddr, 0, "AQ==")
-                                    setOnoff("on")
+                                    setOnoff0("on")
                                     setLoading(false)
                                 } else {
                                     setLoading(true)
                                     await setState("192.168.1.204", route.params.devAddr, 0, "AA==")
-                                    setOnoff("off")
+                                    setOnoff0("off")
                                     setLoading(false)
                                 }
                             }}
                         >
-                            {onoff}
+                            {onoff0}
                         </Button>
                     </View>
                 </View>
-                <View style={{ flex: 1 }} />
+                <View style={styles.deviceProps}>
+                    <Image source={require("../../assets/on.png")} />
+                    <View>
+                        <Text style={styles.devicePropText}>Plug 2</Text>
+                        <Button
+                            color="black"
+                            mode="contained"
+                            loading={loading}
+                            disabled={loading}
+                            onPress={async () => {
+                                if (onoff1 == "off") {
+                                    setLoading(true)
+                                    await setState("192.168.1.204", route.params.devAddr, 1, "AQ==")
+                                    setOnoff1("on")
+                                    setLoading(false)
+                                } else {
+                                    setLoading(true)
+                                    await setState("192.168.1.204", route.params.devAddr, 1, "AA==")
+                                    setOnoff1("off")
+                                    setLoading(false)
+                                }
+                            }}
+                        >
+                            {onoff1}
+                        </Button>
+                    </View>
+                </View>
             </View>
         </View>
     )

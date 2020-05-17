@@ -2,9 +2,7 @@ scalar bytes
 
 type Device {
   addr: String!
-  elements: [Element!]!
   name: String!
-  seq: bytes!
   type: String!
 }
 
@@ -15,8 +13,6 @@ type Element {
 
 type Group {
   addr: String!
-  aid: bytes!
-  devAddrs: [bytes!]!
   name: String!
 }
 
