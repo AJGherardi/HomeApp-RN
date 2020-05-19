@@ -163,6 +163,11 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around"
   },
+  topOptionsView: {
+    flex: 0.1,
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
   deviceLowerView: {
     flex: 2
   },
@@ -180,6 +185,11 @@ export const styles = StyleSheet.create({
   devicePropText: {
     color: "black",
     fontSize: 48,
+    fontFamily: "Roboto-Black",
+  },
+  resetDialogText: {
+    color: "black",
+    fontSize: 32,
     fontFamily: "Roboto-Black",
   },
 });

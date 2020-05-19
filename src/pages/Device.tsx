@@ -3,10 +3,11 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useState, useEffect } from "react";
 import { View, Text, Image } from "react-native";
 import { styles } from "../styles/Styles";
-import { Button } from "react-native-paper";
+import { Button, IconButton, Portal, Dialog, Paragraph } from "react-native-paper";
 import { RootStackParamList } from "./Navigation";
 import { setState } from "../api/SetState";
 import { getState } from "../api/GetState";
+import { resetDevice } from "../api/ResetDevice";
 
 type DeviceNavigationProp = StackNavigationProp<RootStackParamList, "Device">;
 
@@ -21,6 +22,7 @@ export function DevicePage({ route, navigation }: DeviceProps) {
     const [onoff0, setOnoff0] = useState<string>("off");
     const [onoff1, setOnoff1] = useState<string>("off");
     const [loading, setLoading] = useState(true);
+    const [resetVisable, setResetVisable] = useState(false);
     useEffect(() => {
         async function getDevice() {
             var state0 = await getState("192.168.1.204", route.params.devAddr, 0)
@@ -47,6 +49,43 @@ export function DevicePage({ route, navigation }: DeviceProps) {
     }, []);
     return (
         <View style={styles.page}>
+            <Portal>
+                <Dialog
+                    visible={resetVisable}
+                    onDismiss={() => {setResetVisable(false)}}
+                >
+                    <Dialog.Content>
+                        <Text style={styles.resetDialogText}>Click to reset and remove this device</Text>
+                    </Dialog.Content>
+                    <Dialog.Actions>
+                        <Button
+                            color="black"
+                            onPress={() => {
+                                setResetVisable(false)
+                            }}
+                        >
+                            cancel
+                        </Button>
+                        <Button
+                            color="#D32F2F"
+                            onPress={async () => {
+                                setResetVisable(false)
+                                await resetDevice("192.168.1.204", route.params.devAddr)
+                                navigation.navigate("Home")
+                            }}
+                        >
+                            reset
+                        </Button>
+                    </Dialog.Actions>
+                </Dialog>
+            </Portal>
+            <View style={styles.topOptionsView}>
+                <IconButton color="white" icon="chevron-left" size={42} onPress={() => {
+                }} />
+                <IconButton color="white" icon="minus-circle-outline" size={42} onPress={() => {
+                    setResetVisable(true)
+                }} />
+            </View>
             <View style={styles.deviceUpperView}>
                 <Image source={require("../../assets/plug.png")} />
                 <View style={styles.deviceTextView}>
@@ -65,6 +104,7 @@ export function DevicePage({ route, navigation }: DeviceProps) {
                             loading={loading}
                             disabled={loading}
                             onPress={async () => {
+                                console.log(route.params.devAddr)
                                 if (onoff0 == "off") {
                                     setLoading(true)
                                     await setState("192.168.1.204", route.params.devAddr, 0, "AQ==")
