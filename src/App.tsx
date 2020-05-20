@@ -11,14 +11,13 @@ import { HomePage } from "./pages/Home";
 import { DevicesPage } from "./pages/Devices";
 import { GroupsPage } from "./pages/Groups";
 import { styles } from "./styles/Styles";
-import { View, StatusBar } from "react-native";
+import { View, StatusBar, SafeAreaView } from "react-native";
 import { DevicePage } from "./pages/Device";
 import BottomSheet from 'reanimated-bottom-sheet'
 import BottomSheetBehavior from "reanimated-bottom-sheet";
 import { AddHubPage } from "./pages/AddHub";
 import { AvailableHubsPage } from "./pages/AvailableHubs";
 import { AddHubSplashPage } from "./pages/AddHubSplash";
-import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import SplashScreen from 'react-native-splash-screen';
 import { RootStackParamList } from "./pages/Navigation";
@@ -38,58 +37,57 @@ export default function App() {
   useEffect(() => {
     SplashScreen.hide()
   }, []);
+
   return (
     <NavigationContainer>
-      <SafeAreaProvider>
-        <PaperProvider>
-          <StatusBar barStyle="light-content" backgroundColor="#121212" />
-          <View style={styles.page}>
-            <RootStack.Navigator initialRouteName="App" screenOptions={{
-              cardStyle: {
-                backgroundColor: 'rgba(0,0,0,0.5)',
-              },
-              ...screenOptions
-            }}>
-              <RootStack.Screen
-                name="App"
-                component={AppPages}
-              />
-              <RootStack.Screen
-                name="Welcome"
-                component={WelcomePage}
-              />
-              <RootStack.Screen
-                name="AddDeviceSplash"
-                component={AddDeviceSplashPage}
-              />
-              <RootStack.Screen
-                name="AvailableDevices"
-                component={AvailableDevicesPage}
-              />
-              <RootStack.Screen
-                name="AddDevice"
-                component={AddDevicePage}
-              />
-              <RootStack.Screen
-                name="AddHubSplash"
-                component={AddHubSplashPage}
-              />
-              <RootStack.Screen
-                name="AvailableHubs"
-                component={AvailableHubsPage}
-              />
-              <RootStack.Screen
-                name="AddHub"
-                component={AddHubPage}
-              />
-              <RootStack.Screen
-                name="Device"
-                component={DevicePage}
-              />
-            </RootStack.Navigator>
-          </View>
-        </PaperProvider>
-      </SafeAreaProvider>
+      <PaperProvider>
+        <StatusBar barStyle="light-content" backgroundColor="#121212" />
+        <View style={styles.page}>
+          <RootStack.Navigator initialRouteName="App" screenOptions={{
+            cardStyle: {
+              backgroundColor: 'rgba(0,0,0,0.5)',
+            },
+            ...screenOptions
+          }}>
+            <RootStack.Screen
+              name="App"
+              component={AppPages}
+            />
+            <RootStack.Screen
+              name="Welcome"
+              component={WelcomePage}
+            />
+            <RootStack.Screen
+              name="AddDeviceSplash"
+              component={AddDeviceSplashPage}
+            />
+            <RootStack.Screen
+              name="AvailableDevices"
+              component={AvailableDevicesPage}
+            />
+            <RootStack.Screen
+              name="AddDevice"
+              component={AddDevicePage}
+            />
+            <RootStack.Screen
+              name="AddHubSplash"
+              component={AddHubSplashPage}
+            />
+            <RootStack.Screen
+              name="AvailableHubs"
+              component={AvailableHubsPage}
+            />
+            <RootStack.Screen
+              name="AddHub"
+              component={AddHubPage}
+            />
+            <RootStack.Screen
+              name="Device"
+              component={DevicePage}
+            />
+          </RootStack.Navigator>
+        </View>
+      </PaperProvider>
     </NavigationContainer>
   );
 }
@@ -106,6 +104,7 @@ type AppProps = {
 
 export function AppPages({ route, navigation }: AppProps) {
   const [visable, setVisable] = useState(true);
+
   return (
     <SafeAreaView style={styles.page}>
       <StatusBar barStyle="light-content" backgroundColor="#121212" />
@@ -182,6 +181,5 @@ export function AppPages({ route, navigation }: AppProps) {
     </SafeAreaView>
   );
 }
-
 
 var bs = React.createRef<BottomSheetBehavior>()

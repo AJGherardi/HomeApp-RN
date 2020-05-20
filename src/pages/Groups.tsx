@@ -2,7 +2,7 @@ import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useState, useEffect } from "react";
 import { View, StatusBar, Image, FlatList } from "react-native";
-import { Text, TouchableRipple, Appbar, ActivityIndicator } from "react-native-paper";
+import { Text, TouchableRipple, Appbar, ActivityIndicator, IconButton } from "react-native-paper";
 import { styles } from "../styles/Styles";
 import { RootStackParamList } from "./Navigation";
 import { ListGroupsQueryResponse } from "../api/__generated__/ListGroupsQuery.graphql";
@@ -35,6 +35,11 @@ export function GroupsPage({ route, navigation }: GroupsProps) {
 
     return (
         <View style={styles.page}>
+            <View style={styles.topOptionsView}>
+                <IconButton color="white" icon="chevron-left" size={42} onPress={() => {
+                    navigation.goBack()
+                }} />
+            </View>
             <View style={styles.titleView}>
                 <Text style={styles.titleText}>Groups</Text>
             </View>

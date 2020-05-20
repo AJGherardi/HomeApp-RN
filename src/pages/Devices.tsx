@@ -2,7 +2,7 @@ import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useState, useEffect } from "react";
 import { View, Image, FlatList } from "react-native";
-import { Text, TouchableRipple, ActivityIndicator } from "react-native-paper";
+import { Text, TouchableRipple, ActivityIndicator, IconButton } from "react-native-paper";
 import { styles } from "../styles/Styles";
 import { RootStackParamList } from "./Navigation";
 import { listDevices } from "../api/ListDevices";
@@ -35,6 +35,11 @@ export function DevicesPage({ route, navigation }: DevicesProps) {
 
     return (
         <View style={styles.page}>
+            <View style={styles.topOptionsView}>
+                <IconButton color="white" icon="chevron-left" size={42} onPress={() => {
+                    navigation.goBack()
+                }} />
+            </View>
             <View style={styles.titleView}>
                 <Text style={styles.titleText}>Devices</Text>
             </View>
@@ -49,7 +54,7 @@ export function DevicesPage({ route, navigation }: DevicesProps) {
                                 style={styles.item}
                                 borderless={true}
                                 onPress={() => {
-                                    navigation.navigate("Device", {devAddr: item.addr});
+                                    navigation.navigate("Device", { devAddr: item.addr });
                                 }}
                                 rippleColor="#ffffff"
                             >

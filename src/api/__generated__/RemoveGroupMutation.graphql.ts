@@ -2,26 +2,26 @@
 /* eslint-disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type RemoveDeviceMutationVariables = {
+export type RemoveGroupMutationVariables = {
     addr: string;
 };
-export type RemoveDeviceMutationResponse = {
-    readonly removeDevice: {
+export type RemoveGroupMutationResponse = {
+    readonly removeGroup: {
         readonly addr: string;
     };
 };
-export type RemoveDeviceMutation = {
-    readonly response: RemoveDeviceMutationResponse;
-    readonly variables: RemoveDeviceMutationVariables;
+export type RemoveGroupMutation = {
+    readonly response: RemoveGroupMutationResponse;
+    readonly variables: RemoveGroupMutationVariables;
 };
 
 
 
 /*
-mutation RemoveDeviceMutation(
+mutation RemoveGroupMutation(
   $addr: String!
 ) {
-  removeDevice(addr: $addr) {
+  removeGroup(addr: $addr) {
     addr
   }
 }
@@ -46,9 +46,9 @@ v1 = [
         "variableName": "addr"
       }
     ],
-    "concreteType": "Device",
+    "concreteType": "Group",
     "kind": "LinkedField",
-    "name": "removeDevice",
+    "name": "removeGroup",
     "plural": false,
     "selections": [
       {
@@ -67,7 +67,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "RemoveDeviceMutation",
+    "name": "RemoveGroupMutation",
     "selections": (v1/*: any*/),
     "type": "Mutation"
   },
@@ -75,17 +75,17 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "RemoveDeviceMutation",
+    "name": "RemoveGroupMutation",
     "selections": (v1/*: any*/)
   },
   "params": {
     "id": null,
     "metadata": {},
-    "name": "RemoveDeviceMutation",
+    "name": "RemoveGroupMutation",
     "operationKind": "mutation",
-    "text": "mutation RemoveDeviceMutation(\n  $addr: String!\n) {\n  removeDevice(addr: $addr) {\n    addr\n  }\n}\n"
+    "text": "mutation RemoveGroupMutation(\n  $addr: String!\n) {\n  removeGroup(addr: $addr) {\n    addr\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = '78686f56a5b117ebf82cb66d6eb06665';
+(node as any).hash = 'ad66b7996172cd8c4f6fda3be557b7a1';
 export default node;

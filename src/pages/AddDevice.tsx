@@ -24,6 +24,7 @@ type AddDeviceProps = {
 
 export function AddDevicePage({ route, navigation }: AddDeviceProps) {
   const [loading, setLoading] = useState(false);
+  
   return (
     <View style={styles.page}>
       <View style={styles.titleView}>

@@ -1,13 +1,13 @@
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useState, useEffect } from "react";
-import { View, StatusBar, Image, FlatList } from "react-native";
-import { Text, TouchableRipple, Appbar, ActivityIndicator } from "react-native-paper";
+import { View, Image, FlatList } from "react-native";
+import { Text, TouchableRipple, ActivityIndicator, IconButton, Portal, Dialog, Button } from "react-native-paper";
 import { styles } from "../styles/Styles";
 import { RootStackParamList } from "./Navigation";
-import { listGroups } from "../api/ListGroups";
 import { ListDevicesByGroupQueryResponse } from "../api/__generated__/ListDevicesByGroupQuery.graphql";
 import { listDevicesByGroup } from "../api/ListDevicesByGroup";
+import { removeGroup } from "../api/RemoveGroup";
 
 type GroupNavigationProp = StackNavigationProp<RootStackParamList, "Group">;
 
@@ -21,6 +21,7 @@ type GroupProps = {
 export function GroupPage({ route, navigation }: GroupProps) {
     const [loading, setLoading] = useState(true);
     const [devices, setDevices] = useState<ListDevicesByGroupQueryResponse>();
+    const [resetVisable, setResetVisable] = useState(false);
 
     useEffect(() => {
         async function getDevice() {
@@ -36,6 +37,44 @@ export function GroupPage({ route, navigation }: GroupProps) {
 
     return (
         <View style={styles.page}>
+            <Portal>
+                <Dialog
+                    visible={resetVisable}
+                    onDismiss={() => { setResetVisable(false) }}
+                >
+                    <Dialog.Content>
+                        <Text style={styles.resetDialogText}>Click to reset and remove this device</Text>
+                    </Dialog.Content>
+                    <Dialog.Actions>
+                        <Button
+                            color="black"
+                            onPress={() => {
+                                setResetVisable(false)
+                            }}
+                        >
+                            cancel
+                        </Button>
+                        <Button
+                            color="#D32F2F"
+                            onPress={async () => {
+                                setResetVisable(false)
+                                await removeGroup("192.168.1.204", route.params.addr)
+                                navigation.navigate("Home")
+                            }}
+                        >
+                            reset
+                        </Button>
+                    </Dialog.Actions>
+                </Dialog>
+            </Portal>
+            <View style={styles.topOptionsView}>
+                <IconButton color="white" icon="chevron-left" size={42} onPress={() => {
+                    navigation.goBack()
+                }} />
+                <IconButton color="white" icon="minus-circle-outline" size={42} onPress={() => {
+                    setResetVisable(true)
+                }} />
+            </View>
             <View style={styles.titleView}>
                 <Text style={styles.titleText}>{route.params.name}</Text>
             </View>
