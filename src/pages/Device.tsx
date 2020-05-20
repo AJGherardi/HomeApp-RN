@@ -7,7 +7,7 @@ import { Button, IconButton, Portal, Dialog, Paragraph } from "react-native-pape
 import { RootStackParamList } from "./Navigation";
 import { setState } from "../api/SetState";
 import { getState } from "../api/GetState";
-import { resetDevice } from "../api/ResetDevice";
+import { removeDevice } from "../api/RemoveDevice";
 
 type DeviceNavigationProp = StackNavigationProp<RootStackParamList, "Device">;
 
@@ -52,7 +52,7 @@ export function DevicePage({ route, navigation }: DeviceProps) {
             <Portal>
                 <Dialog
                     visible={resetVisable}
-                    onDismiss={() => {setResetVisable(false)}}
+                    onDismiss={() => { setResetVisable(false) }}
                 >
                     <Dialog.Content>
                         <Text style={styles.resetDialogText}>Click to reset and remove this device</Text>
@@ -70,7 +70,7 @@ export function DevicePage({ route, navigation }: DeviceProps) {
                             color="#D32F2F"
                             onPress={async () => {
                                 setResetVisable(false)
-                                await resetDevice("192.168.1.204", route.params.devAddr)
+                                await removeDevice("192.168.1.204", route.params.devAddr)
                                 navigation.navigate("Home")
                             }}
                         >

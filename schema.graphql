@@ -18,7 +18,7 @@ type Group {
 
 type Mutation {
   addDevice(addr: String!, devKey: String!, name: String!): Device!
-  resetDevice(addr: String!): Boolean!
+  removeDevice(addr: String!): Boolean!
   addGroup(name: String!): Group!
   configHub: String!
   setState(devAddr: String!, elemNumber: Int!, value: String!): State!

@@ -24,7 +24,6 @@ import SplashScreen from 'react-native-splash-screen';
 import { RootStackParamList } from "./pages/Navigation";
 import { GroupPage } from "./pages/Group";
 import { Text } from "react-native-paper";
-import { resetDevice } from "./api/ResetDevice";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 

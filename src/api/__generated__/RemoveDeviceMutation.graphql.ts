@@ -2,24 +2,24 @@
 /* eslint-disable */
 
 import { ConcreteRequest } from "relay-runtime";
-export type ResetDeviceMutationVariables = {
+export type RemoveDeviceMutationVariables = {
     addr: string;
 };
-export type ResetDeviceMutationResponse = {
-    readonly resetDevice: boolean;
+export type RemoveDeviceMutationResponse = {
+    readonly removeDevice: boolean;
 };
-export type ResetDeviceMutation = {
-    readonly response: ResetDeviceMutationResponse;
-    readonly variables: ResetDeviceMutationVariables;
+export type RemoveDeviceMutation = {
+    readonly response: RemoveDeviceMutationResponse;
+    readonly variables: RemoveDeviceMutationVariables;
 };
 
 
 
 /*
-mutation ResetDeviceMutation(
+mutation RemoveDeviceMutation(
   $addr: String!
 ) {
-  resetDevice(addr: $addr)
+  removeDevice(addr: $addr)
 }
 */
 
@@ -43,7 +43,7 @@ v1 = [
       }
     ],
     "kind": "ScalarField",
-    "name": "resetDevice",
+    "name": "removeDevice",
     "storageKey": null
   }
 ];
@@ -52,7 +52,7 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "ResetDeviceMutation",
+    "name": "RemoveDeviceMutation",
     "selections": (v1/*: any*/),
     "type": "Mutation"
   },
@@ -60,17 +60,17 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "ResetDeviceMutation",
+    "name": "RemoveDeviceMutation",
     "selections": (v1/*: any*/)
   },
   "params": {
     "id": null,
     "metadata": {},
-    "name": "ResetDeviceMutation",
+    "name": "RemoveDeviceMutation",
     "operationKind": "mutation",
-    "text": "mutation ResetDeviceMutation(\n  $addr: String!\n) {\n  resetDevice(addr: $addr)\n}\n"
+    "text": "mutation RemoveDeviceMutation(\n  $addr: String!\n) {\n  removeDevice(addr: $addr)\n}\n"
   }
 };
 })();
-(node as any).hash = 'c6fcbeb28708467264e6e254900e0234';
+(node as any).hash = 'dc89d5af013d1ebce379dd261d4f5da9';
 export default node;
