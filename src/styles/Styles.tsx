@@ -86,6 +86,12 @@ export const styles = StyleSheet.create({
     fontSize: 52,
     fontFamily: "Roboto-Black",
   },
+  subtitleText: {
+    color: "white",
+    fontSize: 36,
+    fontFamily: "Roboto-Black",
+  },
+
   byText: {
     color: "white",
     fontSize: 30,

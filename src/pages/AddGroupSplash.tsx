@@ -6,26 +6,26 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { Button } from "react-native-paper";
 import { RootStackParamList } from "./Navigation";
 
-type AddDeviceSplashNavigationProp = StackNavigationProp<
+type AddGroupSplashNavigationProp = StackNavigationProp<
   RootStackParamList,
-  "AddDeviceSplash"
+  "AddGroupSplash"
 >;
 
-type AddDeviceSplashRouteProp = RouteProp<
+type AddGroupSplashRouteProp = RouteProp<
   RootStackParamList,
-  "AddDeviceSplash"
+  "AddGroupSplash"
 >;
 
-type AddDeviceSplashProps = {
-  route: AddDeviceSplashRouteProp;
-  navigation: AddDeviceSplashNavigationProp;
+type AddGroupSplashProps = {
+  route: AddGroupSplashRouteProp;
+  navigation: AddGroupSplashNavigationProp;
 };
 
-export function AddDeviceSplashPage({ route, navigation }: AddDeviceSplashProps) {
+export function AddGroupSplashPage({ route, navigation }: AddGroupSplashProps) {
   return (
     <View style={styles.page}>
       <View style={styles.titleView}>
-        <Text style={styles.titleText}>Add A Device</Text>
+        <Text style={styles.titleText}>Add A Group</Text>
       </View>
       <View style={styles.centerView}>
         <Image source={require("../../assets/outlet.png")} />
@@ -36,7 +36,7 @@ export function AddDeviceSplashPage({ route, navigation }: AddDeviceSplashProps)
           color="white"
           mode="contained"
           onPress={() => {
-            navigation.navigate("SelectGroup");
+            navigation.navigate("AddGroup");
           }}
         >
           Next

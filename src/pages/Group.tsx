@@ -43,7 +43,7 @@ export function GroupPage({ route, navigation }: GroupProps) {
                     onDismiss={() => { setResetVisable(false) }}
                 >
                     <Dialog.Content>
-                        <Text style={styles.resetDialogText}>Click to reset and remove this device</Text>
+                        <Text style={styles.resetDialogText}>Click to remove this group</Text>
                     </Dialog.Content>
                     <Dialog.Actions>
                         <Button

@@ -23,6 +23,9 @@ import SplashScreen from 'react-native-splash-screen';
 import { RootStackParamList } from "./pages/Navigation";
 import { GroupPage } from "./pages/Group";
 import { Text } from "react-native-paper";
+import { AddGroupSplashPage } from "./pages/AddGroupSplash";
+import { AddGroupPage } from "./pages/AddGroup";
+import { SelectGroupPage } from "./pages/SelectGroup";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -62,6 +65,10 @@ export default function App() {
               component={AddDeviceSplashPage}
             />
             <RootStack.Screen
+              name="AddGroupSplash"
+              component={AddGroupSplashPage}
+            />
+            <RootStack.Screen
               name="AvailableDevices"
               component={AvailableDevicesPage}
             />
@@ -82,8 +89,16 @@ export default function App() {
               component={AddHubPage}
             />
             <RootStack.Screen
+              name="AddGroup"
+              component={AddGroupPage}
+            />
+            <RootStack.Screen
               name="Device"
               component={DevicePage}
+            />
+            <RootStack.Screen
+              name="SelectGroup"
+              component={SelectGroupPage}
             />
           </RootStack.Navigator>
         </View>
@@ -163,6 +178,52 @@ export function AppPages({ route, navigation }: AppProps) {
         )}
         initialSnap={2}
       />
+      <BottomSheet
+        ref={add}
+        snapPoints={[300, 0, 0]}
+        renderHeader={() => (<View></View>)}
+        renderContent={() => (
+          <View style={{
+            height: 300, backgroundColor: "#252525",
+            borderRadius: 30, justifyContent: "center", alignItems: "center", flexDirection: "column"
+          }}>
+            <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection: "row" }}>
+              <IconButton color="white" icon="chevron-down" size={52} onPress={() => {
+                add.current?.snapTo(2)
+                setVisable(true)
+              }} />
+              <Text style={styles.titleText}>Add</Text>
+            </View>
+            <View style={{ flex: 2, flexDirection: "column" }}>
+              <Button
+                contentStyle={styles.nextButton}
+                color="white"
+                mode="contained"
+                style={{ margin: 10 }}
+                onPress={() => {
+                  navigation.navigate("AddDeviceSplash");
+                  add.current?.snapTo(2)
+                  setVisable(true)
+                }}
+              >
+                Device
+          </Button>
+              <Button
+                contentStyle={styles.nextButton}
+                color="white"
+                mode="contained"
+                style={{ margin: 10 }}
+                onPress={() => {
+                  navigation.navigate("AddGroupSplash");
+                }}
+              >
+                Group
+          </Button>
+            </View>
+          </View>
+        )}
+        initialSnap={2}
+      />
       <Appbar style={styles.appBar}>
         {visable &&
           <View >
@@ -174,7 +235,10 @@ export function AppPages({ route, navigation }: AppProps) {
         }
         {visable &&
           <View>
-            <Appbar.Action color="white" icon="plus" onPress={() => { navigation.navigate("AddDeviceSplash") }} />
+            <Appbar.Action color="white" icon="plus" onPress={() => {
+              add.current?.snapTo(0)
+              setVisable(false)
+            }} />
           </View>
         }
       </Appbar>
@@ -183,3 +247,4 @@ export function AppPages({ route, navigation }: AppProps) {
 }
 
 var bs = React.createRef<BottomSheetBehavior>()
+var add = React.createRef<BottomSheetBehavior>()

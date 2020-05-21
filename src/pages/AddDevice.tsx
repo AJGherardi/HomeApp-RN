@@ -59,8 +59,7 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
               provData.ivIndex,
               provData.nextDevAddr,
             )
-            var group = (await addGroup("192.168.1.204", "main")).addGroup
-            var device = await addDevice("192.168.1.204", "test", devKey, group.addr)
+            var device = await addDevice("192.168.1.204", "test", devKey, route.params.group)
             navigation.navigate("App")
           }}
         >

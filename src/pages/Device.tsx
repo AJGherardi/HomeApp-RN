@@ -23,7 +23,7 @@ export function DevicePage({ route, navigation }: DeviceProps) {
     const [onoff1, setOnoff1] = useState<string>("off");
     const [loading, setLoading] = useState(true);
     const [resetVisable, setResetVisable] = useState(false);
-    
+
     useEffect(() => {
         async function getDevice() {
             var state0 = await getState("192.168.1.204", route.params.devAddr, 0)

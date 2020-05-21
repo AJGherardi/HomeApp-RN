@@ -4,69 +4,61 @@ import { styles } from "../styles/Styles";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { TouchableRipple, ActivityIndicator } from "react-native-paper";
-import { Service, Device } from "react-native-ble-plx";
-import { findDevices, stopDeviceScan } from "../ble/Ble";
 import { RootStackParamList } from "./Navigation";
+import { listGroups } from "../api/ListGroups";
+import { ListGroupsQueryResponse } from "../api/__generated__/ListGroupsQuery.graphql";
 
-type AvailableDevicesNavigationProp = StackNavigationProp<
+type SelectGroupNavigationProp = StackNavigationProp<
   RootStackParamList,
-  "AvailableDevices"
+  "SelectGroup"
 >;
 
-type AvailableDevicesRouteProp = RouteProp<
+type SelectGroupRouteProp = RouteProp<
   RootStackParamList,
-  "AvailableDevices"
+  "SelectGroup"
 >;
 
-type AvailableDevicesProps = {
-  route: AvailableDevicesRouteProp;
-  navigation: AvailableDevicesNavigationProp;
+type SelectGroupProps = {
+  route: SelectGroupRouteProp;
+  navigation: SelectGroupNavigationProp;
 };
 
-export function AvailableDevicesPage({ route, navigation }: AvailableDevicesProps) {
+export function SelectGroupPage({ route, navigation }: SelectGroupProps) {
   const [loading, setLoading] = useState(true);
-  const [devices, setDevices] = useState<Device[]>([]);
+  const [groups, setGroups] = useState<ListGroupsQueryResponse>();
 
   useEffect(() => {
-    findDevices(async (error, device) => {
-      if (error) {
-        return;
-      }
-      if (device != null) {
-        setLoading(false)
-        setDevices([device])
-      }
-    });
-    return () => {
-      stopDeviceScan();
-      setLoading(true)
-      setDevices([])
+    async function getGroups() {
+      var groups = await listGroups("192.168.1.204")
+      setGroups(groups)
+      setLoading(false)
     }
+    getGroups()
   }, []);
 
   return (
     <View style={styles.page}>
       <View style={styles.titleView}>
-        <Text style={styles.titleText}>Find your Device</Text>
+        <Text style={styles.titleText}>Select A Group</Text>
       </View>
       <View style={styles.centerView}>
         {loading ? <ActivityIndicator color="#ffffff" size="large" /> : (
           <FlatList
             style={styles.listView}
-            data={devices}
+            data={groups?.listGroups}
             renderItem={({ item }) => (
               <TouchableRipple
                 style={styles.listItem}
                 borderless={true}
                 onPress={() => {
-                  navigation.navigate("AddDevice", { device: item, group: route.params.group });
+                  navigation.navigate("AvailableDevices", { group: item.addr });
                 }}
                 rippleColor="#ffffff"
               >
-                <Text style={styles.listItemText}>{item.id}</Text>
+                <Text style={styles.listItemText}>{item.name}</Text>
               </TouchableRipple>
             )}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.addr}
           />
         )}
       </View>
