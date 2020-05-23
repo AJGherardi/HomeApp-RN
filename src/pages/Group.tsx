@@ -8,6 +8,7 @@ import { RootStackParamList } from "./Navigation";
 import { ListDevicesByGroupQueryResponse } from "../api/__generated__/ListDevicesByGroupQuery.graphql";
 import { listDevicesByGroup } from "../api/ListDevicesByGroup";
 import { removeGroup } from "../api/RemoveGroup";
+import SInfo from "react-native-sensitive-info"
 
 type GroupNavigationProp = StackNavigationProp<RootStackParamList, "Group">;
 
@@ -25,7 +26,8 @@ export function GroupPage({ route, navigation }: GroupProps) {
 
     useEffect(() => {
         async function getDevice() {
-            var devices = await listDevicesByGroup("192.168.1.204", route.params.addr)
+            var host = await SInfo.getItem("host", {})
+            var devices = await listDevicesByGroup(host, route.params.addr)
             setLoading(false)
             setDevices(devices)
         }
@@ -58,7 +60,8 @@ export function GroupPage({ route, navigation }: GroupProps) {
                             color="#D32F2F"
                             onPress={async () => {
                                 setResetVisable(false)
-                                await removeGroup("192.168.1.204", route.params.addr)
+                                var host = await SInfo.getItem("host", {})
+                                await removeGroup(host, route.params.addr)
                                 navigation.navigate("Home")
                             }}
                         >

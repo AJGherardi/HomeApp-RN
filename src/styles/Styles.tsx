@@ -85,6 +85,8 @@ export const styles = StyleSheet.create({
     color: "white",
     fontSize: 52,
     fontFamily: "Roboto-Black",
+    textAlign: "center",
+    width: "90%"
   },
   subtitleText: {
     color: "white",
@@ -144,6 +146,8 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 8,
     fontFamily: "Roboto-Black",
+    width: "90%",
+    textAlign: 'center',
   },
   listContent: {
     alignItems: "center",

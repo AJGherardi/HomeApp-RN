@@ -215,6 +215,8 @@ export function AppPages({ route, navigation }: AppProps) {
                 style={{ margin: 10 }}
                 onPress={() => {
                   navigation.navigate("AddGroupSplash");
+                  add.current?.snapTo(2)
+                  setVisable(true)
                 }}
               >
                 Group

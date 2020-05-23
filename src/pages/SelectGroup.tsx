@@ -7,6 +7,7 @@ import { TouchableRipple, ActivityIndicator } from "react-native-paper";
 import { RootStackParamList } from "./Navigation";
 import { listGroups } from "../api/ListGroups";
 import { ListGroupsQueryResponse } from "../api/__generated__/ListGroupsQuery.graphql";
+import SInfo from "react-native-sensitive-info"
 
 type SelectGroupNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -29,7 +30,8 @@ export function SelectGroupPage({ route, navigation }: SelectGroupProps) {
 
   useEffect(() => {
     async function getGroups() {
-      var groups = await listGroups("192.168.1.204")
+      var host = await SInfo.getItem("host", {})
+      var groups = await listGroups(host)
       setGroups(groups)
       setLoading(false)
     }

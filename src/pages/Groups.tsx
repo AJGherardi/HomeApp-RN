@@ -7,6 +7,7 @@ import { styles } from "../styles/Styles";
 import { RootStackParamList } from "./Navigation";
 import { ListGroupsQueryResponse } from "../api/__generated__/ListGroupsQuery.graphql";
 import { listGroups } from "../api/ListGroups";
+import SInfo from "react-native-sensitive-info"
 
 type GroupsNavigationProp = StackNavigationProp<RootStackParamList, "Groups">;
 
@@ -23,7 +24,8 @@ export function GroupsPage({ route, navigation }: GroupsProps) {
 
     useEffect(() => {
         async function getDevice() {
-            var groups = await listGroups("192.168.1.204")
+            var host = await SInfo.getItem("host", {})
+            var groups = await listGroups(host)
             setLoading(false)
             setGroups(groups)
         }

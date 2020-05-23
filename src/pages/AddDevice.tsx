@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, StatusBar, Image } from "react-native";
+import { Text, View, Image } from "react-native";
 import { Button } from "react-native-paper";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -9,6 +9,7 @@ import { provisionDevice } from "../ble/Ble";
 import { getProvData } from "../api/GetProvData";
 import { addGroup } from "../api/AddGroup";
 import { addDevice } from "../api/AddDevice";
+import SInfo from "react-native-sensitive-info"
 
 type AddDeviceNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -24,7 +25,7 @@ type AddDeviceProps = {
 
 export function AddDevicePage({ route, navigation }: AddDeviceProps) {
   const [loading, setLoading] = useState(false);
-  
+
   return (
     <View style={styles.page}>
       <View style={styles.titleView}>
@@ -50,7 +51,8 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
           loading={loading}
           onPress={async () => {
             setLoading(true)
-            var provData = (await getProvData("192.168.1.204")).getProvData
+            var host = await SInfo.getItem("host", {})
+            var provData = (await getProvData(host)).getProvData
             var devKey = await provisionDevice(
               route.params.device,
               provData.networkKey,
@@ -59,7 +61,7 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
               provData.ivIndex,
               provData.nextDevAddr,
             )
-            var device = await addDevice("192.168.1.204", "test", devKey, route.params.group)
+            var device = await addDevice(host, "test", devKey, route.params.group)
             navigation.navigate("App")
           }}
         >

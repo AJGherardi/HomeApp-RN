@@ -9,6 +9,7 @@ import { provisionDevice } from "../ble/Ble";
 import { getProvData } from "../api/GetProvData";
 import { addGroup } from "../api/AddGroup";
 import { addDevice } from "../api/AddDevice";
+import SInfo from "react-native-sensitive-info"
 
 type AddGroupNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -57,7 +58,8 @@ export function AddGroupPage({ route, navigation }: AddGroupProps) {
           loading={loading}
           onPress={async () => {
             setLoading(true)
-            await addGroup("192.168.1.204", name)
+            var host = await SInfo.getItem("host", {})
+            await addGroup(host, name)
             navigation.navigate("Home")
           }}
         >

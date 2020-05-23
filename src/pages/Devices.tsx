@@ -7,6 +7,7 @@ import { styles } from "../styles/Styles";
 import { RootStackParamList } from "./Navigation";
 import { listDevices } from "../api/ListDevices";
 import { ListDevicesQueryResponse } from "src/api/__generated__/ListDevicesQuery.graphql";
+import SInfo from "react-native-sensitive-info"
 
 type DevicesNavigationProp = StackNavigationProp<RootStackParamList, "Devices">;
 
@@ -23,7 +24,8 @@ export function DevicesPage({ route, navigation }: DevicesProps) {
 
     useEffect(() => {
         async function getDevice() {
-            var devices = await listDevices("192.168.1.204")
+            var host = await SInfo.getItem("host", {})
+            var devices = await listDevices(host)
             setLoading(false)
             setDevices(devices)
         }

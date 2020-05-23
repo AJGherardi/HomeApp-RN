@@ -1,13 +1,14 @@
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useState, useEffect } from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, StatusBar } from "react-native";
 import { styles } from "../styles/Styles";
 import { Button, IconButton, Portal, Dialog, Paragraph } from "react-native-paper";
 import { RootStackParamList } from "./Navigation";
 import { setState } from "../api/SetState";
 import { getState } from "../api/GetState";
 import { removeDevice } from "../api/RemoveDevice";
+import SInfo from "react-native-sensitive-info"
 
 type DeviceNavigationProp = StackNavigationProp<RootStackParamList, "Device">;
 
@@ -26,7 +27,8 @@ export function DevicePage({ route, navigation }: DeviceProps) {
 
     useEffect(() => {
         async function getDevice() {
-            var state0 = await getState("192.168.1.204", route.params.devAddr, 0)
+            var host = await SInfo.getItem("host", {})
+            var state0 = await getState(host, route.params.devAddr, 0)
             setLoading(true)
             if (state0.getState.state == "AA==") {
                 setOnoff0("off")
@@ -34,7 +36,7 @@ export function DevicePage({ route, navigation }: DeviceProps) {
             else {
                 setOnoff0("on")
             }
-            var state1 = await getState("192.168.1.204", route.params.devAddr, 0)
+            var state1 = await getState(host, route.params.devAddr, 0)
             if (state1.getState.state == "AA==") {
                 setOnoff1("off")
             }
@@ -71,7 +73,8 @@ export function DevicePage({ route, navigation }: DeviceProps) {
                             color="#D32F2F"
                             onPress={async () => {
                                 setResetVisable(false)
-                                await removeDevice("192.168.1.204", route.params.devAddr)
+                                var host = await SInfo.getItem("host", {})
+                                await removeDevice(host, route.params.devAddr)
                                 navigation.navigate("Home")
                             }}
                         >
@@ -107,14 +110,15 @@ export function DevicePage({ route, navigation }: DeviceProps) {
                             disabled={loading}
                             onPress={async () => {
                                 console.log(route.params.devAddr)
+                                var host = await SInfo.getItem("host", {})
                                 if (onoff0 == "off") {
                                     setLoading(true)
-                                    await setState("192.168.1.204", route.params.devAddr, 0, "AQ==")
+                                    await setState(host, route.params.devAddr, 0, "AQ==")
                                     setOnoff0("on")
                                     setLoading(false)
                                 } else {
                                     setLoading(true)
-                                    await setState("192.168.1.204", route.params.devAddr, 0, "AA==")
+                                    await setState(host, route.params.devAddr, 0, "AA==")
                                     setOnoff0("off")
                                     setLoading(false)
                                 }
@@ -134,14 +138,15 @@ export function DevicePage({ route, navigation }: DeviceProps) {
                             loading={loading}
                             disabled={loading}
                             onPress={async () => {
+                                var host = await SInfo.getItem("host", {})
                                 if (onoff1 == "off") {
                                     setLoading(true)
-                                    await setState("192.168.1.204", route.params.devAddr, 1, "AQ==")
+                                    await setState(host, route.params.devAddr, 1, "AQ==")
                                     setOnoff1("on")
                                     setLoading(false)
                                 } else {
                                     setLoading(true)
-                                    await setState("192.168.1.204", route.params.devAddr, 1, "AA==")
+                                    await setState(host, route.params.devAddr, 1, "AA==")
                                     setOnoff1("off")
                                     setLoading(false)
                                 }
