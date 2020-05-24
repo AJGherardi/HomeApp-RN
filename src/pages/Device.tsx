@@ -1,9 +1,9 @@
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useState, useEffect } from "react";
-import { View, Text, Image, StatusBar } from "react-native";
+import { View, Text, Image } from "react-native";
 import { styles } from "../styles/Styles";
-import { Button, IconButton, Portal, Dialog, Paragraph } from "react-native-paper";
+import { Button, IconButton, Portal, Dialog } from "react-native-paper";
 import { RootStackParamList } from "./Navigation";
 import { setState } from "../api/SetState";
 import { getState } from "../api/GetState";

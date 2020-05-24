@@ -1,7 +1,7 @@
 import "react-native-gesture-handler";
 import { NavigationContainer, RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Provider as PaperProvider, Appbar, Button, IconButton } from "react-native-paper";
 import { WelcomePage } from "./pages/Welcome";
 import { AddDeviceSplashPage } from "./pages/AddDeviceSplash";
@@ -13,8 +13,6 @@ import { GroupsPage } from "./pages/Groups";
 import { styles } from "./styles/Styles";
 import { View, StatusBar, SafeAreaView } from "react-native";
 import { DevicePage } from "./pages/Device";
-import BottomSheet from 'reanimated-bottom-sheet'
-import BottomSheetBehavior from "reanimated-bottom-sheet";
 import { AddHubPage } from "./pages/AddHub";
 import { AvailableHubsPage } from "./pages/AvailableHubs";
 import { AddHubSplashPage } from "./pages/AddHubSplash";
@@ -26,6 +24,7 @@ import { Text } from "react-native-paper";
 import { AddGroupSplashPage } from "./pages/AddGroupSplash";
 import { AddGroupPage } from "./pages/AddGroup";
 import { SelectGroupPage } from "./pages/SelectGroup";
+import RBSheet, { RBSheetProps } from "react-native-raw-bottom-sheet";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -118,7 +117,8 @@ type AppProps = {
 };
 
 export function AppPages({ route, navigation }: AppProps) {
-  const [visable, setVisable] = useState(true);
+  const menuSheet = useRef<any>();
+  const addSheet = useRef<any>();
 
   return (
     <SafeAreaView style={styles.page}>
@@ -146,107 +146,112 @@ export function AppPages({ route, navigation }: AppProps) {
           component={GroupPage}
         />
       </AppStack.Navigator>
-      <BottomSheet
-        ref={bs}
-        snapPoints={[300, 0, 0]}
-        renderHeader={() => (<View></View>)}
-        renderContent={() => (
-          <View style={{
-            height: 300, backgroundColor: "#252525",
-            borderRadius: 30, justifyContent: "center", alignItems: "center",
-          }}>
-            <View style={{ flex: 1, justifyContent: "space-around", alignItems: "center", flexDirection: "row" }}>
-              <IconButton color="white" icon="chevron-down" size={52} onPress={() => {
-                bs.current?.snapTo(2)
-                setVisable(true)
-              }} />
-              <Text style={styles.titleText}>Options</Text>
-            </View>
-            <View style={{ flex: 1 }}>
-              <Button
-                contentStyle={styles.nextButton}
-                color="white"
-                mode="contained"
-                onPress={() => {
-                  navigation.navigate("Welcome");
-                }}
-              >
-                Reset
-          </Button>
-            </View>
+
+      <RBSheet
+        ref={menuSheet}
+        closeOnDragDown={true}
+        closeOnPressMask={false}
+        customStyles={{
+          wrapper: {
+            backgroundColor: "transparent"
+          },
+          draggableIcon: {
+            backgroundColor: "#fff"
+          },
+          container: {
+            borderTopLeftRadius: 50,
+            borderTopRightRadius: 50,
+            backgroundColor: "#252525"
+          }
+        }}
+      >
+        <View style={{
+          height: 260,
+          borderRadius: 30, justifyContent: "center", alignItems: "center",
+        }}>
+          <View style={{ flex: 1, justifyContent: "space-around", alignItems: "center", flexDirection: "row" }}>
+            <Text style={styles.titleText}>Options</Text>
           </View>
-        )}
-        initialSnap={2}
-      />
-      <BottomSheet
-        ref={add}
-        snapPoints={[300, 0, 0]}
-        renderHeader={() => (<View></View>)}
-        renderContent={() => (
-          <View style={{
-            height: 300, backgroundColor: "#252525",
-            borderRadius: 30, justifyContent: "center", alignItems: "center", flexDirection: "column"
-          }}>
-            <View style={{ flex: 1, justifyContent: "center", alignItems: "center", flexDirection: "row" }}>
-              <IconButton color="white" icon="chevron-down" size={52} onPress={() => {
-                add.current?.snapTo(2)
-                setVisable(true)
-              }} />
-              <Text style={styles.titleText}>Add</Text>
-            </View>
-            <View style={{ flex: 2, flexDirection: "column" }}>
-              <Button
-                contentStyle={styles.nextButton}
-                color="white"
-                mode="contained"
-                style={{ margin: 10 }}
-                onPress={() => {
-                  navigation.navigate("AddDeviceSplash");
-                  add.current?.snapTo(2)
-                  setVisable(true)
-                }}
-              >
-                Device
+          <View style={{ flex: 1 }}>
+            <Button
+              contentStyle={styles.nextButton}
+              color="white"
+              mode="contained"
+              onPress={() => {
+                navigation.navigate("Welcome");
+                menuSheet.current.close()
+              }}
+            >
+              Reset
           </Button>
-              <Button
-                contentStyle={styles.nextButton}
-                color="white"
-                mode="contained"
-                style={{ margin: 10 }}
-                onPress={() => {
-                  navigation.navigate("AddGroupSplash");
-                  add.current?.snapTo(2)
-                  setVisable(true)
-                }}
-              >
-                Group
-          </Button>
-            </View>
           </View>
-        )}
-        initialSnap={2}
-      />
+        </View>
+      </RBSheet>
+      <RBSheet
+        ref={addSheet}
+        closeOnDragDown={true}
+        closeOnPressMask={false}
+        customStyles={{
+          wrapper: {
+            backgroundColor: "transparent"
+          },
+          draggableIcon: {
+            backgroundColor: "#fff"
+          },
+          container: {
+            borderTopLeftRadius: 50,
+            borderTopRightRadius: 50,
+            backgroundColor: "#252525"
+          }
+        }}
+      >
+        <View style={{
+          height: 260,
+          justifyContent: "center", alignItems: "center", flexDirection: "column"
+        }}>
+          <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+            <Text style={styles.titleText}>Add</Text>
+          </View>
+          <View style={{ flex: 2, flexDirection: "column" }}>
+            <Button
+              contentStyle={styles.nextButton}
+              color="white"
+              mode="contained"
+              style={{ margin: 10 }}
+              onPress={() => {
+                navigation.navigate("AddDeviceSplash");
+                addSheet.current.close()
+              }}
+            >
+              Device
+              </Button>
+            <Button
+              contentStyle={styles.nextButton}
+              color="white"
+              mode="contained"
+              style={{ margin: 10 }}
+              onPress={() => {
+                navigation.navigate("AddGroupSplash");
+                addSheet.current.close()
+              }}
+            >
+              Group
+              </Button>
+          </View>
+        </View>
+      </RBSheet>
       <Appbar style={styles.appBar}>
-        {visable &&
-          <View >
-            <Appbar.Action color="white" icon="menu" onPress={() => {
-              bs.current?.snapTo(0)
-              setVisable(false)
-            }} />
-          </View>
-        }
-        {visable &&
-          <View>
-            <Appbar.Action color="white" icon="plus" onPress={() => {
-              add.current?.snapTo(0)
-              setVisable(false)
-            }} />
-          </View>
-        }
+        <View >
+          <Appbar.Action color="white" icon="menu" onPress={() => {
+            menuSheet.current.open()
+          }} />
+        </View>
+        <View>
+          <Appbar.Action color="white" icon="plus" onPress={() => {
+            addSheet.current.open()
+          }} />
+        </View>
       </Appbar>
     </SafeAreaView>
   );
 }
-
-var bs = React.createRef<BottomSheetBehavior>()
-var add = React.createRef<BottomSheetBehavior>()
