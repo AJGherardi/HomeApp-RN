@@ -1,8 +1,8 @@
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
-import { View, StatusBar, Image } from "react-native";
-import { Text, TouchableRipple, Appbar } from "react-native-paper";
+import { View, Image } from "react-native";
+import { Text, TouchableRipple } from "react-native-paper";
 import { styles } from "../styles/Styles";
 import { RootStackParamList } from "./Navigation";
 
@@ -45,7 +45,7 @@ export function HomePage({ route, navigation }: HomeProps) {
                     <Image source={require("../../assets/homeItem.png")} />
                 </View>
             </TouchableRipple>
-            <TouchableRipple
+            {/* <TouchableRipple
                 style={styles.homeTouchables}
                 borderless={true}
                 onPress={() => {
@@ -57,7 +57,8 @@ export function HomePage({ route, navigation }: HomeProps) {
                     <Text style={styles.homeItemText}>Actions</Text>
                     <Image source={require("../../assets/homeItem.png")} />
                 </View>
-            </TouchableRipple>
+            </TouchableRipple> */}
+            <View style={{ flex: 1 }} />
         </View>
     );
 }

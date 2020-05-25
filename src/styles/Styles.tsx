@@ -123,6 +123,7 @@ export const styles = StyleSheet.create({
   },
   homeItem: {
     flexDirection: "row",
+    alignItems: "center"
   },
   homeItemText: {
     color: "#D32F2F",

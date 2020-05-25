@@ -21,7 +21,7 @@ export function WelcomePage({ route, navigation }: WelcomeProps) {
       <View style={styles.homeView}>
         <Text style={styles.homeText}>Home</Text>
         <Text style={styles.byText}>by</Text>
-        <Text style={styles.nameText}>alexander gherardi</Text>
+        <Text style={styles.nameText}>Alexander Gherardi</Text>
       </View>
       <View style={styles.nextView}>
         <Button

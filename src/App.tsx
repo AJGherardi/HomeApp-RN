@@ -1,8 +1,8 @@
 import "react-native-gesture-handler";
-import { NavigationContainer, RouteProp } from "@react-navigation/native";
+import { NavigationContainer, RouteProp, NavigationContainerRef } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import React, { useEffect, useState, useRef } from "react";
-import { Provider as PaperProvider, Appbar, Button, IconButton } from "react-native-paper";
+import React, { useEffect } from "react";
+import { Provider as PaperProvider, Appbar, Button } from "react-native-paper";
 import { WelcomePage } from "./pages/Welcome";
 import { AddDeviceSplashPage } from "./pages/AddDeviceSplash";
 import { AvailableDevicesPage } from "./pages/AvailableDevices";
@@ -24,7 +24,8 @@ import { Text } from "react-native-paper";
 import { AddGroupSplashPage } from "./pages/AddGroupSplash";
 import { AddGroupPage } from "./pages/AddGroup";
 import { SelectGroupPage } from "./pages/SelectGroup";
-import RBSheet, { RBSheetProps } from "react-native-raw-bottom-sheet";
+import RBSheet from "react-native-raw-bottom-sheet";
+import SInfo from "react-native-sensitive-info"
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -36,16 +37,24 @@ const screenOptions = {
 }
 
 export default function App() {
+  const ref = React.useRef<NavigationContainerRef>(null);
   useEffect(() => {
-    SplashScreen.hide()
+    async function init() {
+      var host = await SInfo.getItem("host", {})
+      if (host == null) {
+        ref.current?.navigate('Welcome')
+      }
+      SplashScreen.hide()
+    }
+    init()
   }, []);
 
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={ref}>
       <PaperProvider>
         <StatusBar barStyle="light-content" backgroundColor="#121212" />
         <View style={styles.page}>
-          <RootStack.Navigator initialRouteName="App" screenOptions={{
+          <RootStack.Navigator screenOptions={{
             cardStyle: {
               backgroundColor: 'rgba(0,0,0,0.5)',
             },
@@ -117,8 +126,8 @@ type AppProps = {
 };
 
 export function AppPages({ route, navigation }: AppProps) {
-  const menuSheet = useRef<any>();
-  const addSheet = useRef<any>();
+  const menuSheet = React.createRef<RBSheet>()
+  const addSheet = React.createRef<RBSheet>()
 
   return (
     <SafeAreaView style={styles.page}>
@@ -179,7 +188,7 @@ export function AppPages({ route, navigation }: AppProps) {
               mode="contained"
               onPress={() => {
                 navigation.navigate("Welcome");
-                menuSheet.current.close()
+                menuSheet.current?.close()
               }}
             >
               Reset
@@ -220,7 +229,7 @@ export function AppPages({ route, navigation }: AppProps) {
               style={{ margin: 10 }}
               onPress={() => {
                 navigation.navigate("AddDeviceSplash");
-                addSheet.current.close()
+                addSheet.current?.close()
               }}
             >
               Device
@@ -232,7 +241,7 @@ export function AppPages({ route, navigation }: AppProps) {
               style={{ margin: 10 }}
               onPress={() => {
                 navigation.navigate("AddGroupSplash");
-                addSheet.current.close()
+                addSheet.current?.close()
               }}
             >
               Group
@@ -241,14 +250,14 @@ export function AppPages({ route, navigation }: AppProps) {
         </View>
       </RBSheet>
       <Appbar style={styles.appBar}>
-        <View >
+        <View>
           <Appbar.Action color="white" icon="menu" onPress={() => {
-            menuSheet.current.open()
+            menuSheet.current?.open()
           }} />
         </View>
         <View>
           <Appbar.Action color="white" icon="plus" onPress={() => {
-            addSheet.current.open()
+            addSheet.current?.open()
           }} />
         </View>
       </Appbar>
