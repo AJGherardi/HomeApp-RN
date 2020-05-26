@@ -129,7 +129,7 @@ export const styles = StyleSheet.create({
     color: "#D32F2F",
     fontSize: 56,
     fontFamily: "OleoScript-Regular",
-    marginRight: "10%"
+    marginRight: "5%"
   },
   item: {
     backgroundColor: "#ffffff",
