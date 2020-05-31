@@ -5,7 +5,6 @@ import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { styles } from "../styles/Styles";
 import { RootStackParamList } from "./Navigation";
-import { provisionDevice } from "../ble/Ble";
 import { getProvData } from "../api/GetProvData";
 import { addGroup } from "../api/AddGroup";
 import { addDevice } from "../api/AddDevice";
@@ -52,16 +51,7 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
           onPress={async () => {
             setLoading(true)
             var host = await SInfo.getItem("host", {})
-            var provData = (await getProvData(host)).getProvData
-            var devKey = await provisionDevice(
-              route.params.device,
-              provData.networkKey,
-              provData.keyIndex,
-              provData.flags,
-              provData.ivIndex,
-              provData.nextDevAddr,
-            )
-            var device = await addDevice(host, "test", devKey, route.params.group)
+            var device = await addDevice(host, "test", route.params.group)
             navigation.navigate("App")
           }}
         >

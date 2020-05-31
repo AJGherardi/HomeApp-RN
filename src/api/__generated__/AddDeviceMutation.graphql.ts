@@ -4,7 +4,6 @@
 import { ConcreteRequest } from "relay-runtime";
 export type AddDeviceMutationVariables = {
     name: string;
-    devKey: string;
     addr: string;
 };
 export type AddDeviceMutationResponse = {
@@ -23,10 +22,9 @@ export type AddDeviceMutation = {
 /*
 mutation AddDeviceMutation(
   $name: String!
-  $devKey: String!
   $addr: String!
 ) {
-  addDevice(name: $name, devKey: $devKey, addr: $addr) {
+  addDevice(name: $name, addr: $addr) {
     name
     addr
   }
@@ -44,12 +42,6 @@ var v0 = [
   {
     "defaultValue": null,
     "kind": "LocalArgument",
-    "name": "devKey",
-    "type": "String!"
-  },
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
     "name": "addr",
     "type": "String!"
   }
@@ -62,11 +54,6 @@ v1 = [
         "kind": "Variable",
         "name": "addr",
         "variableName": "addr"
-      },
-      {
-        "kind": "Variable",
-        "name": "devKey",
-        "variableName": "devKey"
       },
       {
         "kind": "Variable",
@@ -118,9 +105,9 @@ return {
     "metadata": {},
     "name": "AddDeviceMutation",
     "operationKind": "mutation",
-    "text": "mutation AddDeviceMutation(\n  $name: String!\n  $devKey: String!\n  $addr: String!\n) {\n  addDevice(name: $name, devKey: $devKey, addr: $addr) {\n    name\n    addr\n  }\n}\n"
+    "text": "mutation AddDeviceMutation(\n  $name: String!\n  $addr: String!\n) {\n  addDevice(name: $name, addr: $addr) {\n    name\n    addr\n  }\n}\n"
   }
 };
 })();
-(node as any).hash = 'e8d6522be9223aad824162610bad8ff8';
+(node as any).hash = '760414ff70ac110b4124376f9753ed0c';
 export default node;
