@@ -5,8 +5,9 @@ import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { TouchableRipple, ActivityIndicator } from "react-native-paper";
 import { Service, Device } from "react-native-ble-plx";
-import { findDevices, stopDeviceScan } from "../ble/Ble";
 import { RootStackParamList } from "./Navigation";
+import { availableDevices } from "../api/AvailableDevices";
+import SInfo from "react-native-sensitive-info"
 
 type AvailableDevicesNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -25,20 +26,18 @@ type AvailableDevicesProps = {
 
 export function AvailableDevicesPage({ route, navigation }: AvailableDevicesProps) {
   const [loading, setLoading] = useState(true);
-  const [devices, setDevices] = useState<Device[]>([]);
+  const [devices, setDevices] = useState<readonly string[]>([]);
 
   useEffect(() => {
-    findDevices(async (error, device) => {
-      if (error) {
-        return;
-      }
-      if (device != null) {
-        setLoading(false)
-        setDevices([device])
-      }
-    });
+    async function findDevices() {
+      var host = await SInfo.getItem("host", {})
+
+      var nodes = await availableDevices(host)
+      setDevices(nodes.availableDevices)
+      setLoading(false)
+    }
+    findDevices()
     return () => {
-      stopDeviceScan();
       setLoading(true)
       setDevices([])
     }
@@ -63,10 +62,10 @@ export function AvailableDevicesPage({ route, navigation }: AvailableDevicesProp
                 }}
                 rippleColor="#ffffff"
               >
-                <Text style={styles.listItemText}>{item.id}</Text>
+                <Text style={styles.listItemText}>{item}</Text>
               </TouchableRipple>
             )}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item}
           />
         )}
       </View>

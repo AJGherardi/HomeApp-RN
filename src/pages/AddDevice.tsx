@@ -5,8 +5,6 @@ import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { styles } from "../styles/Styles";
 import { RootStackParamList } from "./Navigation";
-import { getProvData } from "../api/GetProvData";
-import { addGroup } from "../api/AddGroup";
 import { addDevice } from "../api/AddDevice";
 import SInfo from "react-native-sensitive-info"
 
@@ -51,7 +49,7 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
           onPress={async () => {
             setLoading(true)
             var host = await SInfo.getItem("host", {})
-            var device = await addDevice(host, "test", route.params.group)
+            var device = await addDevice(host, "test", route.params.device, route.params.group)
             navigation.navigate("App")
           }}
         >

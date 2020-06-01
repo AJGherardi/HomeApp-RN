@@ -4,8 +4,8 @@ import { channel, put, take } from '@paybase/csp';
 import { AddDeviceMutationResponse, AddDeviceMutation } from './__generated__/AddDeviceMutation.graphql';
 
 const mutation = graphql`
-  mutation AddDeviceMutation($name: String!, $addr: String!) {
-    addDevice(name: $name, addr: $addr) {
+  mutation AddDeviceMutation($name: String!, $devAddr: String!, $addr: String!) {
+    addDevice(name: $name, devAddr: $devAddr, addr: $addr) {
       name
       addr
     }
@@ -15,6 +15,7 @@ const mutation = graphql`
 async function addDevice(
     host: string,
     name: string,
+    devAddr: string,
     addr: string
 ): Promise<AddDeviceMutationResponse> {
     // Use a channel
@@ -22,6 +23,7 @@ async function addDevice(
     // Make vars
     const variables = {
         name,
+        devAddr,
         addr,
     };
     // Make commit mutation callable from this function 

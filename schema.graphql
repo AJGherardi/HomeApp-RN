@@ -17,7 +17,7 @@ type Group {
 }
 
 type Mutation {
-  addDevice(addr: String!, name: String!): Device!
+  addDevice(addr: String!, devAddr: String!, name: String!): Device!
   removeDevice(addr: String!): Device!
   removeGroup(addr: String!): Group!
   addGroup(name: String!): Group!
@@ -34,7 +34,7 @@ type ProvData {
 }
 
 type Query {
-  getProvData: ProvData!
+  availableDevices: [String!]!
   getState(devAddr: String!, elemNumber: Int!): State!
   listDevices: [Device!]!
   listDevicesByGroup(addr: String!): [Device!]!

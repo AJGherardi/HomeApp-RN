@@ -5,8 +5,6 @@ import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { styles } from "../styles/Styles";
 import { RootStackParamList } from "./Navigation";
-import { provisionDevice } from "../ble/Ble";
-import { getProvData } from "../api/GetProvData";
 import { addGroup } from "../api/AddGroup";
 import { addDevice } from "../api/AddDevice";
 import SInfo from "react-native-sensitive-info"

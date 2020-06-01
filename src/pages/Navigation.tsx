@@ -1,12 +1,10 @@
-import { Device } from "react-native-ble-plx";
-
 export type RootStackParamList = {
   Welcome: undefined;
   App: undefined;
   AddDeviceSplash: undefined;
   AddGroupSplash: undefined;
   AddHubSplash: undefined;
-  AddDevice: { device: Device, group: string };
+  AddDevice: { device: string, group: string };
   AddGroup: undefined;
   AddHub: { host: string };
   AvailableDevices: { group: string };

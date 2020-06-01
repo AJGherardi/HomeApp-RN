@@ -5,7 +5,6 @@ import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { styles } from "../styles/Styles";
 import { configHub } from "../api/ConfigHub";
-import { getProvData } from "../api/GetProvData";
 import SInfo from "react-native-sensitive-info"
 import { RootStackParamList } from "./Navigation";
 
