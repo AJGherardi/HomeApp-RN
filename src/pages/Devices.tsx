@@ -8,6 +8,7 @@ import { RootStackParamList } from "./Navigation";
 import { listDevices } from "../api/ListDevices";
 import { ListDevicesQueryResponse } from "src/api/__generated__/ListDevicesQuery.graphql";
 import SInfo from "react-native-sensitive-info"
+import PlugSvg from "../svg/Plug";
 
 type DevicesNavigationProp = StackNavigationProp<RootStackParamList, "Devices">;
 
@@ -61,8 +62,7 @@ export function DevicesPage({ route, navigation }: DevicesProps) {
                                 rippleColor="#ffffff"
                             >
                                 <View>
-                                    <Image style={styles.itemView}
-                                        source={require("../../assets/plug.png")} />
+                                    <PlugSvg style={styles.itemView} />
                                     <Text style={styles.itemText}>{item.name}</Text>
                                 </View>
                             </TouchableRipple>

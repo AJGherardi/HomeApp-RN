@@ -5,6 +5,7 @@ import { View, Image } from "react-native";
 import { Text, TouchableRipple } from "react-native-paper";
 import { styles } from "../styles/Styles";
 import { RootStackParamList } from "./Navigation";
+import PlugSvg from "../svg/Plug";
 
 type HomeNavigationProp = StackNavigationProp<RootStackParamList, "Home">;
 
@@ -29,7 +30,7 @@ export function HomePage({ route, navigation }: HomeProps) {
             >
                 <View style={styles.homeItem}>
                     <Text style={styles.homeItemText}>Devices</Text>
-                    <Image source={require("../../assets/plug.png")} />
+                    <PlugSvg />
                 </View>
             </TouchableRipple>
             <TouchableRipple

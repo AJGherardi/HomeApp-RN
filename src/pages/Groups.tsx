@@ -8,6 +8,7 @@ import { RootStackParamList } from "./Navigation";
 import { ListGroupsQueryResponse } from "../api/__generated__/ListGroupsQuery.graphql";
 import { listGroups } from "../api/ListGroups";
 import SInfo from "react-native-sensitive-info"
+import PlugSvg from "../svg/Plug";
 
 type GroupsNavigationProp = StackNavigationProp<RootStackParamList, "Groups">;
 
@@ -61,8 +62,7 @@ export function GroupsPage({ route, navigation }: GroupsProps) {
                                 rippleColor="#ffffff"
                             >
                                 <View>
-                                    <Image style={styles.itemView}
-                                        source={require("../../assets/plug.png")} />
+                                    <PlugSvg style={styles.itemView} />
                                     <Text style={styles.itemText}>{item.name}</Text>
                                 </View>
                             </TouchableRipple>

@@ -9,6 +9,7 @@ import { ListDevicesByGroupQueryResponse } from "../api/__generated__/ListDevice
 import { listDevicesByGroup } from "../api/ListDevicesByGroup";
 import { removeGroup } from "../api/RemoveGroup";
 import SInfo from "react-native-sensitive-info"
+import PlugSvg from "../svg/Plug";
 
 type GroupNavigationProp = StackNavigationProp<RootStackParamList, "Group">;
 
@@ -97,8 +98,7 @@ export function GroupPage({ route, navigation }: GroupProps) {
                                 rippleColor="#ffffff"
                             >
                                 <View>
-                                    <Image style={styles.itemView}
-                                        source={require("../../assets/plug.png")} />
+                                    <PlugSvg style={styles.itemView} />
                                     <Text style={styles.itemText}>{item.name}</Text>
                                 </View>
                             </TouchableRipple>

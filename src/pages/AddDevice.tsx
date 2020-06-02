@@ -107,7 +107,7 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
                 setLoading(true)
                 var host = await SInfo.getItem("host", {})
                 var device = await addDevice(host, name, route.params.device, route.params.group)
-                navigation.navigate("App")
+                navigation.navigate("Home")
                 addSheet.current?.close()
               }}
             >
