@@ -10,7 +10,7 @@ export type RootStackParamList = {
   AvailableDevices: { group: string };
   AvailableHubs: undefined;
   SelectGroup: undefined;
-  Device: { devAddr: string };
+  Device: { devAddr: string, devName: string };
   Home: undefined;
   Devices: undefined;
   Groups: undefined;

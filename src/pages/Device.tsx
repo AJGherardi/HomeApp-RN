@@ -94,8 +94,8 @@ export function DevicePage({ route, navigation }: DeviceProps) {
             <View style={styles.deviceUpperView}>
                 <Image source={require("../../assets/plug.png")} />
                 <View style={styles.deviceTextView}>
-                    <Text style={styles.deviceText}>Left Outlet</Text>
-                    <Text style={styles.deviceSubtext}>Living Room</Text>
+                    <Text style={styles.deviceText}>{route.params.devName}</Text>
+                    <Text style={styles.deviceSubtext}>Smart Plug</Text>
                 </View>
             </View>
             <View style={styles.deviceLowerView}>

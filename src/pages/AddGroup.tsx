@@ -8,6 +8,7 @@ import { RootStackParamList } from "./Navigation";
 import { addGroup } from "../api/AddGroup";
 import { addDevice } from "../api/AddDevice";
 import SInfo from "react-native-sensitive-info"
+import RBSheet from "react-native-raw-bottom-sheet";
 
 type AddGroupNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -24,28 +25,23 @@ type AddGroupProps = {
 export function AddGroupPage({ route, navigation }: AddGroupProps) {
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
+  const addSheet = React.createRef<RBSheet>()
+
   return (
     <View style={styles.page}>
       <View style={styles.titleView}>
         <Text style={styles.titleText}>Add Group</Text>
       </View>
       <View style={styles.centerView}>
-        <View style={{ alignSelf: "flex-start", flexDirection: "column", flex: 1, justifyContent: "flex-start", alignItems: "center" }}>
-          <Text style={styles.subtitleText}>Info</Text>
-          <TextInput
-            label='Name'
-            mode="outlined"
-            style={{ width: "85%" }}
-            theme={{
-              dark: true, mode: "adaptive",
-              colors: {
-                text: 'white', placeholder: 'white',
-                background: "#121212", primary: "#FFEE58"
-              }
-            }}
-            value={name}
-            onChangeText={text => setName(text)}
-          />
+        <View style={styles.rangeView}>
+          <View style={styles.upperRangeView}>
+            <Image source={require("../../assets/range.png")} />
+          </View>
+          <View style={styles.lowerRangeView}>
+            <Text style={styles.rangeText}>
+              A group contains related devices
+              </Text>
+          </View>
         </View>
       </View>
       <View style={styles.nextView}>
@@ -55,16 +51,74 @@ export function AddGroupPage({ route, navigation }: AddGroupProps) {
           mode="contained"
           loading={loading}
           onPress={async () => {
-            setLoading(true)
-            var host = await SInfo.getItem("host", {})
-            await addGroup(host, name)
-            navigation.navigate("Home")
+            addSheet.current?.open()
           }}
         >
           Add
           </Button>
       </View>
+      <RBSheet
+        ref={addSheet}
+        closeOnDragDown={true}
+        closeOnPressMask={false}
+        customStyles={{
+          wrapper: {
+            backgroundColor: "transparent"
+          },
+          draggableIcon: {
+            backgroundColor: "#fff"
+          },
+          container: {
+            borderTopLeftRadius: 50,
+            borderTopRightRadius: 50,
+            backgroundColor: "#252525"
+          }
+        }}
+      >
+        <View style={{
+          height: 200,
+          justifyContent: "center", alignItems: "center", flexDirection: "column"
+        }}>
+          <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+            <Text style={styles.subtitleText}>Set Name</Text>
+          </View>
+          <View style={{ flex: 1, alignSelf: "stretch", justifyContent: "center", margin: 25 }}>
+            <TextInput
+              label='Name'
+              mode="outlined"
+              style={{ width: "80%", alignSelf: "center" }}
+              theme={{
+                dark: true, mode: "adaptive",
+                colors: {
+                  text: 'white', placeholder: 'white',
+                  background: "#252525", primary: "#FFEE58"
+                }
+              }}
+              value={name}
+              onChangeText={text => setName(text)}
+            />
+          </View>
+          <View style={{ flex: 1 }}>
+            <Button
+              contentStyle={styles.nextButton}
+              color="#FFEE58"
+              mode="contained"
+              loading={loading}
+              onPress={async () => {
+                setLoading(true)
+                var host = await SInfo.getItem("host", {})
+                await addGroup(host, name)
+                navigation.navigate("Home")
+                addSheet.current?.close()
+              }}
+            >
+              Add
+            </Button>
+          </View>
+        </View>
+      </RBSheet>
+
     </View>
   );
 }
-
+//

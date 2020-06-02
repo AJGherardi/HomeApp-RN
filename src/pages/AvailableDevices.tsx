@@ -31,7 +31,6 @@ export function AvailableDevicesPage({ route, navigation }: AvailableDevicesProp
   useEffect(() => {
     async function findDevices() {
       var host = await SInfo.getItem("host", {})
-
       var nodes = await availableDevices(host)
       setDevices(nodes.availableDevices)
       setLoading(false)

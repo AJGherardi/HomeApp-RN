@@ -92,7 +92,7 @@ export function GroupPage({ route, navigation }: GroupProps) {
                                 style={styles.item}
                                 borderless={true}
                                 onPress={() => {
-                                    navigation.navigate("Device", { devAddr: item.addr });
+                                    navigation.navigate("Device", { devAddr: item.addr, devName: item.name });
                                 }}
                                 rippleColor="#ffffff"
                             >
