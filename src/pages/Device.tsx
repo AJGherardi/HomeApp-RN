@@ -10,6 +10,7 @@ import { getState } from "../api/GetState";
 import { removeDevice } from "../api/RemoveDevice";
 import SInfo from "react-native-sensitive-info"
 import PlugSvg from "../svg/Plug";
+import OnSvg from "../svg/On";
 
 
 type DeviceNavigationProp = StackNavigationProp<RootStackParamList, "Device">;
@@ -94,7 +95,7 @@ export function DevicePage({ route, navigation }: DeviceProps) {
                 }} />
             </View>
             <View style={styles.deviceUpperView}>
-                <PlugSvg/>
+                <PlugSvg />
                 <View style={styles.deviceTextView}>
                     <Text style={styles.deviceText}>{route.params.devName}</Text>
                     <Text style={styles.deviceSubtext}>Smart Plug</Text>
@@ -102,7 +103,7 @@ export function DevicePage({ route, navigation }: DeviceProps) {
             </View>
             <View style={styles.deviceLowerView}>
                 <View style={styles.deviceProps}>
-                    <Image source={require("../../assets/on.png")} />
+                    <OnSvg />
                     <View>
                         <Text style={styles.devicePropText}>Plug 1</Text>
                         <Button
@@ -131,7 +132,7 @@ export function DevicePage({ route, navigation }: DeviceProps) {
                     </View>
                 </View>
                 <View style={styles.deviceProps}>
-                    <Image source={require("../../assets/on.png")} />
+                    <OnSvg />
                     <View>
                         <Text style={styles.devicePropText}>Plug 2</Text>
                         <Button

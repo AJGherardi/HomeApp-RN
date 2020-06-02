@@ -5,6 +5,7 @@ import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { Button } from "react-native-paper";
 import { RootStackParamList } from "./Navigation";
+import OutletSvg from "../svg/Outlet";
 
 type AddHubSplashNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -28,7 +29,7 @@ export function AddHubSplashPage({ route, navigation }: AddHubSplashProps) {
         <Text style={styles.titleText}>Add A Hub</Text>
       </View>
       <View style={styles.centerView}>
-        <Image source={require("../../assets/outlet.png")} />
+        <OutletSvg />
       </View>
       <View style={styles.nextView}>
         <Button

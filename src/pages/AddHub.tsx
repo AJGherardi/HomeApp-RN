@@ -7,6 +7,7 @@ import { styles } from "../styles/Styles";
 import { configHub } from "../api/ConfigHub";
 import SInfo from "react-native-sensitive-info"
 import { RootStackParamList } from "./Navigation";
+import RangeSvg from "../svg/Range";
 
 type AddHubNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -29,7 +30,7 @@ export function AddHubPage({ route, navigation }: AddHubProps) {
       <View style={styles.centerView}>
         <View style={styles.rangeView}>
           <View style={styles.upperRangeView}>
-            <Image source={require("../../assets/range.png")} />
+            <RangeSvg />
           </View>
           <View style={styles.lowerRangeView}>
             <Text style={styles.rangeText}>

@@ -8,6 +8,7 @@ import { RootStackParamList } from "./Navigation";
 import { addDevice } from "../api/AddDevice";
 import SInfo from "react-native-sensitive-info"
 import RBSheet from "react-native-raw-bottom-sheet";
+import RangeSvg from "../svg/Range";
 
 type AddDeviceNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -34,7 +35,7 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
       <View style={styles.centerView}>
         <View style={styles.rangeView}>
           <View style={styles.upperRangeView}>
-            <Image source={require("../../assets/range.png")} />
+            <RangeSvg />
           </View>
           <View style={styles.lowerRangeView}>
             <Text style={styles.rangeText}>
