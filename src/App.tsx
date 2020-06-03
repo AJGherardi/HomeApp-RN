@@ -155,7 +155,6 @@ export function AppPages({ route, navigation }: AppProps) {
           component={GroupPage}
         />
       </AppStack.Navigator>
-
       <RBSheet
         ref={menuSheet}
         closeOnDragDown={true}

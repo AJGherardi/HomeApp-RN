@@ -5,7 +5,7 @@ import { channel, put, take } from '@paybase/csp';
 
 const mutation = graphql`
   mutation ConfigHubMutation {
-    configHubs
+    configHub
   }
 `;
 

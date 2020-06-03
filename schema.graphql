@@ -25,14 +25,6 @@ type Mutation {
   setState(devAddr: String!, elemNumber: Int!, value: String!): State!
 }
 
-type ProvData {
-  flags: String!
-  ivIndex: String!
-  keyIndex: String!
-  networkKey: String!
-  nextDevAddr: String!
-}
-
 type Query {
   availableDevices: [String!]!
   getState(devAddr: String!, elemNumber: Int!): State!
