@@ -14,7 +14,7 @@ const query = graphql`
 const variables = {};
 
 async function listGroups(host: string, webKey: string): Promise<ListGroupsQueryResponse> {
-    return await fetchQuery<ListGroupsQuery>(useHostAndKey(host, webKey), query, variables)
+  return await fetchQuery<ListGroupsQuery>(useHostAndKey(host, webKey), query, variables)
 }
 
 export { listGroups };

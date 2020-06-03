@@ -12,11 +12,11 @@ const query = graphql`
 `;
 
 async function getState(host: string, webKey: string, devAddr: string, elemNumber: number): Promise<GetStateQueryResponse> {
-    const variables = {
-        devAddr,
-        elemNumber,
-    };
-    return await fetchQuery<GetStateQuery>(useHostAndKey(host, webKey), query, variables)
+  const variables = {
+    devAddr,
+    elemNumber,
+  };
+  return await fetchQuery<GetStateQuery>(useHostAndKey(host, webKey), query, variables)
 }
 
 export { getState };

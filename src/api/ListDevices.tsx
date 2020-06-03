@@ -15,7 +15,7 @@ const query = graphql`
 const variables = {};
 
 async function listDevices(host: string, webKey: string): Promise<ListDevicesQueryResponse> {
-    return await fetchQuery<ListDevicesQuery>(useHostAndKey(host, webKey), query, variables)
+  return await fetchQuery<ListDevicesQuery>(useHostAndKey(host, webKey), query, variables)
 }
 
 export { listDevices };

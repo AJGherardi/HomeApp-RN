@@ -14,10 +14,10 @@ const query = graphql`
 
 
 async function listDevicesByGroup(host: string, webKey: string, addr: string): Promise<ListDevicesByGroupQueryResponse> {
-    const variables = {
-      addr
-    };
-    return await fetchQuery<ListDevicesByGroupQuery>(useHostAndKey(host, webKey), query, variables)
+  const variables = {
+    addr
+  };
+  return await fetchQuery<ListDevicesByGroupQuery>(useHostAndKey(host, webKey), query, variables)
 }
 
 export { listDevicesByGroup };

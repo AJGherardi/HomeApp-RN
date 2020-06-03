@@ -26,6 +26,7 @@ import { AddGroupPage } from "./pages/AddGroup";
 import { SelectGroupPage } from "./pages/SelectGroup";
 import RBSheet from "react-native-raw-bottom-sheet";
 import SInfo from "react-native-sensitive-info"
+import { resetHub } from "./api/ResetHub";
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -185,7 +186,10 @@ export function AppPages({ route, navigation }: AppProps) {
               contentStyle={styles.nextButton}
               color="white"
               mode="contained"
-              onPress={() => {
+              onPress={async () => {
+                var host = await SInfo.getItem("host", {})
+                var webKey = await SInfo.getItem("webKey", {})
+                await resetHub(host, webKey)
                 navigation.navigate("Welcome");
                 menuSheet.current?.close()
               }}
