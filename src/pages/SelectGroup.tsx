@@ -31,7 +31,8 @@ export function SelectGroupPage({ route, navigation }: SelectGroupProps) {
   useEffect(() => {
     async function getGroups() {
       var host = await SInfo.getItem("host", {})
-      var groups = await listGroups(host)
+      var webKey = await SInfo.getItem("webKey", {})
+      var groups = await listGroups(host, webKey)
       setGroups(groups)
       setLoading(false)
     }

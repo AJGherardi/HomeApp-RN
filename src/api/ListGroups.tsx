@@ -1,5 +1,5 @@
 import { fetchQuery, graphql } from 'relay-runtime';
-import { useHost } from './Enveriment';
+import { useHostAndKey } from './Enveriment';
 import { ListGroupsQueryResponse, ListGroupsQuery } from './__generated__/ListGroupsQuery.graphql';
 
 const query = graphql`
@@ -13,8 +13,8 @@ const query = graphql`
 
 const variables = {};
 
-async function listGroups(host: string): Promise<ListGroupsQueryResponse> {
-    return await fetchQuery<ListGroupsQuery>(useHost(host), query, variables)
+async function listGroups(host: string, webKey: string): Promise<ListGroupsQueryResponse> {
+    return await fetchQuery<ListGroupsQuery>(useHostAndKey(host, webKey), query, variables)
 }
 
 export { listGroups };

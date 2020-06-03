@@ -107,7 +107,8 @@ export function AddDevicePage({ route, navigation }: AddDeviceProps) {
               onPress={async () => {
                 setLoading(true)
                 var host = await SInfo.getItem("host", {})
-                var device = await addDevice(host, name, route.params.device, route.params.group)
+                var webKey = await SInfo.getItem("webKey", {})
+                var device = await addDevice(host, webKey, name, route.params.device, route.params.group)
                 navigation.navigate("Home")
                 addSheet.current?.close()
               }}

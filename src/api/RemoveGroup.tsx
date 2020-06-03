@@ -1,5 +1,5 @@
 import { graphql, commitMutation } from 'react-relay';
-import { useHost } from "./Enveriment";
+import { useHostAndKey } from "./Enveriment";
 import { channel, put, take } from '@paybase/csp';
 import { RemoveGroupMutationResponse, RemoveGroupMutation } from './__generated__/RemoveGroupMutation.graphql';
 
@@ -13,6 +13,7 @@ const mutation = graphql`
 
 async function removeGroup(
     host: string,
+    webKey: string,
     addr: string
 ): Promise<RemoveGroupMutationResponse> {
     // Use a channel
@@ -24,7 +25,7 @@ async function removeGroup(
     // Make commit mutation callable from this function 
     function commit() {
         return commitMutation<RemoveGroupMutation>(
-            useHost(host),
+            useHostAndKey(host, webKey),
             {
                 mutation,
                 variables,

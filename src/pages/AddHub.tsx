@@ -34,7 +34,7 @@ export function AddHubPage({ route, navigation }: AddHubProps) {
           </View>
           <View style={styles.lowerRangeView}>
             <Text style={styles.rangeText}>
-              Get within 2-4 ft of your Hub
+                Stay on the same network as your hub
               </Text>
           </View>
         </View>
@@ -49,6 +49,7 @@ export function AddHubPage({ route, navigation }: AddHubProps) {
             var key = await configHub(route.params.host)
             // Store webkey
             await SInfo.setItem("host", route.params.host, {})
+            await SInfo.setItem("webKey", key, {})
             navigation.navigate("App")
           }}
         >

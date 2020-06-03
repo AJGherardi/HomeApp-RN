@@ -26,7 +26,8 @@ export function DevicesPage({ route, navigation }: DevicesProps) {
     useEffect(() => {
         async function getDevice() {
             var host = await SInfo.getItem("host", {})
-            var devices = await listDevices(host)
+            var webKey = await SInfo.getItem("webKey", {})
+            var devices = await listDevices(host, webKey)
             setLoading(false)
             setDevices(devices)
         }

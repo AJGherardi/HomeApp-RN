@@ -28,7 +28,8 @@ export function GroupPage({ route, navigation }: GroupProps) {
     useEffect(() => {
         async function getDevice() {
             var host = await SInfo.getItem("host", {})
-            var devices = await listDevicesByGroup(host, route.params.addr)
+            var webKey = await SInfo.getItem("webKey", {})
+            var devices = await listDevicesByGroup(host, webKey, route.params.addr)
             setLoading(false)
             setDevices(devices)
         }
@@ -62,7 +63,8 @@ export function GroupPage({ route, navigation }: GroupProps) {
                             onPress={async () => {
                                 setResetVisable(false)
                                 var host = await SInfo.getItem("host", {})
-                                await removeGroup(host, route.params.addr)
+                                var webKey = await SInfo.getItem("webKey", {})
+                                await removeGroup(host, webKey, route.params.addr)
                                 navigation.navigate("Home")
                             }}
                         >

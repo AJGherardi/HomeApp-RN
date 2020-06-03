@@ -1,5 +1,5 @@
 import { graphql, commitMutation } from 'react-relay';
-import { useHost } from "./Enveriment";
+import { useHostAndKey } from "./Enveriment";
 import { channel, put, take } from '@paybase/csp';
 import { RemoveDeviceMutationResponse, RemoveDeviceMutation } from './__generated__/RemoveDeviceMutation.graphql';
 
@@ -13,6 +13,7 @@ const mutation = graphql`
 
 async function removeDevice(
     host: string,
+    webKey: string,
     addr: string
 ): Promise<RemoveDeviceMutationResponse> {
     // Use a channel
@@ -24,7 +25,7 @@ async function removeDevice(
     // Make commit mutation callable from this function 
     function commit() {
         return commitMutation<RemoveDeviceMutation>(
-            useHost(host),
+            useHostAndKey(host, webKey),
             {
                 mutation,
                 variables,

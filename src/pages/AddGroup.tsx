@@ -108,7 +108,8 @@ export function AddGroupPage({ route, navigation }: AddGroupProps) {
               onPress={async () => {
                 setLoading(true)
                 var host = await SInfo.getItem("host", {})
-                await addGroup(host, name)
+                var webKey = await SInfo.getItem("webKey", {})
+                await addGroup(host, webKey, name)
                 navigation.navigate("Home")
                 addSheet.current?.close()
               }}

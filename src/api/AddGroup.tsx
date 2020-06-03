@@ -1,5 +1,5 @@
 import { graphql, commitMutation } from 'react-relay';
-import { useHost } from "./Enveriment";
+import { useHostAndKey } from "./Enveriment";
 import { channel, put, take } from '@paybase/csp';
 import { AddGroupMutation, AddGroupMutationResponse } from './__generated__/AddGroupMutation.graphql';
 
@@ -12,7 +12,7 @@ const mutation = graphql`
   }
 `;
 
-async function addGroup(host: string, name: string): Promise<AddGroupMutationResponse> {
+async function addGroup(host: string, webKey: string, name: string): Promise<AddGroupMutationResponse> {
     // Use a channel
     const responseChannel = channel<AddGroupMutationResponse>();
     // Make vars
@@ -22,7 +22,7 @@ async function addGroup(host: string, name: string): Promise<AddGroupMutationRes
     // Make commit mutation callable from this function 
     function commit() {
         return commitMutation<AddGroupMutation>(
-            useHost(host),
+            useHostAndKey(host, webKey),
             {
                 mutation,
                 variables,

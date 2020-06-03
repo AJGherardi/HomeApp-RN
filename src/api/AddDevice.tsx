@@ -1,5 +1,5 @@
 import { graphql, commitMutation } from 'react-relay';
-import { useHost } from "./Enveriment";
+import { useHostAndKey } from "./Enveriment";
 import { channel, put, take } from '@paybase/csp';
 import { AddDeviceMutationResponse, AddDeviceMutation } from './__generated__/AddDeviceMutation.graphql';
 
@@ -14,6 +14,7 @@ const mutation = graphql`
 
 async function addDevice(
     host: string,
+    webKey: string,
     name: string,
     devAddr: string,
     addr: string
@@ -29,7 +30,7 @@ async function addDevice(
     // Make commit mutation callable from this function 
     function commit() {
         return commitMutation<AddDeviceMutation>(
-            useHost(host),
+            useHostAndKey(host, webKey),
             {
                 mutation,
                 variables,

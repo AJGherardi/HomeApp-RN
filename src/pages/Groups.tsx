@@ -26,7 +26,8 @@ export function GroupsPage({ route, navigation }: GroupsProps) {
     useEffect(() => {
         async function getDevice() {
             var host = await SInfo.getItem("host", {})
-            var groups = await listGroups(host)
+            var webKey = await SInfo.getItem("webKey", {})
+            var groups = await listGroups(host, webKey)
             setLoading(false)
             setGroups(groups)
         }

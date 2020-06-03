@@ -1,5 +1,5 @@
 import { fetchQuery, graphql } from 'relay-runtime';
-import { useHost } from './Enveriment';
+import { useHostAndKey } from './Enveriment';
 import { AvailableDevicesQueryResponse, AvailableDevicesQuery } from './__generated__/AvailableDevicesQuery.graphql';
 
 const query = graphql`
@@ -10,8 +10,8 @@ const query = graphql`
 
 const variables = {};
 
-async function availableDevices(host: string): Promise<AvailableDevicesQueryResponse> {
-  return await fetchQuery<AvailableDevicesQuery>(useHost(host), query, variables)
+async function availableDevices(host: string, webKey: string): Promise<AvailableDevicesQueryResponse> {
+  return await fetchQuery<AvailableDevicesQuery>(useHostAndKey(host, webKey), query, variables)
 }
 
 export { availableDevices };

@@ -1,5 +1,5 @@
 import { fetchQuery, graphql } from 'relay-runtime';
-import { useHost } from './Enveriment';
+import { useHostAndKey } from './Enveriment';
 import { GetStateQueryResponse, GetStateQuery } from './__generated__/GetStateQuery.graphql';
 
 const query = graphql`
@@ -11,12 +11,12 @@ const query = graphql`
   }
 `;
 
-async function getState(host: string, devAddr: string, elemNumber: number): Promise<GetStateQueryResponse> {
+async function getState(host: string, webKey: string, devAddr: string, elemNumber: number): Promise<GetStateQueryResponse> {
     const variables = {
         devAddr,
         elemNumber,
     };
-    return await fetchQuery<GetStateQuery>(useHost(host), query, variables)
+    return await fetchQuery<GetStateQuery>(useHostAndKey(host, webKey), query, variables)
 }
 
 export { getState };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StatusBar, Image } from "react-native";
+import { Text, View } from "react-native";
 import { styles } from "../styles/Styles";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
