@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.homeapp">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.homeapp">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -19,7 +20,9 @@
     <activity
         android:name=".SplashActivity"
         android:theme="@style/SplashTheme"
-        android:label="@string/app_name">
+        android:label="@string/app_name"
+        android:screenOrientation="portrait"
+        tools:ignore="LockedOrientationActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
@@ -31,7 +34,9 @@
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
         android:launchMode="singleTask"
         android:windowSoftInputMode="adjustResize"
-        android:exported="true">
+        android:exported="true"
+        android:screenOrientation="portrait"
+        tools:ignore="LockedOrientationActivity">
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
     </application>
