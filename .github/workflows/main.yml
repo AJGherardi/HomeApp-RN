@@ -24,11 +24,10 @@ jobs:
         run: cd android && chmod +x ./gradlew
         # Build Command
       - name: Build Android Release
-        env:
-           RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
-           RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
         run: |
           cd android && ./gradlew assembleRelease
+            -PRELEASE_KEY_PASSWORD='${{ secrets.RELEASE_KEY_PASSWORD }}'
+            -PRELEASE_STORE_PASSWORD='${{ secrets.RELEASE_STORE_PASSWORD }}'
       # Upload to Artifact
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
