@@ -38,5 +38,3 @@ type State {
   state: String!
   stateType: String!
 }
-
-
