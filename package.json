@@ -16,7 +16,6 @@
     "@react-navigation/native": "^5.3.0",
     "@react-navigation/native-stack": "^5.0.5",
     "@react-navigation/stack": "^5.3.2",
-    "alexander-gherardi-mesh-crypto": "file:../RnMeshCryptro",
     "babel-plugin-relay": "^9.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
